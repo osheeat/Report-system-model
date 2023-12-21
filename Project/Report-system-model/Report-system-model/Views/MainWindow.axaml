@@ -7,7 +7,7 @@
         x:Class="Report_system_model.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
-        Title="Report_system_model">
+        Title="Report_system_model" MinWidth="1250" MinHeight="600">
 
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
@@ -15,33 +15,207 @@
         <vm:MainWindowViewModel />
     </Design.DataContext>
     <Grid>
+        <TabControl Margin="5" TabStripPlacement="Left">
+            <TabItem Header="Показатели" FontSize="16">
+                <Grid>
+                    <StackPanel Grid.Row="0">
+                        <CheckBox Command="{Binding IsFullNameCheckBoxChecked, Mode = TwoWay}"
+                                  IsChecked="{Binding FullNemeCheck, Mode = TwoWay}"
+                                  Content="Полное наименование" />
+                        <CheckBox Content="Краткое наименование" />
+                    </StackPanel>
 
-        <TabControl Margin="5">
-            <TabItem Header="Основная информация" FontSize="13">
-                <Grid Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Stretch">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="3*" />
-                        <ColumnDefinition Width="3*" />
-                        <ColumnDefinition Width="3*" />
-                    </Grid.ColumnDefinitions>
-                    <Border Grid.Row="0" Grid.Column="0" Padding="5" BorderBrush="Black" BorderThickness="1,1,1,1">
-                        <TextBlock Text="Полное наименование" HorizontalAlignment="Center" />
-                    </Border>
-                    <Border Grid.Row="0" Grid.Column="1" Padding="5" BorderBrush="Black" BorderThickness="0,1,1,1">
-                        <TextBlock Text="Краткое наименование" HorizontalAlignment="Center" />
-                    </Border>
-                    <Border Grid.Row="0" Grid.Column="2" Padding="5" BorderBrush="Black" BorderThickness="0,1,1,1">
-                        <TextBlock Text="Статус данных" HorizontalAlignment="Center" />
+                    <Border Grid.Row="1">
+                        <Grid VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="{Binding  showFullName, Mode = TwoWay}" />
+                                <ColumnDefinition Width="{Binding showShortName}" />
+                                <ColumnDefinition Width="{Binding showDataStatus}" />
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Row="0" Grid.Column="0" Padding="5" BorderBrush="Black"
+                                    BorderThickness="1,1,1,1">
+                                <TextBlock Text="Полное наименование" HorizontalAlignment="Center" FontSize="12" />
+                            </Border>
+                            <Border Grid.Row="0" Grid.Column="1" Padding="5" BorderBrush="Black"
+                                    BorderThickness="0,1,1,1">
+                                <TextBlock Text="Краткое наименование" HorizontalAlignment="Center" FontSize="12" />
+                            </Border>
+                            <Border Grid.Row="0" Grid.Column="2" Padding="5" BorderBrush="Black"
+                                    BorderThickness="0,1,1,1">
+                                <TextBlock Text="Статус данных" HorizontalAlignment="Center" FontSize="12" />
+                            </Border>
+                        </Grid>
                     </Border>
                 </Grid>
+                <!-- <TabControl Margin="5"> -->
+                <!--     <TabItem Header="Основная информация" FontSize="13"> -->
+                <!--         <Grid Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Stretch"> -->
+                <!--             <Grid.ColumnDefinitions> -->
+                <!--                 <ColumnDefinition Width="3*" /> -->
+                <!--                 <ColumnDefinition Width="3*" /> -->
+                <!--                 <ColumnDefinition Width="3*" /> -->
+                <!--             </Grid.ColumnDefinitions> -->
+                <!--             <Border Grid.Row="0" Grid.Column="0" Padding="5" BorderBrush="Black" -->
+                <!--                     BorderThickness="1,1,1,1"> -->
+                <!--                 <TextBlock Text="Полное наименование" HorizontalAlignment="Center" FontSize="12"/> -->
+                <!--             </Border> -->
+                <!--             <Border Grid.Row="0" Grid.Column="1" Padding="5" BorderBrush="Black" -->
+                <!--                     BorderThickness="0,1,1,1"> -->
+                <!--                 <TextBlock Text="Краткое наименование" HorizontalAlignment="Center" FontSize="12"/> -->
+                <!--             </Border> -->
+                <!--             <Border Grid.Row="0" Grid.Column="2" Padding="5" BorderBrush="Black" -->
+                <!--                     BorderThickness="0,1,1,1"> -->
+                <!--                 <TextBlock Text="Статус данных" HorizontalAlignment="Center" FontSize="12"/> -->
+                <!--             </Border> -->
+                <!--         </Grid> -->
+                <!--     </TabItem> -->
+                <!--     <TabItem Header="Служебная информация" FontSize="13"> -->
+                <!--         <Grid Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Stretch"> -->
+                <!--             <Grid.ColumnDefinitions> -->
+                <!--                 <ColumnDefinition Width="3*" /> -->
+                <!--                 <ColumnDefinition Width="3*" /> -->
+                <!--                 <ColumnDefinition Width="3*" /> -->
+                <!--                 <ColumnDefinition Width="3*" /> -->
+                <!--                 <ColumnDefinition Width="3*" /> -->
+                <!--                 <ColumnDefinition Width="3*" /> -->
+                <!--                 <ColumnDefinition Width="3*" /> -->
+                <!--                 <ColumnDefinition Width="3*" /> -->
+                <!--                 <ColumnDefinition Width="3*" /> -->
+                <!--             </Grid.ColumnDefinitions> -->
+                <!--             <Border Grid.Row="0" Grid.Column="0" Padding="5" BorderBrush="Black" -->
+                <!--                     BorderThickness="1,1,1,1"> -->
+                <!--                 <TextBlock Text="Тип значения" HorizontalAlignment="Center" FontSize="12"/> -->
+                <!--             </Border> -->
+                <!--             <Border Grid.Row="0" Grid.Column="1" Padding="5" BorderBrush="Black" -->
+                <!--                     BorderThickness="0,1,1,1"> -->
+                <!--                 <TextBlock TextWrapping="Wrap" Text="Валюта/Еденица измерения" -->
+                <!--                            HorizontalAlignment="Center" FontSize="12"/> -->
+                <!--             </Border> -->
+                <!--             <Border Grid.Row="0" Grid.Column="2" Padding="5" BorderBrush="Black" -->
+                <!--                     BorderThickness="0,1,1,1"> -->
+                <!--                 <TextBlock TextWrapping="Wrap" Text="Метод получения агрегированного значения" -->
+                <!--                            HorizontalAlignment="Center" FontSize="12"/> -->
+                <!--             </Border> -->
+                <!--             <Border Grid.Row="0" Grid.Column="3" Padding="5" BorderBrush="Black" -->
+                <!--                     BorderThickness="0,1,1,1"> -->
+                <!--                 <TextBlock TextWrapping="Wrap" Text="Категория показателя" HorizontalAlignment="Center" FontSize="12"/> -->
+                <!--             </Border> -->
+                <!--             <Border Grid.Row="0" Grid.Column="4" Padding="5" BorderBrush="Black" -->
+                <!--                     BorderThickness="0,1,1,1"> -->
+                <!--                 <TextBlock TextWrapping="Wrap" Text="Регламентный срок загрузки" -->
+                <!--                            HorizontalAlignment="Center" FontSize="12"/> -->
+                <!--             </Border> -->
+                <!--             <Border Grid.Row="0" Grid.Column="5" Padding="5" BorderBrush="Black" -->
+                <!--                     BorderThickness="0,1,1,1"> -->
+                <!--                 <TextBlock TextWrapping="Wrap" Text="Срок загрузки для гибкого отчета" -->
+                <!--                            HorizontalAlignment="Center" FontSize="12"/> -->
+                <!--             </Border> -->
+                <!--             <Border Grid.Row="0" Grid.Column="6" Padding="5" BorderBrush="Black" -->
+                <!--                     BorderThickness="0,1,1,1"> -->
+                <!--                 <TextBlock TextWrapping="Wrap" Text="Индикатор использования в отчете" -->
+                <!--                            HorizontalAlignment="Center" FontSize="12"/> -->
+                <!--             </Border> -->
+                <!--             <Border Grid.Row="0" Grid.Column="7" Padding="5" BorderBrush="Black" -->
+                <!--                     BorderThickness="0,1,1,1"> -->
+                <!--                 <TextBlock TextWrapping="Wrap" Text="Методология формирования показателя" -->
+                <!--                            HorizontalAlignment="Center" FontSize="12"/> -->
+                <!--             </Border> -->
+                <!--             <Border Grid.Row="0" Grid.Column="8" Padding="5" BorderBrush="Black" -->
+                <!--                     BorderThickness="0,1,1,1"> -->
+                <!--                 <TextBlock TextWrapping="Wrap" Text="Ответственный за БП со стороны ЛУКОЙЛ" -->
+                <!--                            HorizontalAlignment="Center" FontSize="12"/> -->
+                <!--             </Border> -->
+                <!--         </Grid> -->
+                <!--     </TabItem> -->
+                <!--     <TabItem Header="Система - источник показателя" FontSize="13"> -->
+                <!--         <Grid Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Stretch"> -->
+                <!--             <Grid.ColumnDefinitions> -->
+                <!--                 <ColumnDefinition Width="3*" /> -->
+                <!--                 <ColumnDefinition Width="3*" /> -->
+                <!--                 <ColumnDefinition Width="3*" /> -->
+                <!--                 <ColumnDefinition Width="3*" /> -->
+                <!--                 <ColumnDefinition Width="3*" /> -->
+                <!--                 <ColumnDefinition Width="3*" /> -->
+                <!--                 <ColumnDefinition Width="3*" /> -->
+                <!--                 <ColumnDefinition Width="3*" /> -->
+                <!--                 <ColumnDefinition Width="3*" /> -->
+                <!--             </Grid.ColumnDefinitions> -->
+                <!--             <Border Grid.Row="0" Grid.Column="0" Padding="5" BorderBrush="Black" -->
+                <!--                     BorderThickness="1,1,1,1"> -->
+                <!--                 <TextBlock Text="Тип значения" HorizontalAlignment="Center" /> -->
+                <!--             </Border> -->
+                <!--             <Border Grid.Row="0" Grid.Column="1" Padding="5" BorderBrush="Black" -->
+                <!--                     BorderThickness="0,1,1,1"> -->
+                <!--                 <TextBlock TextWrapping="Wrap" Text="Валюта/Еденица измерения" -->
+                <!--                            HorizontalAlignment="Center" /> -->
+                <!--             </Border> -->
+                <!--             <Border Grid.Row="0" Grid.Column="2" Padding="5" BorderBrush="Black" -->
+                <!--                     BorderThickness="0,1,1,1"> -->
+                <!--                 <TextBlock TextWrapping="Wrap" Text="Метод получения агрегированного значения" -->
+                <!--                            HorizontalAlignment="Center" /> -->
+                <!--             </Border> -->
+                <!--             <Border Grid.Row="0" Grid.Column="3" Padding="5" BorderBrush="Black" -->
+                <!--                     BorderThickness="0,1,1,1"> -->
+                <!--                 <TextBlock TextWrapping="Wrap" Text="Категория показателя" HorizontalAlignment="Center" /> -->
+                <!--             </Border> -->
+                <!--             <Border Grid.Row="0" Grid.Column="4" Padding="5" BorderBrush="Black" -->
+                <!--                     BorderThickness="0,1,1,1"> -->
+                <!--                 <TextBlock TextWrapping="Wrap" Text="Регламентный срок загрузки" -->
+                <!--                            HorizontalAlignment="Center" /> -->
+                <!--             </Border> -->
+                <!--             <Border Grid.Row="0" Grid.Column="5" Padding="5" BorderBrush="Black" -->
+                <!--                     BorderThickness="0,1,1,1"> -->
+                <!--                 <TextBlock TextWrapping="Wrap" Text="Срок загрузки для гибкого отчета" -->
+                <!--                            HorizontalAlignment="Center" /> -->
+                <!--             </Border> -->
+                <!--             <Border Grid.Row="0" Grid.Column="6" Padding="5" BorderBrush="Black" -->
+                <!--                     BorderThickness="0,1,1,1"> -->
+                <!--                 <TextBlock TextWrapping="Wrap" Text="Индикатор использования в отчете" -->
+                <!--                            HorizontalAlignment="Center" /> -->
+                <!--             </Border> -->
+                <!--             <Border Grid.Row="0" Grid.Column="7" Padding="5" BorderBrush="Black" -->
+                <!--                     BorderThickness="0,1,1,1"> -->
+                <!--                 <TextBlock TextWrapping="Wrap" Text="Методология формирования показателя" -->
+                <!--                            HorizontalAlignment="Center" /> -->
+                <!--             </Border> -->
+                <!--             <Border Grid.Row="0" Grid.Column="8" Padding="5" BorderBrush="Black" -->
+                <!--                     BorderThickness="0,1,1,1"> -->
+                <!--                 <TextBlock TextWrapping="Wrap" Text="Ответственный за БП со стороны ЛУКОЙЛ" -->
+                <!--                            HorizontalAlignment="Center" /> -->
+                <!--             </Border> -->
+                <!--         </Grid> -->
+                <!--     </TabItem> -->
+                <!--     <TabItem Header="Аналитические признаки" FontSize="13"> -->
+                <!--         <Grid Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Stretch"> -->
+                <!--             <Grid.ColumnDefinitions> -->
+                <!--                 <ColumnDefinition Width="3*" /> -->
+                <!--                 <ColumnDefinition Width="3*" /> -->
+                <!--                 <ColumnDefinition Width="3*" /> -->
+                <!--             </Grid.ColumnDefinitions> -->
+                <!--             <Border Grid.Row="0" Grid.Column="0" Padding="5" BorderBrush="Black" -->
+                <!--                     BorderThickness="1,1,1,1"> -->
+                <!--                 <TextBlock Text="Полное наименование" HorizontalAlignment="Center" /> -->
+                <!--             </Border> -->
+                <!--             <Border Grid.Row="0" Grid.Column="1" Padding="5" BorderBrush="Black" -->
+                <!--                     BorderThickness="0,1,1,1"> -->
+                <!--                 <TextBlock Text="Краткое наименование" HorizontalAlignment="Center" /> -->
+                <!--             </Border> -->
+                <!--             <Border Grid.Row="0" Grid.Column="2" Padding="5" BorderBrush="Black" -->
+                <!--                     BorderThickness="0,1,1,1"> -->
+                <!--                 <TextBlock Text="Статус данных" HorizontalAlignment="Center" /> -->
+                <!--             </Border> -->
+                <!--         </Grid> -->
+                <!--     </TabItem> -->
+                <!-- </TabControl> -->
             </TabItem>
-            <TabItem Header="Служебная информация" FontSize="13">
+            <TabItem Header="Справочники" FontSize="16">
                 <TextBlock Margin="5">This is tab 2 content</TextBlock>
             </TabItem>
-            <TabItem Header="Tab 13 Top">
+            <TabItem Header="Отчеты" FontSize="16">
                 <TextBlock Margin="5">This is tab 3 content</TextBlock>
             </TabItem>
         </TabControl>
+
     </Grid>
 
 </Window>
