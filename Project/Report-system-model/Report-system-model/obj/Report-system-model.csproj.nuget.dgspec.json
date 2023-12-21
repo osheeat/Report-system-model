@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\oleg9\\study\\Diplom\\Project\\Report-system-model\\Report-system-model\\Report-system-model.csproj": {}
+    "C:\\Users\\TimCheers\\RiderProjects\\Report-system-model\\Project\\Report-system-model\\Report-system-model\\Report-system-model.csproj": {}
   },
   "projects": {
-    "C:\\Users\\oleg9\\study\\Diplom\\Project\\Report-system-model\\Report-system-model\\Report-system-model.csproj": {
+    "C:\\Users\\TimCheers\\RiderProjects\\Report-system-model\\Project\\Report-system-model\\Report-system-model\\Report-system-model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\oleg9\\study\\Diplom\\Project\\Report-system-model\\Report-system-model\\Report-system-model.csproj",
+        "projectUniqueName": "C:\\Users\\TimCheers\\RiderProjects\\Report-system-model\\Project\\Report-system-model\\Report-system-model\\Report-system-model.csproj",
         "projectName": "Report-system-model",
-        "projectPath": "C:\\Users\\oleg9\\study\\Diplom\\Project\\Report-system-model\\Report-system-model\\Report-system-model.csproj",
-        "packagesPath": "C:\\Users\\oleg9\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\oleg9\\study\\Diplom\\Project\\Report-system-model\\Report-system-model\\obj\\",
+        "projectPath": "C:\\Users\\TimCheers\\RiderProjects\\Report-system-model\\Project\\Report-system-model\\Report-system-model\\Report-system-model.csproj",
+        "packagesPath": "C:\\Users\\TimCheers\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\TimCheers\\RiderProjects\\Report-system-model\\Project\\Report-system-model\\Report-system-model\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\oleg9\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\TimCheers\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -67,6 +63,14 @@
             "Avalonia.Themes.Fluent": {
               "target": "Package",
               "version": "[11.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[7.0.0, )"
             }
           },
           "imports": [
@@ -80,30 +84,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[6.0.25, 6.0.25]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[6.0.25, 6.0.25]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[6.0.25, 6.0.25]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[6.0.25, 6.0.25]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }
