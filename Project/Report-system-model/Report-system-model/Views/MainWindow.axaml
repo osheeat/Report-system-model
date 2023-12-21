@@ -17,36 +17,68 @@
     <Grid>
         <TabControl Margin="5" TabStripPlacement="Left">
             <TabItem Header="Показатели" FontSize="16">
-                <Grid>
-                    <StackPanel Grid.Row="0">
-                        <CheckBox Command="{Binding IsFullNameCheckBoxChecked, Mode = TwoWay}"
-                                  IsChecked="{Binding FullNemeCheck, Mode = TwoWay}"
-                                  Content="Полное наименование" />
-                        <CheckBox Content="Краткое наименование" />
-                    </StackPanel>
-
-                    <Border Grid.Row="1">
-                        <Grid VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                <DockPanel>
+                    <Border>
+                        <ComboBox>
+                            <ComboBoxItem>
+                                <CheckBox x:Name="Box1" Checked="IsFullNameCheckBoxChecked"
+                                          Unchecked="IsFullNameCheckBoxChecked"
+                                          Content="Полное наименование" />
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                <CheckBox x:Name="Box2" Checked="IsShortNameCheckBoxChecked"
+                                          Unchecked="IsShortNameCheckBoxChecked"
+                                          Content="Краткое наименование" />
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                <CheckBox x:Name="Box3" Checked="IsDataStatusCheckBoxChecked"
+                                          Unchecked="IsDataStatusCheckBoxChecked"
+                                          Content="Статус данных" />
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                <CheckBox x:Name="Box4" Checked="IsValueTypeCheckBoxChecked"
+                                          Unchecked="IsValueTypeCheckBoxChecked"
+                                          Content="Тип данных" />
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                <CheckBox x:Name="Box5" Checked="IsUnitheckBoxChecked"
+                                          Unchecked="IsUnitheckBoxChecked"
+                                          Content="Валюта/Ед. измер." />
+                            </ComboBoxItem>
+                        </ComboBox>
+                    </Border>
+                    <Border>
+                        <Grid VerticalAlignment="Top" HorizontalAlignment="Stretch" x:Name="grGrid">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="{Binding  showFullName, Mode = TwoWay}" />
-                                <ColumnDefinition Width="{Binding showShortName}" />
-                                <ColumnDefinition Width="{Binding showDataStatus}" />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
                             </Grid.ColumnDefinitions>
                             <Border Grid.Row="0" Grid.Column="0" Padding="5" BorderBrush="Black"
                                     BorderThickness="1,1,1,1">
                                 <TextBlock Text="Полное наименование" HorizontalAlignment="Center" FontSize="12" />
                             </Border>
                             <Border Grid.Row="0" Grid.Column="1" Padding="5" BorderBrush="Black"
-                                    BorderThickness="0,1,1,1">
+                                    BorderThickness="1,1,1,1">
                                 <TextBlock Text="Краткое наименование" HorizontalAlignment="Center" FontSize="12" />
                             </Border>
                             <Border Grid.Row="0" Grid.Column="2" Padding="5" BorderBrush="Black"
-                                    BorderThickness="0,1,1,1">
+                                    BorderThickness="1,1,1,1">
                                 <TextBlock Text="Статус данных" HorizontalAlignment="Center" FontSize="12" />
+                            </Border>
+                            <Border Grid.Row="0" Grid.Column="3" Padding="5" BorderBrush="Black"
+                                    BorderThickness="1,1,1,1">
+                                <TextBlock Text="Тип данных" HorizontalAlignment="Center" FontSize="12" />
+                            </Border>
+                            <Border Grid.Row="0" Grid.Column="4" Padding="5" BorderBrush="Black"
+                                    BorderThickness="1,1,1,1">
+                                <TextBlock Text="Валюта/Ед. измер." HorizontalAlignment="Center" FontSize="12" />
                             </Border>
                         </Grid>
                     </Border>
-                </Grid>
+                </DockPanel>
                 <!-- <TabControl Margin="5"> -->
                 <!--     <TabItem Header="Основная информация" FontSize="13"> -->
                 <!--         <Grid Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Stretch"> -->
