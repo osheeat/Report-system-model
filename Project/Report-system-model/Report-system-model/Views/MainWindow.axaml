@@ -42,7 +42,6 @@
                 <TextBlock Margin="5">This is tab 3 content</TextBlock>
             </TabItem>
         </TabControl>
-
     </Grid>
 
 </Window>
