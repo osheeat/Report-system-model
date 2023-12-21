@@ -39,6 +39,6 @@ public class MyDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        // Добавьте дополнительные настройки моделей здесь, если необходимо
+        //дополнительные настройки моделей здесь, если необходимо
     }
 }
