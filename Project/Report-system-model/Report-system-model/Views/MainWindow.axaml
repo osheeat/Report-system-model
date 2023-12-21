@@ -3,6 +3,8 @@
         xmlns:vm="using:Report_system_model.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:database="clr-namespace:Report_system_model.DBModels"
+        xmlns:appModels="clr-namespace:Report_system_model.AppModels"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Report_system_model.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
@@ -56,6 +58,10 @@
                                 <ColumnDefinition />
                                 <ColumnDefinition />
                             </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
                             <Border Grid.Row="0" Grid.Column="0" Padding="5" BorderBrush="Black"
                                     BorderThickness="1,1,1,1">
                                 <TextBlock Text="Полное наименование" HorizontalAlignment="Center" FontSize="12" />
@@ -76,169 +82,54 @@
                                     BorderThickness="1,1,1,1">
                                 <TextBlock Text="Валюта/Ед. измер." HorizontalAlignment="Center" FontSize="12" />
                             </Border>
+                            <Border Grid.Column="0" Grid.Row="1">
+                                <ListBox ItemsSource="{Binding keyfigureModels}" SelectedItem="{Binding SelectedKeyfigureModel, Mode=TwoWay}" Grid.Column="0">
+                                    <ListBox.ItemTemplate >
+                                        <DataTemplate DataType="{x:Type appModels:KeyfigureModel}">
+                                            <TextBlock Text="{Binding BasicInformation.Keyfigure.FullName}" />
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                            </Border>
+                            <Border Grid.Column="1" Grid.Row="1">
+                                <ListBox ItemsSource="{Binding keyfigureModels}" SelectedItem="{Binding SelectedKeyfigureModel, Mode=TwoWay}" Grid.Column="0">
+                                    <ListBox.ItemTemplate >
+                                        <DataTemplate DataType="{x:Type appModels:KeyfigureModel}">
+                                            <TextBlock Text="{Binding BasicInformation.Keyfigure.ShortName}" />
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                            </Border>
+                            <Border Grid.Column="2" Grid.Row="1">
+                                <ListBox ItemsSource="{Binding keyfigureModels}" SelectedItem="{Binding SelectedKeyfigureModel, Mode=TwoWay}" Grid.Column="0">
+                                    <ListBox.ItemTemplate >
+                                        <DataTemplate DataType="{x:Type appModels:KeyfigureModel}">
+                                            <TextBlock Text="{Binding BasicInformation.Keyfigure.DataStatusId}" />
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                            </Border>
+                            <Border Grid.Column="3" Grid.Row="1">
+                                <ListBox ItemsSource="{Binding keyfigureModels}" SelectedItem="{Binding SelectedKeyfigureModel, Mode=TwoWay}" Grid.Column="0">
+                                    <ListBox.ItemTemplate >
+                                        <DataTemplate DataType="{x:Type appModels:KeyfigureModel}">
+                                            <TextBlock Text="{Binding ServiceInformation.ValueType.Value}" />
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                            </Border>
+                            <Border Grid.Column="4" Grid.Row="1">
+                                <ListBox ItemsSource="{Binding keyfigureModels}" SelectedItem="{Binding SelectedKeyfigureModel, Mode=TwoWay}" Grid.Column="0">
+                                    <ListBox.ItemTemplate >
+                                        <DataTemplate DataType="{x:Type appModels:KeyfigureModel}">
+                                            <TextBlock Text="{Binding ServiceInformation.CurrencyUnit.Value}" />
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                            </Border>
                         </Grid>
                     </Border>
                 </DockPanel>
-                <!-- <TabControl Margin="5"> -->
-                <!--     <TabItem Header="Основная информация" FontSize="13"> -->
-                <!--         <Grid Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Stretch"> -->
-                <!--             <Grid.ColumnDefinitions> -->
-                <!--                 <ColumnDefinition Width="3*" /> -->
-                <!--                 <ColumnDefinition Width="3*" /> -->
-                <!--                 <ColumnDefinition Width="3*" /> -->
-                <!--             </Grid.ColumnDefinitions> -->
-                <!--             <Border Grid.Row="0" Grid.Column="0" Padding="5" BorderBrush="Black" -->
-                <!--                     BorderThickness="1,1,1,1"> -->
-                <!--                 <TextBlock Text="Полное наименование" HorizontalAlignment="Center" FontSize="12"/> -->
-                <!--             </Border> -->
-                <!--             <Border Grid.Row="0" Grid.Column="1" Padding="5" BorderBrush="Black" -->
-                <!--                     BorderThickness="0,1,1,1"> -->
-                <!--                 <TextBlock Text="Краткое наименование" HorizontalAlignment="Center" FontSize="12"/> -->
-                <!--             </Border> -->
-                <!--             <Border Grid.Row="0" Grid.Column="2" Padding="5" BorderBrush="Black" -->
-                <!--                     BorderThickness="0,1,1,1"> -->
-                <!--                 <TextBlock Text="Статус данных" HorizontalAlignment="Center" FontSize="12"/> -->
-                <!--             </Border> -->
-                <!--         </Grid> -->
-                <!--     </TabItem> -->
-                <!--     <TabItem Header="Служебная информация" FontSize="13"> -->
-                <!--         <Grid Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Stretch"> -->
-                <!--             <Grid.ColumnDefinitions> -->
-                <!--                 <ColumnDefinition Width="3*" /> -->
-                <!--                 <ColumnDefinition Width="3*" /> -->
-                <!--                 <ColumnDefinition Width="3*" /> -->
-                <!--                 <ColumnDefinition Width="3*" /> -->
-                <!--                 <ColumnDefinition Width="3*" /> -->
-                <!--                 <ColumnDefinition Width="3*" /> -->
-                <!--                 <ColumnDefinition Width="3*" /> -->
-                <!--                 <ColumnDefinition Width="3*" /> -->
-                <!--                 <ColumnDefinition Width="3*" /> -->
-                <!--             </Grid.ColumnDefinitions> -->
-                <!--             <Border Grid.Row="0" Grid.Column="0" Padding="5" BorderBrush="Black" -->
-                <!--                     BorderThickness="1,1,1,1"> -->
-                <!--                 <TextBlock Text="Тип значения" HorizontalAlignment="Center" FontSize="12"/> -->
-                <!--             </Border> -->
-                <!--             <Border Grid.Row="0" Grid.Column="1" Padding="5" BorderBrush="Black" -->
-                <!--                     BorderThickness="0,1,1,1"> -->
-                <!--                 <TextBlock TextWrapping="Wrap" Text="Валюта/Еденица измерения" -->
-                <!--                            HorizontalAlignment="Center" FontSize="12"/> -->
-                <!--             </Border> -->
-                <!--             <Border Grid.Row="0" Grid.Column="2" Padding="5" BorderBrush="Black" -->
-                <!--                     BorderThickness="0,1,1,1"> -->
-                <!--                 <TextBlock TextWrapping="Wrap" Text="Метод получения агрегированного значения" -->
-                <!--                            HorizontalAlignment="Center" FontSize="12"/> -->
-                <!--             </Border> -->
-                <!--             <Border Grid.Row="0" Grid.Column="3" Padding="5" BorderBrush="Black" -->
-                <!--                     BorderThickness="0,1,1,1"> -->
-                <!--                 <TextBlock TextWrapping="Wrap" Text="Категория показателя" HorizontalAlignment="Center" FontSize="12"/> -->
-                <!--             </Border> -->
-                <!--             <Border Grid.Row="0" Grid.Column="4" Padding="5" BorderBrush="Black" -->
-                <!--                     BorderThickness="0,1,1,1"> -->
-                <!--                 <TextBlock TextWrapping="Wrap" Text="Регламентный срок загрузки" -->
-                <!--                            HorizontalAlignment="Center" FontSize="12"/> -->
-                <!--             </Border> -->
-                <!--             <Border Grid.Row="0" Grid.Column="5" Padding="5" BorderBrush="Black" -->
-                <!--                     BorderThickness="0,1,1,1"> -->
-                <!--                 <TextBlock TextWrapping="Wrap" Text="Срок загрузки для гибкого отчета" -->
-                <!--                            HorizontalAlignment="Center" FontSize="12"/> -->
-                <!--             </Border> -->
-                <!--             <Border Grid.Row="0" Grid.Column="6" Padding="5" BorderBrush="Black" -->
-                <!--                     BorderThickness="0,1,1,1"> -->
-                <!--                 <TextBlock TextWrapping="Wrap" Text="Индикатор использования в отчете" -->
-                <!--                            HorizontalAlignment="Center" FontSize="12"/> -->
-                <!--             </Border> -->
-                <!--             <Border Grid.Row="0" Grid.Column="7" Padding="5" BorderBrush="Black" -->
-                <!--                     BorderThickness="0,1,1,1"> -->
-                <!--                 <TextBlock TextWrapping="Wrap" Text="Методология формирования показателя" -->
-                <!--                            HorizontalAlignment="Center" FontSize="12"/> -->
-                <!--             </Border> -->
-                <!--             <Border Grid.Row="0" Grid.Column="8" Padding="5" BorderBrush="Black" -->
-                <!--                     BorderThickness="0,1,1,1"> -->
-                <!--                 <TextBlock TextWrapping="Wrap" Text="Ответственный за БП со стороны ЛУКОЙЛ" -->
-                <!--                            HorizontalAlignment="Center" FontSize="12"/> -->
-                <!--             </Border> -->
-                <!--         </Grid> -->
-                <!--     </TabItem> -->
-                <!--     <TabItem Header="Система - источник показателя" FontSize="13"> -->
-                <!--         <Grid Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Stretch"> -->
-                <!--             <Grid.ColumnDefinitions> -->
-                <!--                 <ColumnDefinition Width="3*" /> -->
-                <!--                 <ColumnDefinition Width="3*" /> -->
-                <!--                 <ColumnDefinition Width="3*" /> -->
-                <!--                 <ColumnDefinition Width="3*" /> -->
-                <!--                 <ColumnDefinition Width="3*" /> -->
-                <!--                 <ColumnDefinition Width="3*" /> -->
-                <!--                 <ColumnDefinition Width="3*" /> -->
-                <!--                 <ColumnDefinition Width="3*" /> -->
-                <!--                 <ColumnDefinition Width="3*" /> -->
-                <!--             </Grid.ColumnDefinitions> -->
-                <!--             <Border Grid.Row="0" Grid.Column="0" Padding="5" BorderBrush="Black" -->
-                <!--                     BorderThickness="1,1,1,1"> -->
-                <!--                 <TextBlock Text="Тип значения" HorizontalAlignment="Center" /> -->
-                <!--             </Border> -->
-                <!--             <Border Grid.Row="0" Grid.Column="1" Padding="5" BorderBrush="Black" -->
-                <!--                     BorderThickness="0,1,1,1"> -->
-                <!--                 <TextBlock TextWrapping="Wrap" Text="Валюта/Еденица измерения" -->
-                <!--                            HorizontalAlignment="Center" /> -->
-                <!--             </Border> -->
-                <!--             <Border Grid.Row="0" Grid.Column="2" Padding="5" BorderBrush="Black" -->
-                <!--                     BorderThickness="0,1,1,1"> -->
-                <!--                 <TextBlock TextWrapping="Wrap" Text="Метод получения агрегированного значения" -->
-                <!--                            HorizontalAlignment="Center" /> -->
-                <!--             </Border> -->
-                <!--             <Border Grid.Row="0" Grid.Column="3" Padding="5" BorderBrush="Black" -->
-                <!--                     BorderThickness="0,1,1,1"> -->
-                <!--                 <TextBlock TextWrapping="Wrap" Text="Категория показателя" HorizontalAlignment="Center" /> -->
-                <!--             </Border> -->
-                <!--             <Border Grid.Row="0" Grid.Column="4" Padding="5" BorderBrush="Black" -->
-                <!--                     BorderThickness="0,1,1,1"> -->
-                <!--                 <TextBlock TextWrapping="Wrap" Text="Регламентный срок загрузки" -->
-                <!--                            HorizontalAlignment="Center" /> -->
-                <!--             </Border> -->
-                <!--             <Border Grid.Row="0" Grid.Column="5" Padding="5" BorderBrush="Black" -->
-                <!--                     BorderThickness="0,1,1,1"> -->
-                <!--                 <TextBlock TextWrapping="Wrap" Text="Срок загрузки для гибкого отчета" -->
-                <!--                            HorizontalAlignment="Center" /> -->
-                <!--             </Border> -->
-                <!--             <Border Grid.Row="0" Grid.Column="6" Padding="5" BorderBrush="Black" -->
-                <!--                     BorderThickness="0,1,1,1"> -->
-                <!--                 <TextBlock TextWrapping="Wrap" Text="Индикатор использования в отчете" -->
-                <!--                            HorizontalAlignment="Center" /> -->
-                <!--             </Border> -->
-                <!--             <Border Grid.Row="0" Grid.Column="7" Padding="5" BorderBrush="Black" -->
-                <!--                     BorderThickness="0,1,1,1"> -->
-                <!--                 <TextBlock TextWrapping="Wrap" Text="Методология формирования показателя" -->
-                <!--                            HorizontalAlignment="Center" /> -->
-                <!--             </Border> -->
-                <!--             <Border Grid.Row="0" Grid.Column="8" Padding="5" BorderBrush="Black" -->
-                <!--                     BorderThickness="0,1,1,1"> -->
-                <!--                 <TextBlock TextWrapping="Wrap" Text="Ответственный за БП со стороны ЛУКОЙЛ" -->
-                <!--                            HorizontalAlignment="Center" /> -->
-                <!--             </Border> -->
-                <!--         </Grid> -->
-                <!--     </TabItem> -->
-                <!--     <TabItem Header="Аналитические признаки" FontSize="13"> -->
-                <!--         <Grid Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Stretch"> -->
-                <!--             <Grid.ColumnDefinitions> -->
-                <!--                 <ColumnDefinition Width="3*" /> -->
-                <!--                 <ColumnDefinition Width="3*" /> -->
-                <!--                 <ColumnDefinition Width="3*" /> -->
-                <!--             </Grid.ColumnDefinitions> -->
-                <!--             <Border Grid.Row="0" Grid.Column="0" Padding="5" BorderBrush="Black" -->
-                <!--                     BorderThickness="1,1,1,1"> -->
-                <!--                 <TextBlock Text="Полное наименование" HorizontalAlignment="Center" /> -->
-                <!--             </Border> -->
-                <!--             <Border Grid.Row="0" Grid.Column="1" Padding="5" BorderBrush="Black" -->
-                <!--                     BorderThickness="0,1,1,1"> -->
-                <!--                 <TextBlock Text="Краткое наименование" HorizontalAlignment="Center" /> -->
-                <!--             </Border> -->
-                <!--             <Border Grid.Row="0" Grid.Column="2" Padding="5" BorderBrush="Black" -->
-                <!--                     BorderThickness="0,1,1,1"> -->
-                <!--                 <TextBlock Text="Статус данных" HorizontalAlignment="Center" /> -->
-                <!--             </Border> -->
-                <!--         </Grid> -->
-                <!--     </TabItem> -->
-                <!-- </TabControl> -->
             </TabItem>
             <TabItem Header="Справочники" FontSize="16">
                 <TextBlock Margin="5">This is tab 2 content</TextBlock>

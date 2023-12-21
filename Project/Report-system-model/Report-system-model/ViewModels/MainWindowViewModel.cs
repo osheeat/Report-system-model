@@ -2,6 +2,7 @@
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Reactive;
 using Avalonia.Controls;
@@ -17,30 +18,14 @@ namespace Report_system_model.ViewModels;
 public class MainWindowViewModel : ViewModelBase
 {
     [Reactive] public ObservableCollection<KeyfigureModel> keyfigureModels { get; set; }
-    public ReactiveCommand<Unit, Unit> IsFullNameCheckBoxChecked { get; set; }
-    [Reactive] public bool FullNemeCheck { get; set; }
-    [Reactive] public int showFullName { get; set; }
-    [Reactive] public int showShortName { get; set; }
-    [Reactive] public int showDataStatus { get; set; }
+    [Reactive] public KeyfigureModel SelectedKeyfigureModel { get; set; }
     public MainWindowViewModel()
     {
         MyDbContext db = new MyDbContext();
         db.Database.EnsureCreated();
         KeyfigureModel tmp = new KeyfigureModel();
+        SelectedKeyfigureModel = new KeyfigureModel();
         keyfigureModels = new ObservableCollection<KeyfigureModel>(tmp.GetCompleteInformation().ToList());
-
-        IsFullNameCheckBoxChecked = ReactiveCommand.Create(FullNameCheckBoxChecked);
-    }
-    private void FullNameCheckBoxChecked()
-    {
-        if (FullNemeCheck == true)
-        {
-            showFullName = 200;
-            
-        }
-        else
-        {
-            showFullName = 0;
-        }
+        Console.WriteLine(keyfigureModels.FirstOrDefault().BasicInformation.Keyfigure.FullName);
     }
 }

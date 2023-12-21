@@ -25,11 +25,11 @@ public class KeyfigureModel
             foreach (var item in collection)
             {
                 model.BasicInformation.Keyfigure = item;
-                IndicatorSourceSystem curIndicatorSourceSystem =
-                    dbContext.IndicatorSourceSystems.FirstOrDefault(p => p.KeyfigureId.Equals(item.Id));
+                // IndicatorSourceSystem curIndicatorSourceSystem =
+                //     dbContext.IndicatorSourceSystems.FirstOrDefault(p => p.KeyfigureId.Equals(item.Id));
 
-                model.SystemSource.Company =
-                    dbContext.Companies.FirstOrDefault(p => p.Id.Equals(curIndicatorSourceSystem.CompanyId));
+                // model.SystemSource.Company =
+                //     dbContext.Companies.FirstOrDefault(p => p.Id.Equals(curIndicatorSourceSystem.CompanyId));
 
                 model.ServiceInformation.CurrencyUnit = dbContext.CurrencyUnits.FirstOrDefault(p => p.Value.Equals(item.CurrencyUnitId));
 
@@ -39,9 +39,9 @@ public class KeyfigureModel
                     dbContext.IndicatorGenerationMethods.FirstOrDefault(p =>
                         p.Value.Equals(item.IndicatorGenerationMethodId));
 
-                model.SystemSource.IndicatorSourceSystem =
-                    dbContext.IndicatorSourceSystems.FirstOrDefault(p =>
-                        p.Id.Equals(curIndicatorSourceSystem.SourceSystemId));
+                // model.SystemSource.IndicatorSourceSystem =
+                //     dbContext.IndicatorSourceSystems.FirstOrDefault(p =>
+                //         p.Id.Equals(curIndicatorSourceSystem.SourceSystemId));
 
                 model.ServiceInformation.KeyfigureCategory =
                     dbContext.KeyfigureCategories.FirstOrDefault(p => p.Value.Equals(item.KeyfigureCategoryId));
@@ -51,14 +51,14 @@ public class KeyfigureModel
                 model.ServiceInformation.MethodOfObtaining =
                     dbContext.MethodsOfObtaining.FirstOrDefault(p => p.Value.Equals(item.MethodOfObtainingId));
 
-                model.SystemSource.Release =
-                    dbContext.Releases.FirstOrDefault(p => p.Value.Equals(curIndicatorSourceSystem.ReleaseId));
+                // model.SystemSource.Release =
+                //     dbContext.Releases.FirstOrDefault(p => p.Value.Equals(curIndicatorSourceSystem.ReleaseId));
 
                 model.ServiceInformation.ReportUsageIndicator =
                     dbContext.ReportUsageIndicators.FirstOrDefault(p => p.Value.Equals(item.ReportUsageIndicatorId));
 
-                model.SystemSource.SourceSystem =
-                    dbContext.SourceSystems.FirstOrDefault(p => p.Id.Equals(curIndicatorSourceSystem.Id));
+                // model.SystemSource.SourceSystem =
+                //     dbContext.SourceSystems.FirstOrDefault(p => p.Id.Equals(curIndicatorSourceSystem.Id));
 
                 model.ServiceInformation.UploadDeadline =
                     dbContext.UploadDeadlines.FirstOrDefault(p => p.Value.Equals(item.UploadDeadlineId));
