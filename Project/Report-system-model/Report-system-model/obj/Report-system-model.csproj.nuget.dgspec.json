@@ -71,6 +71,10 @@
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
               "version": "[7.0.0, )"
+            },
+            "ReactiveUI.Fody": {
+              "target": "Package",
+              "version": "[19.5.31, )"
             }
           },
           "imports": [

@@ -29,7 +29,7 @@ public class MyDbContext : DbContext
         {
             Host = "localhost",
             Port = 5432,
-            Database = "keyfigureDB",
+            Database = "rsmDB",
             Username = "postgres",
             Password = "123321",
         };
@@ -39,6 +39,6 @@ public class MyDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        // Добавьте дополнительные настройки моделей здесь, если необходимо
+        //дополнительные настройки моделей здесь, если необходимо
     }
 }
