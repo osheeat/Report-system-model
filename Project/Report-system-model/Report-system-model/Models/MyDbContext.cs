@@ -29,7 +29,7 @@ public class MyDbContext : DbContext
         {
             Host = "localhost",
             Port = 5432,
-            Database = "rsmDB6",
+            Database = "rsmDB",
             Username = "postgres",
             Password = "123321",
         };

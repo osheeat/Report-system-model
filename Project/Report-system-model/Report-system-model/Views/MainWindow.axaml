@@ -12,16 +12,14 @@
         Title="Report_system_model" MinWidth="1250" MinHeight="600">
 
     <Design.DataContext>
-        <!-- This only sets the DataContext for the previewer in an IDE,
-             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <vm:MainWindowViewModel />
     </Design.DataContext>
     <Grid>
         <TabControl Margin="5" TabStripPlacement="Left">
             <TabItem Header="Показатели" FontSize="16">
-                <DockPanel>
+                <StackPanel>
                     <Border>
-                        <ComboBox>
+                        <ComboBox PlaceholderText="Выбор параметров" Margin="0, 0, 0, 10">
                             <ComboBoxItem>
                                 <CheckBox x:Name="Box1" Checked="IsFullNameCheckBoxChecked"
                                           Unchecked="IsFullNameCheckBoxChecked"
@@ -83,8 +81,9 @@
                                 <TextBlock Text="Валюта/Ед. измер." HorizontalAlignment="Center" FontSize="12" />
                             </Border>
                             <Border Grid.Column="0" Grid.Row="1">
-                                <ListBox ItemsSource="{Binding keyfigureModels}" SelectedItem="{Binding SelectedKeyfigureModel, Mode=TwoWay}" Grid.Column="0">
-                                    <ListBox.ItemTemplate >
+                                <ListBox ItemsSource="{Binding keyfigureModels}"
+                                         SelectedItem="{Binding SelectedKeyfigureModel, Mode=TwoWay}" Grid.Column="0">
+                                    <ListBox.ItemTemplate>
                                         <DataTemplate DataType="{x:Type appModels:KeyfigureModel}">
                                             <TextBlock Text="{Binding BasicInformation.Keyfigure.FullName}" />
                                         </DataTemplate>
@@ -92,8 +91,9 @@
                                 </ListBox>
                             </Border>
                             <Border Grid.Column="1" Grid.Row="1">
-                                <ListBox ItemsSource="{Binding keyfigureModels}" SelectedItem="{Binding SelectedKeyfigureModel, Mode=TwoWay}" Grid.Column="0">
-                                    <ListBox.ItemTemplate >
+                                <ListBox ItemsSource="{Binding keyfigureModels}"
+                                         SelectedItem="{Binding SelectedKeyfigureModel, Mode=TwoWay}" Grid.Column="0">
+                                    <ListBox.ItemTemplate>
                                         <DataTemplate DataType="{x:Type appModels:KeyfigureModel}">
                                             <TextBlock Text="{Binding BasicInformation.Keyfigure.ShortName}" />
                                         </DataTemplate>
@@ -101,8 +101,9 @@
                                 </ListBox>
                             </Border>
                             <Border Grid.Column="2" Grid.Row="1">
-                                <ListBox ItemsSource="{Binding keyfigureModels}" SelectedItem="{Binding SelectedKeyfigureModel, Mode=TwoWay}" Grid.Column="0">
-                                    <ListBox.ItemTemplate >
+                                <ListBox ItemsSource="{Binding keyfigureModels}"
+                                         SelectedItem="{Binding SelectedKeyfigureModel, Mode=TwoWay}" Grid.Column="0">
+                                    <ListBox.ItemTemplate>
                                         <DataTemplate DataType="{x:Type appModels:KeyfigureModel}">
                                             <TextBlock Text="{Binding BasicInformation.Keyfigure.DataStatusId}" />
                                         </DataTemplate>
@@ -110,8 +111,9 @@
                                 </ListBox>
                             </Border>
                             <Border Grid.Column="3" Grid.Row="1">
-                                <ListBox ItemsSource="{Binding keyfigureModels}" SelectedItem="{Binding SelectedKeyfigureModel, Mode=TwoWay}" Grid.Column="0">
-                                    <ListBox.ItemTemplate >
+                                <ListBox ItemsSource="{Binding keyfigureModels}"
+                                         SelectedItem="{Binding SelectedKeyfigureModel, Mode=TwoWay}" Grid.Column="0">
+                                    <ListBox.ItemTemplate>
                                         <DataTemplate DataType="{x:Type appModels:KeyfigureModel}">
                                             <TextBlock Text="{Binding ServiceInformation.ValueType.Value}" />
                                         </DataTemplate>
@@ -119,8 +121,9 @@
                                 </ListBox>
                             </Border>
                             <Border Grid.Column="4" Grid.Row="1">
-                                <ListBox ItemsSource="{Binding keyfigureModels}" SelectedItem="{Binding SelectedKeyfigureModel, Mode=TwoWay}" Grid.Column="0">
-                                    <ListBox.ItemTemplate >
+                                <ListBox ItemsSource="{Binding keyfigureModels}"
+                                         SelectedItem="{Binding SelectedKeyfigureModel, Mode=TwoWay}" Grid.Column="0">
+                                    <ListBox.ItemTemplate>
                                         <DataTemplate DataType="{x:Type appModels:KeyfigureModel}">
                                             <TextBlock Text="{Binding ServiceInformation.CurrencyUnit.Value}" />
                                         </DataTemplate>
@@ -129,7 +132,7 @@
                             </Border>
                         </Grid>
                     </Border>
-                </DockPanel>
+                </StackPanel>
             </TabItem>
             <TabItem Header="Справочники" FontSize="16">
                 <TextBlock Margin="5">This is tab 2 content</TextBlock>
