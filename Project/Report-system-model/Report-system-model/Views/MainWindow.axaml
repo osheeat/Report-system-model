@@ -19,34 +19,78 @@
             <TabItem Header="Показатели" FontSize="16">
                 <StackPanel>
                     <Border>
-                        <ComboBox PlaceholderText="Выбор параметров" Margin="0, 0, 0, 10">
-                            <ComboBoxItem>
-                                <CheckBox x:Name="Box1" Checked="IsFullNameCheckBoxChecked"
-                                          Unchecked="IsFullNameCheckBoxChecked"
-                                          Content="Полное наименование" />
-                            </ComboBoxItem>
-                            <ComboBoxItem>
-                                <CheckBox x:Name="Box2" Checked="IsShortNameCheckBoxChecked"
-                                          Unchecked="IsShortNameCheckBoxChecked"
-                                          Content="Краткое наименование" />
-                            </ComboBoxItem>
-                            <ComboBoxItem>
-                                <CheckBox x:Name="Box3" Checked="IsDataStatusCheckBoxChecked"
-                                          Unchecked="IsDataStatusCheckBoxChecked"
-                                          Content="Статус данных" />
-                            </ComboBoxItem>
-                            <ComboBoxItem>
-                                <CheckBox x:Name="Box4" Checked="IsValueTypeCheckBoxChecked"
-                                          Unchecked="IsValueTypeCheckBoxChecked"
-                                          Content="Тип данных" />
-                            </ComboBoxItem>
-                            <ComboBoxItem>
-                                <CheckBox x:Name="Box5" Checked="IsUnitheckBoxChecked"
-                                          Unchecked="IsUnitheckBoxChecked"
-                                          Content="Валюта/Ед. измер." />
-                            </ComboBoxItem>
-                        </ComboBox>
+                        <Expander Margin="0, 0, 0, 10">
+                            <Expander.Header>
+                                Выбор параметров
+                            </Expander.Header>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Border Grid.Row="0" Grid.Column="0" Margin="0, 0, 10, 0">
+                                    <CheckBox x:Name="Box1" Checked="IsFullNameCheckBoxChecked"
+                                              Unchecked="IsFullNameCheckBoxChecked"
+                                              Content="Полное наименование" />
+                                </Border>
+                                <Border Grid.Row="1" Grid.Column="1" Margin="0, 0, 10, 0">
+                                    <CheckBox x:Name="Box2"
+                                              Checked="IsShortNameCheckBoxChecked"
+                                              Unchecked="IsShortNameCheckBoxChecked"
+                                              Content="Краткое наименование" />
+                                </Border>
+                                <Border Grid.Row="2" Grid.Column="2" Margin="0, 0, 10, 0">
+                                    <CheckBox x:Name="Box3"
+                                              Checked="IsDataStatusCheckBoxChecked"
+                                              Unchecked="IsDataStatusCheckBoxChecked"
+                                              Content="Статус данных" />
+                                </Border>
+                                <Border Grid.Row="3" Grid.Column="3" Margin="0, 0, 10, 0">
+                                    <CheckBox x:Name="Box4"
+                                              Checked="IsValueTypeCheckBoxChecked"
+                                              Unchecked="IsValueTypeCheckBoxChecked"
+                                              Content="Тип данных" />
+                                </Border>
+                                <Border Grid.Row="4" Grid.Column="4" Margin="0, 0, 10, 0">
+                                    <CheckBox x:Name="Box5" Checked="IsUnitheckBoxChecked"
+                                              Unchecked="IsUnitheckBoxChecked"
+                                              Content="Валюта/Ед. измер." />
+                                </Border>
+                            </Grid>
+                        </Expander>
                     </Border>
+                    <!-- <Border> -->
+                    <!--     <ComboBox PlaceholderText="Выбор параметров" Margin="0, 0, 0, 10"> -->
+                    <!--         <ComboBoxItem> -->
+                    <!--             <CheckBox x:Name="Box1" Checked="IsFullNameCheckBoxChecked" -->
+                    <!--                       Unchecked="IsFullNameCheckBoxChecked" -->
+                    <!--                       Content="Полное наименование" /> -->
+                    <!--         </ComboBoxItem> -->
+                    <!--         <ComboBoxItem> -->
+                    <!--             <CheckBox x:Name="Box2" Checked="IsShortNameCheckBoxChecked" -->
+                    <!--                       Unchecked="IsShortNameCheckBoxChecked" -->
+                    <!--                       Content="Краткое наименование" /> -->
+                    <!--         </ComboBoxItem> -->
+                    <!--         <ComboBoxItem> -->
+                    <!--             <CheckBox x:Name="Box3" Checked="IsDataStatusCheckBoxChecked" -->
+                    <!--                       Unchecked="IsDataStatusCheckBoxChecked" -->
+                    <!--                       Content="Статус данных" /> -->
+                    <!--         </ComboBoxItem> -->
+                    <!--         <ComboBoxItem> -->
+                    <!--             <CheckBox x:Name="Box4" Checked="IsValueTypeCheckBoxChecked" -->
+                    <!--                       Unchecked="IsValueTypeCheckBoxChecked" -->
+                    <!--                       Content="Тип данных" /> -->
+                    <!--         </ComboBoxItem> -->
+                    <!--         <ComboBoxItem> -->
+                    <!--             <CheckBox x:Name="Box5" Checked="IsUnitheckBoxChecked" -->
+                    <!--                       Unchecked="IsUnitheckBoxChecked" -->
+                    <!--                       Content="Валюта/Ед. измер." /> -->
+                    <!--         </ComboBoxItem> -->
+                    <!--     </ComboBox> -->
+                    <!-- </Border> -->
                     <Border>
                         <Grid VerticalAlignment="Top" HorizontalAlignment="Stretch" x:Name="grGrid">
                             <Grid.ColumnDefinitions>
