@@ -10,7 +10,6 @@ public class MyDbContext : DbContext
     public DbSet<Company> Companies { get; set; }
     public DbSet<CurrencyUnit> CurrencyUnits { get; set; }
     public DbSet<DataStatus> DataStatuss { get; set; }
-    public DbSet<FormationMethodology> FormationMethodologies { get; set; }
     public DbSet<IndicatorGenerationMethod> IndicatorGenerationMethods { get; set; }
     public DbSet<IndicatorSourceSystem> IndicatorSourceSystems { get; set; }
     public DbSet<Keyfigure> Keyfigures { get; set; }

@@ -17,7 +17,7 @@ namespace Report_system_model.ViewModels;
 
 public class MainWindowViewModel : ViewModelBase
 {
-    [Reactive] public ObservableCollection<KeyfigureModel> keyfigureModels { get; set; }
+    public ObservableCollection<KeyfigureModel> keyfigureModels { get; set; }
     [Reactive] public KeyfigureModel SelectedKeyfigureModel { get; set; }
     public MainWindowViewModel()
     {
@@ -26,5 +26,6 @@ public class MainWindowViewModel : ViewModelBase
         KeyfigureModel tmp = new KeyfigureModel();
         SelectedKeyfigureModel = new KeyfigureModel();
         keyfigureModels = new ObservableCollection<KeyfigureModel>(tmp.GetCompleteInformation().ToList());
+        Console.WriteLine(";kjhl");
     }
 }

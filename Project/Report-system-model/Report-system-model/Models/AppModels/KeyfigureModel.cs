@@ -16,14 +16,15 @@ public class KeyfigureModel
         List<KeyfigureModel> curList = new List<KeyfigureModel>();
         try
         {
-            KeyfigureModel model = new KeyfigureModel();
-            model.SystemSource = new KeyfigureSystemSource();
-            model.ServiceInformation = new KeyfigureServiceInformation();
-            model.BasicInformation = new KeyfigureBasicInformation();
+            KeyfigureModel model;
             var dbContext = new MyDbContext();
             var collection = dbContext.Keyfigures.ToList();
             foreach (var item in collection)
             {
+                model = new KeyfigureModel();
+                model.SystemSource = new KeyfigureSystemSource();
+                model.ServiceInformation = new KeyfigureServiceInformation();
+                model.BasicInformation = new KeyfigureBasicInformation();
                 model.BasicInformation.Keyfigure = item;
                 // IndicatorSourceSystem curIndicatorSourceSystem =
                 //     dbContext.IndicatorSourceSystems.FirstOrDefault(p => p.KeyfigureId.Equals(item.Id));
