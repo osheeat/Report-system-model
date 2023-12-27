@@ -30,19 +30,19 @@ public partial class MainWindow : Window
 
     private void IsDataStatusCheckBoxChecked(object? sender, RoutedEventArgs e)
     {
-        if (Box3.IsChecked.Value) grGrid.ColumnDefinitions[2].Width = new GridLength(1000, GridUnitType.Star);
+        if (Box3.IsChecked.Value) grGrid.ColumnDefinitions[2].Width = new GridLength(500, GridUnitType.Star);
         else grGrid.ColumnDefinitions[2].Width = new GridLength(0);
     }
 
     private void IsValueTypeCheckBoxChecked(object? sender, RoutedEventArgs e)
     {
-        if (Box4.IsChecked.Value) grGrid.ColumnDefinitions[3].Width = new GridLength(1000, GridUnitType.Star);
+        if (Box4.IsChecked.Value) grGrid.ColumnDefinitions[3].Width = new GridLength(500, GridUnitType.Star);
         else grGrid.ColumnDefinitions[3].Width = new GridLength(0);
     }
 
     private void IsUnitheckBoxChecked(object? sender, RoutedEventArgs e)
     {
-        if (Box5.IsChecked.Value) grGrid.ColumnDefinitions[4].Width = new GridLength(1000, GridUnitType.Star);
+        if (Box5.IsChecked.Value) grGrid.ColumnDefinitions[4].Width = new GridLength(500, GridUnitType.Star);
         else grGrid.ColumnDefinitions[4].Width = new GridLength(0);
     }
 }
