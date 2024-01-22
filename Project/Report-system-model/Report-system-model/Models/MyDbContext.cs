@@ -30,7 +30,7 @@ public class MyDbContext : DbContext
             Port = 5432,
             Database = "rsmDB1",
             Username = "postgres",
-            Password = "123321",
+            Password = "postgres",
         };
 
         optionsBuilder.UseNpgsql(builder.ToString());

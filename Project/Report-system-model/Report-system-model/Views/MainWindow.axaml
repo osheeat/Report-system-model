@@ -9,8 +9,12 @@
         x:Class="Report_system_model.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
-        Title="Report_system_model" MinWidth="1250" MinHeight="600">
-
+        Title="Report_system_model" MinWidth="1250" MinHeight="600"
+        RequestedThemeVariant="Light">
+    <Window.Styles>
+        <FluentTheme />
+        <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml" />
+    </Window.Styles>
     <Design.DataContext>
         <vm:MainWindowViewModel />
     </Design.DataContext>
@@ -19,133 +23,103 @@
             <TabItem Header="Показатели" FontSize="16">
                 <StackPanel>
                     <Border>
-                        <Expander Margin="0, 0, 0, 10">
-                            <Expander.Header>
-                                Выбор параметров
-                            </Expander.Header>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition />
-                                    <ColumnDefinition />
-                                    <ColumnDefinition />
-                                    <ColumnDefinition />
-                                    <ColumnDefinition />
-                                </Grid.ColumnDefinitions>
-                                <Border Grid.Row="0" Grid.Column="0" Margin="0, 0, 10, 0">
-                                    <CheckBox x:Name="Box1" Checked="IsFullNameCheckBoxChecked"
-                                              Unchecked="IsFullNameCheckBoxChecked"
-                                              Content="Полное наименование" />
-                                </Border>
-                                <Border Grid.Row="1" Grid.Column="1" Margin="0, 0, 10, 0">
-                                    <CheckBox x:Name="Box2"
-                                              Checked="IsShortNameCheckBoxChecked"
-                                              Unchecked="IsShortNameCheckBoxChecked"
-                                              Content="Краткое наименование" />
-                                </Border>
-                                <Border Grid.Row="2" Grid.Column="2" Margin="0, 0, 10, 0">
-                                    <CheckBox x:Name="Box3"
-                                              Checked="IsDataStatusCheckBoxChecked"
-                                              Unchecked="IsDataStatusCheckBoxChecked"
-                                              Content="Статус данных" />
-                                </Border>
-                                <Border Grid.Row="3" Grid.Column="3" Margin="0, 0, 10, 0">
-                                    <CheckBox x:Name="Box4"
-                                              Checked="IsValueTypeCheckBoxChecked"
-                                              Unchecked="IsValueTypeCheckBoxChecked"
-                                              Content="Тип данных" />
-                                </Border>
-                                <Border Grid.Row="4" Grid.Column="4" Margin="0, 0, 10, 0">
-                                    <CheckBox x:Name="Box5" Checked="IsUnitheckBoxChecked"
-                                              Unchecked="IsUnitheckBoxChecked"
-                                              Content="Валюта/Ед. измер." />
-                                </Border>
-                            </Grid>
-                        </Expander>
-                    </Border>
-                    <Border>
-                        <Grid VerticalAlignment="Top" HorizontalAlignment="Stretch" x:Name="grGrid">
+                        <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
                                 <ColumnDefinition />
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                                <ColumnDefinition />
                             </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <Border Grid.Row="0" Grid.Column="0" Padding="5" BorderBrush="Black"
-                                    BorderThickness="1,1,1,1">
-                                <TextBlock Text="Полное наименование" HorizontalAlignment="Center" FontSize="12" />
+                            <Border Grid.Row="0" Grid.Column="1">
+                                <Expander Margin="0, 0, 0, 10">
+                                    <Expander.Header>
+                                        Выбор параметров
+                                    </Expander.Header>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition />
+                                            <ColumnDefinition />
+                                            <ColumnDefinition />
+                                            <ColumnDefinition />
+                                            <ColumnDefinition />
+                                            <ColumnDefinition />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+                                        <Border Grid.Row="0" Grid.Column="0" Margin="0, 0, 10, 0">
+                                            <CheckBox x:Name="Box0" Checked="IsSAPCodeCheckBoxChecked"
+                                                      Unchecked="IsSAPCodeCheckBoxChecked"
+                                                      Content="Код в SAP" />
+                                        </Border>
+                                        <Border Grid.Row="1" Grid.Column="1" Margin="0, 0, 10, 0">
+                                            <CheckBox x:Name="Box1" Checked="IsFullNameCheckBoxChecked"
+                                                      Unchecked="IsFullNameCheckBoxChecked"
+                                                      Content="Полное наименование" />
+                                        </Border>
+                                        <Border Grid.Row="2" Grid.Column="2" Margin="0, 0, 10, 0">
+                                            <CheckBox x:Name="Box2"
+                                                      Checked="IsShortNameCheckBoxChecked"
+                                                      Unchecked="IsShortNameCheckBoxChecked"
+                                                      Content="Краткое наименование" />
+                                        </Border>
+                                        <Border Grid.Row="3" Grid.Column="3" Margin="0, 0, 10, 0">
+                                            <CheckBox x:Name="Box3"
+                                                      Checked="IsDataStatusCheckBoxChecked"
+                                                      Unchecked="IsDataStatusCheckBoxChecked"
+                                                      Content="Статус данных" />
+                                        </Border>
+                                        <Border Grid.Row="4" Grid.Column="4" Margin="0, 0, 10, 0">
+                                            <CheckBox x:Name="Box4"
+                                                      Checked="IsValueTypeCheckBoxChecked"
+                                                      Unchecked="IsValueTypeCheckBoxChecked"
+                                                      Content="Тип значения" />
+                                        </Border>
+                                        <Border Grid.Row="5" Grid.Column="5" Margin="0, 0, 10, 0">
+                                            <CheckBox x:Name="Box5" Checked="IsUnitheckBoxChecked"
+                                                      Unchecked="IsUnitheckBoxChecked"
+                                                      Content="Валюта/Ед. измер." />
+                                        </Border>
+                                        <Border Grid.Row="6" Grid.Column="6" Margin="0, 0, 10, 0">
+                                            <CheckBox x:Name="Box6" Checked="IsMethodOfObtainingChecked"
+                                                      Unchecked="IsMethodOfObtainingChecked"
+                                                      Content="Метод получ. агр. знач." />
+                                        </Border>
+                                    </Grid>
+                                </Expander>
                             </Border>
-                            <Border Grid.Row="0" Grid.Column="1" Padding="5" BorderBrush="Black"
-                                    BorderThickness="1,1,1,1">
-                                <TextBlock Text="Краткое наименование" HorizontalAlignment="Center" FontSize="12" />
-                            </Border>
-                            <Border Grid.Row="0" Grid.Column="2" Padding="5" BorderBrush="Black"
-                                    BorderThickness="1,1,1,1">
-                                <TextBlock Text="Статус данных" HorizontalAlignment="Center" FontSize="12" />
-                            </Border>
-                            <Border Grid.Row="0" Grid.Column="3" Padding="5" BorderBrush="Black"
-                                    BorderThickness="1,1,1,1">
-                                <TextBlock Text="Тип данных" HorizontalAlignment="Center" FontSize="12" />
-                            </Border>
-                            <Border Grid.Row="0" Grid.Column="4" Padding="5" BorderBrush="Black"
-                                    BorderThickness="1,1,1,1">
-                                <TextBlock Text="Валюта/Ед. измер." HorizontalAlignment="Center" FontSize="12" />
-                            </Border>
-                            <Border Grid.Column="0" Grid.Row="1">
-                                <ListBox ItemsSource="{Binding keyfigureModels}"
-                                         SelectedItem="{Binding SelectedKeyfigureModel, Mode=TwoWay}">
-                                    <ListBox.ItemTemplate>
-                                        <DataTemplate DataType="{x:Type appModels:KeyfigureModel}">
-                                            <TextBlock Text="{Binding BasicInformation.Keyfigure.FullName}" />
-                                        </DataTemplate>
-                                    </ListBox.ItemTemplate>
-                                </ListBox>
-                            </Border>
-                            <Border Grid.Column="1" Grid.Row="1">
-                                <ListBox ItemsSource="{Binding keyfigureModels}"
-                                         SelectedItem="{Binding SelectedKeyfigureModel, Mode=TwoWay}">
-                                    <ListBox.ItemTemplate>
-                                        <DataTemplate DataType="{x:Type appModels:KeyfigureModel}">
-                                            <TextBlock Text="{Binding BasicInformation.Keyfigure.ShortName}" />
-                                        </DataTemplate>
-                                    </ListBox.ItemTemplate>
-                                </ListBox>
-                            </Border>
-                            <Border Grid.Column="2" Grid.Row="1">
-                                <ListBox ItemsSource="{Binding keyfigureModels}"
-                                         SelectedItem="{Binding SelectedKeyfigureModel, Mode=TwoWay}">
-                                    <ListBox.ItemTemplate>
-                                        <DataTemplate DataType="{x:Type appModels:KeyfigureModel}">
-                                            <TextBlock Text="{Binding BasicInformation.Keyfigure.DataStatusId}" />
-                                        </DataTemplate>
-                                    </ListBox.ItemTemplate>
-                                </ListBox>
-                            </Border>
-                            <Border Grid.Column="3" Grid.Row="1">
-                                <ListBox ItemsSource="{Binding keyfigureModels}"
-                                         SelectedItem="{Binding SelectedKeyfigureModel, Mode=TwoWay}">
-                                    <ListBox.ItemTemplate>
-                                        <DataTemplate DataType="{x:Type appModels:KeyfigureModel}">
-                                            <TextBlock Text="{Binding ServiceInformation.ValueType.Value}" />
-                                        </DataTemplate>
-                                    </ListBox.ItemTemplate>
-                                </ListBox>
-                            </Border>
-                            <Border Grid.Column="4" Grid.Row="1">
-                                <ListBox ItemsSource="{Binding keyfigureModels}"
-                                         SelectedItem="{Binding SelectedKeyfigureModel, Mode=TwoWay}">
-                                    <ListBox.ItemTemplate>
-                                        <DataTemplate DataType="{x:Type appModels:KeyfigureModel}">
-                                            <TextBlock Text="{Binding ServiceInformation.CurrencyUnit.Value}" />
-                                        </DataTemplate>
-                                    </ListBox.ItemTemplate>
-                                </ListBox>
+                            <Border Grid.Row="0" Grid.Column="0" Width="100">
+                                <AutoCompleteBox x:Name="animals" FilterMode="StartsWith" />
                             </Border>
                         </Grid>
+                    </Border>
+                    <Border>
+                        <DataGrid Name="MainDataGrid" ItemsSource="{Binding keyfigureModels}"
+                                  IsReadOnly="True"
+                                  CanUserReorderColumns="True"
+                                  CanUserResizeColumns="True"
+                                  CanUserSortColumns="True"
+                                  GridLinesVisibility="All"
+                                  BorderThickness="1" BorderBrush="Gray">
+                            <DataGrid.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="Copy" />
+                                    <MenuItem Header="Paste" />
+                                </ContextMenu>
+                            </DataGrid.ContextMenu>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Width="210" Header="SAPCode"
+                                                    Binding="{Binding BasicInformation.Keyfigure.SAPCode}" />
+                                <DataGridTextColumn Width="500" Header="FullName"
+                                                    Binding="{Binding BasicInformation.Keyfigure.FullName}" />
+                                <DataGridTextColumn Width="400" Header="ShortName"
+                                                    Binding="{Binding BasicInformation.Keyfigure.ShortName}" />
+                                <DataGridTextColumn Width="110" Header="DataStatus"
+                                                    Binding="{Binding BasicInformation.DataStatus.Value}" />
+                                <DataGridTextColumn Width="110" Header="ValueType"
+                                                    Binding="{Binding ServiceInformation.CurrencyUnit.Value}" />
+                                <DataGridTextColumn Width="110" Header="ValueType"
+                                                    Binding="{Binding ServiceInformation.ValueType.Value}" />
+                                <DataGridTextColumn Width="110" Header="ValueType"
+                                                    Binding="{Binding ServiceInformation.MethodOfObtaining.Value}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
                     </Border>
                 </StackPanel>
             </TabItem>

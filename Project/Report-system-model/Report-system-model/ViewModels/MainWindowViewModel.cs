@@ -1,5 +1,6 @@
 ﻿using Report_system_model.AppModels;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -17,7 +18,7 @@ namespace Report_system_model.ViewModels;
 
 public class MainWindowViewModel : ViewModelBase
 {
-    public ObservableCollection<KeyfigureModel> keyfigureModels { get; set; }
+    [Reactive] public ObservableCollection<KeyfigureModel> keyfigureModels { get; set; }
     [Reactive] public KeyfigureModel SelectedKeyfigureModel { get; set; }
     public MainWindowViewModel()
     {
@@ -26,6 +27,9 @@ public class MainWindowViewModel : ViewModelBase
         KeyfigureModel tmp = new KeyfigureModel();
         SelectedKeyfigureModel = new KeyfigureModel();
         keyfigureModels = new ObservableCollection<KeyfigureModel>(tmp.GetCompleteInformation().ToList());
-        Console.WriteLine(";kjhl");
+        foreach (var item in keyfigureModels)
+        {
+            Console.WriteLine($"КОД SAP: {item.BasicInformation.Keyfigure.SAPCode}");
+        }
     }
 }

@@ -16,6 +16,7 @@
 
     <ItemGroup>
         <PackageReference Include="Avalonia" Version="11.0.5"/>
+        <PackageReference Include="Avalonia.Controls.DataGrid" Version="11.0.5" />
         <PackageReference Include="Avalonia.Desktop" Version="11.0.5"/>
         <PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.5"/>
         <PackageReference Include="Avalonia.Fonts.Inter" Version="11.0.5"/>
@@ -25,5 +26,6 @@
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0" />
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.0" />
         <PackageReference Include="ReactiveUI.Fody" Version="19.5.31" />
+        <PackageReference Include="Avalonia.Controls.DataGrid" Version="11.0.5" />
     </ItemGroup>
 </Project>
