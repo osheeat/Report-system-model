@@ -18,76 +18,79 @@
     <Design.DataContext>
         <vm:MainWindowViewModel />
     </Design.DataContext>
-    <Grid>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top" Background="Gainsboro">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Open..."/>
+                <Separator/>
+                <MenuItem Header="_Exit"/>
+            </MenuItem>
+            <MenuItem Header="_Edit">
+                <MenuItem Header="Copy"/>
+                <MenuItem Header="Paste"/>
+            </MenuItem>
+        </Menu>
         <TabControl Margin="5" TabStripPlacement="Left">
             <TabItem Header="Показатели" FontSize="16">
                 <StackPanel>
                     <Border>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
-                            <Border Grid.Row="0" Grid.Column="1">
-                                <Expander Margin="0, 0, 0, 10">
-                                    <Expander.Header>
-                                        Выбор параметров
-                                    </Expander.Header>
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition />
-                                            <ColumnDefinition />
-                                            <ColumnDefinition />
-                                            <ColumnDefinition />
-                                            <ColumnDefinition />
-                                            <ColumnDefinition />
-                                            <ColumnDefinition />
-                                        </Grid.ColumnDefinitions>
-                                        <Border Grid.Row="0" Grid.Column="0" Margin="0, 0, 10, 0">
-                                            <CheckBox x:Name="Box0" Checked="IsSAPCodeCheckBoxChecked"
-                                                      Unchecked="IsSAPCodeCheckBoxChecked"
-                                                      Content="Код в SAP" />
-                                        </Border>
-                                        <Border Grid.Row="1" Grid.Column="1" Margin="0, 0, 10, 0">
-                                            <CheckBox x:Name="Box1" Checked="IsFullNameCheckBoxChecked"
-                                                      Unchecked="IsFullNameCheckBoxChecked"
-                                                      Content="Полное наименование" />
-                                        </Border>
-                                        <Border Grid.Row="2" Grid.Column="2" Margin="0, 0, 10, 0">
-                                            <CheckBox x:Name="Box2"
-                                                      Checked="IsShortNameCheckBoxChecked"
-                                                      Unchecked="IsShortNameCheckBoxChecked"
-                                                      Content="Краткое наименование" />
-                                        </Border>
-                                        <Border Grid.Row="3" Grid.Column="3" Margin="0, 0, 10, 0">
-                                            <CheckBox x:Name="Box3"
-                                                      Checked="IsDataStatusCheckBoxChecked"
-                                                      Unchecked="IsDataStatusCheckBoxChecked"
-                                                      Content="Статус данных" />
-                                        </Border>
-                                        <Border Grid.Row="4" Grid.Column="4" Margin="0, 0, 10, 0">
-                                            <CheckBox x:Name="Box4"
-                                                      Checked="IsValueTypeCheckBoxChecked"
-                                                      Unchecked="IsValueTypeCheckBoxChecked"
-                                                      Content="Тип значения" />
-                                        </Border>
-                                        <Border Grid.Row="5" Grid.Column="5" Margin="0, 0, 10, 0">
-                                            <CheckBox x:Name="Box5" Checked="IsUnitheckBoxChecked"
-                                                      Unchecked="IsUnitheckBoxChecked"
-                                                      Content="Валюта/Ед. измер." />
-                                        </Border>
-                                        <Border Grid.Row="6" Grid.Column="6" Margin="0, 0, 10, 0">
-                                            <CheckBox x:Name="Box6" Checked="IsMethodOfObtainingChecked"
-                                                      Unchecked="IsMethodOfObtainingChecked"
-                                                      Content="Метод получ. агр. знач." />
-                                        </Border>
-                                    </Grid>
-                                </Expander>
-                            </Border>
-                            <Border Grid.Row="0" Grid.Column="0" Width="100">
-                                <AutoCompleteBox x:Name="animals" FilterMode="StartsWith" />
-                            </Border>
-                        </Grid>
+                        <TextBox Margin="0 0 0 10"/>
+                    </Border>
+                    <Border>
+                        <Expander Margin="0, 0, 0, 10">
+                            <Expander.Header>
+                                Выбор параметров
+                            </Expander.Header>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Border Grid.Row="0" Grid.Column="0" Margin="0, 0, 10, 0">
+                                    <CheckBox x:Name="Box0" Checked="IsSAPCodeCheckBoxChecked"
+                                              Unchecked="IsSAPCodeCheckBoxChecked"
+                                              Content="Код в SAP" />
+                                </Border>
+                                <Border Grid.Row="1" Grid.Column="1" Margin="0, 0, 10, 0">
+                                    <CheckBox x:Name="Box1" Checked="IsFullNameCheckBoxChecked"
+                                              Unchecked="IsFullNameCheckBoxChecked"
+                                              Content="Полное наименование" />
+                                </Border>
+                                <Border Grid.Row="2" Grid.Column="2" Margin="0, 0, 10, 0">
+                                    <CheckBox x:Name="Box2"
+                                              Checked="IsShortNameCheckBoxChecked"
+                                              Unchecked="IsShortNameCheckBoxChecked"
+                                              Content="Краткое наименование" />
+                                </Border>
+                                <Border Grid.Row="3" Grid.Column="3" Margin="0, 0, 10, 0">
+                                    <CheckBox x:Name="Box3"
+                                              Checked="IsDataStatusCheckBoxChecked"
+                                              Unchecked="IsDataStatusCheckBoxChecked"
+                                              Content="Статус данных" />
+                                </Border>
+                                <Border Grid.Row="4" Grid.Column="4" Margin="0, 0, 10, 0">
+                                    <CheckBox x:Name="Box4"
+                                              Checked="IsValueTypeCheckBoxChecked"
+                                              Unchecked="IsValueTypeCheckBoxChecked"
+                                              Content="Тип значения" />
+                                </Border>
+                                <Border Grid.Row="5" Grid.Column="5" Margin="0, 0, 10, 0">
+                                    <CheckBox x:Name="Box5" Checked="IsUnitheckBoxChecked"
+                                              Unchecked="IsUnitheckBoxChecked"
+                                              Content="Валюта/Ед. измер." />
+                                </Border>
+                                <Border Grid.Row="6" Grid.Column="6" Margin="0, 0, 10, 0">
+                                    <CheckBox x:Name="Box6" Checked="IsMethodOfObtainingChecked"
+                                              Unchecked="IsMethodOfObtainingChecked"
+                                              Content="Метод получ. агр. знач." />
+                                </Border>
+                            </Grid>
+                        </Expander>
                     </Border>
                     <Border>
                         <DataGrid Name="MainDataGrid" ItemsSource="{Binding keyfigureModels}"
@@ -96,27 +99,28 @@
                                   CanUserResizeColumns="True"
                                   CanUserSortColumns="True"
                                   GridLinesVisibility="All"
-                                  BorderThickness="1" BorderBrush="Gray">
+                                  HorizontalScrollBarVisibility="Hidden"
+                                  BorderThickness="0.1 0.1 0.1 0.1 " BorderBrush="Gray">
                             <DataGrid.ContextMenu>
                                 <ContextMenu>
-                                    <MenuItem Header="Copy" />
-                                    <MenuItem Header="Paste" />
+                                    <MenuItem Header="Просмотр" />
+                                    <MenuItem Header="Paste)" />
                                 </ContextMenu>
                             </DataGrid.ContextMenu>
                             <DataGrid.Columns>
-                                <DataGridTextColumn Width="210" Header="SAPCode"
+                                <DataGridTextColumn Width="*" MinWidth="100" MaxWidth="210" Header="SAPCode"
                                                     Binding="{Binding BasicInformation.Keyfigure.SAPCode}" />
-                                <DataGridTextColumn Width="500" Header="FullName"
+                                <DataGridTextColumn Width="*" MinWidth="100" Header="FullName"
                                                     Binding="{Binding BasicInformation.Keyfigure.FullName}" />
-                                <DataGridTextColumn Width="400" Header="ShortName"
+                                <DataGridTextColumn Width="*" MinWidth="100" Header="ShortName"
                                                     Binding="{Binding BasicInformation.Keyfigure.ShortName}" />
-                                <DataGridTextColumn Width="110" Header="DataStatus"
+                                <DataGridTextColumn Width="*" MinWidth="100" Header="DataStatus"
                                                     Binding="{Binding BasicInformation.DataStatus.Value}" />
-                                <DataGridTextColumn Width="110" Header="ValueType"
+                                <DataGridTextColumn Width="*" MinWidth="100" Header="CurrencyUnit"
                                                     Binding="{Binding ServiceInformation.CurrencyUnit.Value}" />
-                                <DataGridTextColumn Width="110" Header="ValueType"
+                                <DataGridTextColumn Width="*" MinWidth="100" Header="ValueType"
                                                     Binding="{Binding ServiceInformation.ValueType.Value}" />
-                                <DataGridTextColumn Width="110" Header="ValueType"
+                                <DataGridTextColumn Width="*" MinWidth="100" Header="MethodOfObtaining"
                                                     Binding="{Binding ServiceInformation.MethodOfObtaining.Value}" />
                             </DataGrid.Columns>
                         </DataGrid>
@@ -130,7 +134,6 @@
                 <TextBlock Margin="5">This is tab 3 content</TextBlock>
             </TabItem>
         </TabControl>
-
-    </Grid>
+    </DockPanel>
 
 </Window>

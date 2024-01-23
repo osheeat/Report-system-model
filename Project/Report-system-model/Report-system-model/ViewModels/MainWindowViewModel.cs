@@ -27,9 +27,6 @@ public class MainWindowViewModel : ViewModelBase
         KeyfigureModel tmp = new KeyfigureModel();
         SelectedKeyfigureModel = new KeyfigureModel();
         keyfigureModels = new ObservableCollection<KeyfigureModel>(tmp.GetCompleteInformation().ToList());
-        foreach (var item in keyfigureModels)
-        {
-            Console.WriteLine($"КОД SAP: {item.BasicInformation.Keyfigure.SAPCode}");
-        }
+
     }
 }
