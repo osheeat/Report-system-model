@@ -6,6 +6,8 @@ namespace Report_system_model.DBModels;
 [Table("Keyfigure")]
 public class Keyfigure
 {
+    [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
     [MaxLength(25)] public string SAPCode { get; set; }
     [MaxLength(250)] public string FullName { get; set; }
