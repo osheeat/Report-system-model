@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Report_system_model.DBModels;
 using System.Linq;
-using ValueType = Report_system_model.DBModels.ValueType;
+using valueType = Report_system_model.DBModels.ValueType;
 
 namespace Report_system_model.AppModels;
 
@@ -32,39 +32,39 @@ public class KeyfigureModel
                 // model.SystemSource.Company =
                 //     dbContext.Companies.FirstOrDefault(p => p.Id.Equals(curIndicatorSourceSystem.CompanyId));
 
-                model.ServiceInformation.CurrencyUnit = dbContext.CurrencyUnits.FirstOrDefault(p => p.Value.Equals(item.CurrencyUnitId));
+                model.ServiceInformation.CurrencyUnit = dbContext.CurrencyUnits.FirstOrDefault(p => p.value.Equals(item.currencyUnitId));
 
-                model.BasicInformation.DataStatus = dbContext.DataStatuss.FirstOrDefault(p => p.Value.Equals(item.DataStatusId));
+                model.BasicInformation.DataStatus = dbContext.DataStatuss.FirstOrDefault(p => p.value.Equals(item.dataStatusId));
 
                 model.SystemSource.IndicatorGenerationMethod =
                     dbContext.IndicatorGenerationMethods.FirstOrDefault(p =>
-                        p.Value.Equals(item.IndicatorGenerationMethodId));
+                        p.value.Equals(item.indicatorGenerationMethodId));
 
                 // model.SystemSource.IndicatorSourceSystem =
                 //     dbContext.IndicatorSourceSystems.FirstOrDefault(p =>
                 //         p.Id.Equals(curIndicatorSourceSystem.SourceSystemId));
 
                 model.ServiceInformation.KeyfigureCategory =
-                    dbContext.KeyfigureCategories.FirstOrDefault(p => p.Value.Equals(item.KeyfigureCategoryId));
+                    dbContext.KeyfigureCategories.FirstOrDefault(p => p.value.Equals(item.keyfigureCategoryId));
 
-                model.ServiceInformation.LoadTime = dbContext.LoadTimes.FirstOrDefault(p => p.Value.Equals(item.LoadTimeId));
+                model.ServiceInformation.LoadTime = dbContext.LoadTimes.FirstOrDefault(p => p.value.Equals(item.loadTimeId));
 
                 model.ServiceInformation.MethodOfObtaining =
-                    dbContext.MethodsOfObtaining.FirstOrDefault(p => p.Value.Equals(item.MethodOfObtainingId));
+                    dbContext.MethodsOfObtaining.FirstOrDefault(p => p.value.Equals(item.methodOfObtainingId));
 
                 // model.SystemSource.Release =
-                //     dbContext.Releases.FirstOrDefault(p => p.Value.Equals(curIndicatorSourceSystem.ReleaseId));
+                //     dbContext.Releases.FirstOrDefault(p => p.value.Equals(curIndicatorSourceSystem.ReleaseId));
 
                 model.ServiceInformation.ReportUsageIndicator =
-                    dbContext.ReportUsageIndicators.FirstOrDefault(p => p.Value.Equals(item.ReportUsageIndicatorId));
+                    dbContext.ReportUsageIndicators.FirstOrDefault(p => p.value.Equals(item.reportUsageIndicatorId));
 
                 // model.SystemSource.SourceSystem =
                 //     dbContext.SourceSystems.FirstOrDefault(p => p.Id.Equals(curIndicatorSourceSystem.Id));
 
                 model.ServiceInformation.UploadDeadline =
-                    dbContext.UploadDeadlines.FirstOrDefault(p => p.Value.Equals(item.UploadDeadlineId));
+                    dbContext.UploadDeadlines.FirstOrDefault(p => p.value.Equals(item.uploadDeadlineId));
 
-                model.ServiceInformation.ValueType = dbContext.ValueTypes.FirstOrDefault(p => p.Value.Equals(item.ValueTypeId));
+                model.ServiceInformation.ValueType = dbContext.ValueTypes.FirstOrDefault(p => p.value.Equals(item.valueTypeId));
 
                 curList.Add(model);
             }

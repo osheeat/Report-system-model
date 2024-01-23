@@ -8,6 +8,6 @@ public class Company
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int Id { get; set; }
-    [MaxLength(500)] public string Title { get; set; }
+    public int id { get; set; }
+    [MaxLength(500)] public string title { get; set; }
 }

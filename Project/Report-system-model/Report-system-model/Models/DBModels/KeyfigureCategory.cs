@@ -6,5 +6,5 @@ namespace Report_system_model.DBModels;
 [Table("keyfigure_category")]
 public class KeyfigureCategory
 {
-    [Key] [MaxLength(100)] public string Value { get; set; }
+    [Key] [MaxLength(100)] public string value { get; set; }
 }

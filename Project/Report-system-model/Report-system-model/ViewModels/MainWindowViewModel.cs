@@ -27,6 +27,5 @@ public class MainWindowViewModel : ViewModelBase
         KeyfigureModel tmp = new KeyfigureModel();
         SelectedKeyfigureModel = new KeyfigureModel();
         keyfigureModels = new ObservableCollection<KeyfigureModel>(tmp.GetCompleteInformation().ToList());
-
     }
 }

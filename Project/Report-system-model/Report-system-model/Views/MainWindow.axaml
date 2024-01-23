@@ -109,19 +109,19 @@
                             </DataGrid.ContextMenu>
                             <DataGrid.Columns>
                                 <DataGridTextColumn Width="*" MinWidth="100" MaxWidth="210" Header="SAPCode"
-                                                    Binding="{Binding BasicInformation.Keyfigure.SAPCode}" />
+                                                    Binding="{Binding BasicInformation.Keyfigure.sapCode}" />
                                 <DataGridTextColumn Width="*" MinWidth="100" Header="FullName"
-                                                    Binding="{Binding BasicInformation.Keyfigure.FullName}" />
+                                                    Binding="{Binding BasicInformation.Keyfigure.fullName}" />
                                 <DataGridTextColumn Width="*" MinWidth="100" Header="ShortName"
-                                                    Binding="{Binding BasicInformation.Keyfigure.ShortName}" />
+                                                    Binding="{Binding BasicInformation.Keyfigure.shortName}" />
                                 <DataGridTextColumn Width="*" MinWidth="100" Header="DataStatus"
-                                                    Binding="{Binding BasicInformation.DataStatus.Value}" />
+                                                    Binding="{Binding BasicInformation.DataStatus.value}" />
                                 <DataGridTextColumn Width="*" MinWidth="100" Header="CurrencyUnit"
-                                                    Binding="{Binding ServiceInformation.CurrencyUnit.Value}" />
+                                                    Binding="{Binding ServiceInformation.CurrencyUnit.value}" />
                                 <DataGridTextColumn Width="*" MinWidth="100" Header="ValueType"
-                                                    Binding="{Binding ServiceInformation.ValueType.Value}" />
+                                                    Binding="{Binding ServiceInformation.ValueType.value}" />
                                 <DataGridTextColumn Width="*" MinWidth="100" Header="MethodOfObtaining"
-                                                    Binding="{Binding ServiceInformation.MethodOfObtaining.Value}" />
+                                                    Binding="{Binding ServiceInformation.MethodOfObtaining.value}" />
                             </DataGrid.Columns>
                         </DataGrid>
                     </Border>

@@ -6,5 +6,5 @@ namespace Report_system_model.DBModels;
 [Table("indicator_generation_method")]
 public class IndicatorGenerationMethod
 {
-    [Key] [MaxLength(50)] public string Value { get; set; }
+    [Key] [MaxLength(50)] public string value { get; set; }
 }

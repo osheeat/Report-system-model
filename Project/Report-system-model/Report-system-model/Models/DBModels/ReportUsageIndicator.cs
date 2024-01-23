@@ -6,5 +6,5 @@ namespace Report_system_model.DBModels;
 [Table("report_usage_indicator")]
 public class ReportUsageIndicator
 {
-    [Key] [MaxLength(50)] public string Value { get; set; }
+    [Key] [MaxLength(50)] public string value { get; set; }
 }

@@ -6,13 +6,13 @@ namespace Report_system_model.DBModels;
 [Table("indicator_source_system")]
 public class IndicatorSourceSystem
 {
-    public int Id { get; set; }
-    public int KeyfigureId { get; set; }
-    public virtual Keyfigure? VirtualKeyfigure { get; set; }
-    public int CompanyId { get; set; }
-    public virtual Company? VirtualCompany { get; set; }
-    public int SourceSystemId { get; set; }
-    public virtual SourceSystem? VirtualSourceSystem { get; set; }
-    [MaxLength(50)] public string ReleaseId { get; set; }
-    public virtual Release? VirtualRelease { get; set; }
+    public int id { get; set; }
+    public int keyfigureId { get; set; }
+    public virtual Keyfigure? virtualKeyfigure { get; set; }
+    public int companyId { get; set; }
+    public virtual Company? virtualCompany { get; set; }
+    public int sourceSystemId { get; set; }
+    public virtual SourceSystem? virtualSourceSystem { get; set; }
+    [MaxLength(50)] public string releaseId { get; set; }
+    public virtual Release? virtualRelease { get; set; }
 }
