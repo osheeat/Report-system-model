@@ -11,10 +11,12 @@
     <ItemGroup>
         <Folder Include="Models\"/>
         <AvaloniaResource Include="Assets\**"/>
+        <Folder Include="Views\Styles\" />
     </ItemGroup>
 
 
     <ItemGroup>
+        <PackageReference Include="ActiproSoftware.Controls.Avalonia.Pro" Version="23.1.2" />
         <PackageReference Include="Avalonia" Version="11.0.5"/>
         <PackageReference Include="Avalonia.Controls.DataGrid" Version="11.0.5" />
         <PackageReference Include="Avalonia.Desktop" Version="11.0.5"/>
@@ -27,5 +29,6 @@
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.0" />
         <PackageReference Include="ReactiveUI.Fody" Version="19.5.31" />
         <PackageReference Include="Avalonia.Controls.DataGrid" Version="11.0.5" />
+        <PackageReference Include="ActiproSoftware.Controls.Avalonia.Pro" Version="23.1.2" />
     </ItemGroup>
 </Project>
