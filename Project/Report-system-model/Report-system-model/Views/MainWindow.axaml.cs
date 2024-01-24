@@ -21,6 +21,11 @@ public partial class MainWindow : Window
         MainDataGrid.Columns[4].IsVisible = false;
         MainDataGrid.Columns[5].IsVisible = false;
         MainDataGrid.Columns[6].IsVisible = false;
+        MainDataGrid.Columns[7].IsVisible = false;
+        MainDataGrid.Columns[8].IsVisible = false;
+        MainDataGrid.Columns[9].IsVisible = false;
+        MainDataGrid.Columns[10].IsVisible = false;
+        MainDataGrid.Columns[11].IsVisible = false;
     }
     private void IsSAPCodeCheckBoxChecked(object? sender, RoutedEventArgs e)
     {
@@ -56,5 +61,10 @@ public partial class MainWindow : Window
     {
         if (Box6.IsChecked.Value) MainDataGrid.Columns[6].IsVisible = true;
         else MainDataGrid.Columns[6].IsVisible = false;
+    }
+    private void IsKeyfigureCategoryChecked(object? sender, RoutedEventArgs e)
+    {
+        if (Box7.IsChecked.Value) MainDataGrid.Columns[7].IsVisible = true;
+        else MainDataGrid.Columns[7].IsVisible = false;
     }
 }
