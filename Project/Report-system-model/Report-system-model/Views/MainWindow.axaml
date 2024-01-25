@@ -131,11 +131,11 @@
                             </DataGrid.ContextMenu>
                             <DataGrid.Columns>
                                 <DataGridTextColumn Width="*" MinWidth="100" MaxWidth="210" Header="Код SAP"
-                                                    Binding="{Binding BasicInformation.Keyfigure.sapCode}" />
+                                                    Binding="{Binding BasicInformation.Keyfigure.sap_code}" />
                                 <DataGridTextColumn Width="*" MinWidth="100" Header="Полное наименование"
-                                                    Binding="{Binding BasicInformation.Keyfigure.fullName}" />
+                                                    Binding="{Binding BasicInformation.Keyfigure.full_name}" />
                                 <DataGridTextColumn Width="*" MinWidth="100" Header="Короткое наименование"
-                                                    Binding="{Binding BasicInformation.Keyfigure.shortName}" />
+                                                    Binding="{Binding BasicInformation.Keyfigure.short_name}" />
                                 <DataGridTextColumn Width="*" MinWidth="100" Header="Статус данных"
                                                     Binding="{Binding BasicInformation.DataStatus.value}" />
                                 <DataGridTextColumn Width="*" MinWidth="100" Header="Валюта/Еденица измерения"
