@@ -38,7 +38,14 @@
             <TabItem Header="Показатели" FontSize="16">
                 <StackPanel>
                     <Border>
-                        <TextBox Margin="0 0 0 10" Watermark="Поиск"/>
+                        <Grid ColumnDefinitions="8*,*">
+                            <Border Grid.Column="0">
+                                <TextBox Name="KeyfigureSearch" Margin="0 0 0 10" Watermark="Поиск" TextChanged="TextBox_OnTextChanged"/>
+                            </Border>
+                            <Border Grid.Column="1" HorizontalAlignment="Left">
+                                <TextBlock Text="{Binding keyfigureModels.Count}" TextAlignment="Left"/>
+                            </Border>
+                        </Grid>
                     </Border>
                     <Border>
                         <Expander Margin="0, 0, 0, 10">
@@ -114,7 +121,7 @@
                             </Grid>
                         </Expander>
                     </Border>
-                    <Border>
+                    <Border>    
                         <DataGrid Name="MainDataGrid" ItemsSource="{Binding keyfigureModels}"
                                   IsReadOnly="True"
                                   CanUserReorderColumns="True"
@@ -131,7 +138,7 @@
                             </DataGrid.ContextMenu>
                             <DataGrid.Columns>
                                 <DataGridTextColumn Width="*" MinWidth="100" MaxWidth="210" Header="Код SAP"
-                                                    Binding="{Binding BasicInformation.Keyfigure.SAPCode}" />
+                                                    Binding="{Binding BasicInformation.Keyfigure.id}" />
                                 <DataGridTextColumn Width="*" MinWidth="100" Header="Полное наименование"
                                                     Binding="{Binding BasicInformation.Keyfigure.FullName}" />
                                 <DataGridTextColumn Width="*" MinWidth="100" Header="Короткое наименование"

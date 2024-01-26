@@ -7,13 +7,16 @@ using Avalonia.Controls;
 using System.Linq;
 using Avalonia.Interactivity;
 using ReactiveUI.Fody.Helpers;
+using Report_system_model.ViewModels;
 namespace Report_system_model.Views;
+
 
 public partial class MainWindow : Window
 {
     public MainWindow()
     {
         InitializeComponent();
+        DataContext = new MainWindowViewModel();
         MainDataGrid.Columns[0].IsVisible = false;
         MainDataGrid.Columns[1].IsVisible = false;
         MainDataGrid.Columns[2].IsVisible = false;
@@ -66,5 +69,10 @@ public partial class MainWindow : Window
     {
         if (Box7.IsChecked.Value) MainDataGrid.Columns[7].IsVisible = true;
         else MainDataGrid.Columns[7].IsVisible = false;
+    }
+
+    private void TextBox_OnTextChanged(object? sender, TextChangedEventArgs e)
+    {
+        ((MainWindowViewModel)DataContext).SearchString_OnChange(KeyfigureSearch.Text);
     }
 }
