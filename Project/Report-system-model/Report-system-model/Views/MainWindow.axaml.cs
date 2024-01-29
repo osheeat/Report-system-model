@@ -16,7 +16,6 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-        DataContext = new MainWindowViewModel();
         MainDataGrid.Columns[0].IsVisible = false;
         MainDataGrid.Columns[1].IsVisible = false;
         MainDataGrid.Columns[2].IsVisible = false;
@@ -71,8 +70,8 @@ public partial class MainWindow : Window
         else MainDataGrid.Columns[7].IsVisible = false;
     }
 
-    private void TextBox_OnTextChanged(object? sender, TextChangedEventArgs e)
-    {
-        ((MainWindowViewModel)DataContext).SearchString_OnChange(KeyfigureSearch.Text);
-    }
+    // private void TextBox_OnTextChanged(object? sender, TextChangedEventArgs e)
+    // {
+    //     ((MainWindowViewModel)DataContext).SearchString_OnChange(KeyfigureSearch.Text);
+    // }
 }
