@@ -20,5 +20,8 @@ build_property.EnableGeneratedComInterfaceComImportInterop =
 [C:/Users/TimCheers/Desktop/RSM/Project/Report-system-model/Report-system-model/App.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
+[C:/Users/TimCheers/Desktop/RSM/Project/Report-system-model/Report-system-model/Views/KeyfigureEditWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
 [C:/Users/TimCheers/Desktop/RSM/Project/Report-system-model/Report-system-model/Views/MainWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml

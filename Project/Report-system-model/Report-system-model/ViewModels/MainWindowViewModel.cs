@@ -10,12 +10,14 @@ using System.Reactive;
 using System.Threading;
 using Avalonia.Controls;
 using Avalonia.Input;
+using Avalonia.Interactivity;
 using Avalonia.Media;
 using Microsoft.EntityFrameworkCore;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using SkiaSharp;
 using Report_system_model.Views;
+
 
 namespace Report_system_model.ViewModels;
 
@@ -26,7 +28,7 @@ public class MainWindowViewModel : ViewModelBase
     [Reactive] public KeyfigureModel SelectedKeyfigureModel { get; set; }
     [Reactive] public string searchString { get; set; }
     private List<KeyfigureModel> keyList;
-    
+    public ReactiveCommand<Unit, Unit> ButtonClickCommand { get; private set; }
     public MainWindowViewModel()
     {
         MyDbContext db = new MyDbContext();
@@ -37,6 +39,11 @@ public class MainWindowViewModel : ViewModelBase
         staticKeyfigureModels = new ObservableCollection<KeyfigureModel>(keyList);
         keyfigureModels = new ObservableCollection<KeyfigureModel>(keyList);
 
-        Console.WriteLine("dfse'liegjsdljg");
+        ButtonClickCommand = ReactiveCommand.Create(OpenNewWindowButton_Click);
+    }
+    private void OpenNewWindowButton_Click()    
+    {
+        KeyfigureEditWindow newWindow = new KeyfigureEditWindow();
+        newWindow.Show();
     }
 }

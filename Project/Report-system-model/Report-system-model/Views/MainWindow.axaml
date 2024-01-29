@@ -81,8 +81,6 @@
                                               Unchecked="IsMethodOfObtainingChecked"
                                               Content="Метод получ. агр. знач." />
                                 </Border>
-
-
                                 <Border Grid.Row="1" Grid.Column="1" Margin="0, 10, 10, 0">
                                     <CheckBox x:Name="Box7" Checked="IsKeyfigureCategoryChecked"
                                               Unchecked="IsKeyfigureCategoryChecked"
@@ -113,6 +111,7 @@
                     </Border>
                     <Border DockPanel.Dock="Top">
                         <DataGrid Name="MainDataGrid" ItemsSource="{Binding keyfigureModels}"
+                                  SelectedItem="{Binding SelectedKeyfigureModel}"
                                   IsReadOnly="True"
                                   IsScrollInertiaEnabled="True"
                                   CanUserReorderColumns="True"
@@ -123,12 +122,12 @@
                                   BorderThickness="0.1 0.1 0.1 0.1 " BorderBrush="Gray">
                             <DataGrid.ContextMenu>
                                 <ContextMenu>
-                                    <MenuItem Header="Просмотр" />
+                                    <MenuItem Header="Просмотр" Command="{Binding ButtonClickCommand}"/>
                                     <MenuItem Header="Paste)" />
                                 </ContextMenu>
                             </DataGrid.ContextMenu> 
                             <DataGrid.Columns>
-                                <DataGridTextColumn Width="*" MinWidth="100" MaxWidth="210" Header="Код SAP"
+                                <DataGridTextColumn Width="*" MinWidth="100" Header="Код SAP"
                                                     Binding="{Binding BasicInformation.Keyfigure.SAPCode}" />
                                 <DataGridTextColumn Width="*" MinWidth="100" Header="Полное наименование"
                                                     Binding="{Binding BasicInformation.Keyfigure.FullName}" />
@@ -157,7 +156,6 @@
                                                     Binding="{Binding ServiceInformation.MethodOfObtaining.value}" />
                             </DataGrid.Columns>
                         </DataGrid>
-
                     </Border>
                 </DockPanel>
             </TabItem>
