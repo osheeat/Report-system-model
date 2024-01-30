@@ -123,7 +123,7 @@
                             <DataGrid.ContextMenu>
                                 <ContextMenu>
                                     <MenuItem Header="Просмотр" Command="{Binding ButtonClickCommand}"/>
-                                    <MenuItem Header="Paste)" />
+                                    <MenuItem Header="Скопировать" />
                                 </ContextMenu>
                             </DataGrid.ContextMenu> 
                             <DataGrid.Columns>
@@ -163,7 +163,7 @@
                 <TextBlock Margin="5">This is tab 2 content</TextBlock>
             </TabItem>
             <TabItem Header="Отчеты" FontSize="16">
-                <TextBlock Margin="5">This is tab 3 content</TextBlock>
+                
             </TabItem>
         </TabControl>
     </DockPanel>
