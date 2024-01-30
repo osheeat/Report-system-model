@@ -13,10 +13,15 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Report-system-model
-build_property.ProjectDir = C:\Users\TimCheers\RiderProjects\Report-system-model\Project\Report-system-model\Report-system-model\
+build_property.ProjectDir = C:\Users\TimCheers\Desktop\RSM\Project\Report-system-model\Report-system-model\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
 
-[C:/Users/TimCheers/RiderProjects/Report-system-model/Project/Report-system-model/Report-system-model/App.axaml]
+[C:/Users/TimCheers/Desktop/RSM/Project/Report-system-model/Report-system-model/App.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[C:/Users/TimCheers/RiderProjects/Report-system-model/Project/Report-system-model/Report-system-model/Views/MainWindow.axaml]
+[C:/Users/TimCheers/Desktop/RSM/Project/Report-system-model/Report-system-model/Views/KeyfigureEditWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/TimCheers/Desktop/RSM/Project/Report-system-model/Report-system-model/Views/MainWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml

@@ -6,6 +6,8 @@ namespace Report_system_model.DBModels;
 [Table ("company")]
 public class Company
 {
-    public int Id { get; set; }
-    [MaxLength(500)] public string Title { get; set; }
+    [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    public int id { get; set; }
+    [MaxLength(500)] public string title { get; set; }
 }

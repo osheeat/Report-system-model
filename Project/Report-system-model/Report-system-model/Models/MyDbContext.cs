@@ -10,7 +10,6 @@ public class MyDbContext : DbContext
     public DbSet<Company> Companies { get; set; }
     public DbSet<CurrencyUnit> CurrencyUnits { get; set; }
     public DbSet<DataStatus> DataStatuss { get; set; }
-    public DbSet<FormationMethodology> FormationMethodologies { get; set; }
     public DbSet<IndicatorGenerationMethod> IndicatorGenerationMethods { get; set; }
     public DbSet<IndicatorSourceSystem> IndicatorSourceSystems { get; set; }
     public DbSet<Keyfigure> Keyfigures { get; set; }
@@ -29,9 +28,9 @@ public class MyDbContext : DbContext
         {
             Host = "localhost",
             Port = 5432,
-            Database = "rsmDB",
+            Database = "rsm5",
             Username = "postgres",
-            Password = "123321",
+            Password = "postgres",
         };
 
         optionsBuilder.UseNpgsql(builder.ToString());
