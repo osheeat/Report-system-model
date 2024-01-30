@@ -163,8 +163,56 @@
                 <TextBlock Margin="5">This is tab 2 content</TextBlock>
             </TabItem>
             <TabItem Header="Отчеты" FontSize="16">
-                <TextBlock Margin="5">This is tab 3 content</TextBlock>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Левая часть -->
+                    
+
+                    <!-- Правая часть -->
+                    <TabControl Grid.Column="0" Margin="0 0 10 0">
+                        <TabItem Header="Генерация">
+                            <!-- Здесь разместите элемент для отображения информации о файлах -->
+                            <DataGrid Name="fileInfoDataGrid">
+                                <!-- Задайте столбцы и привязки к вашим данным -->
+                            </DataGrid>
+                        </TabItem>
+                        <TabItem Header="Информация об отчете">
+                            <!-- Здесья можно разместить другую информацию или управляющие элементы -->
+                        </TabItem>
+                        <TabItem Header="Показатели">
+                            <!-- Здесь можно разместить другую информацию или управляющие элементы -->
+                        </TabItem>
+                    </TabControl>
+                    
+                    <TreeView Grid.Column="1" Name="foldersTreeView">
+                        <TreeViewItem Header="ОХД БС Переработка и сбыт">
+                            <TreeViewItem Header="ОХД БС Переработка и сбыт">
+                                <TreeViewItem Header="БКСН"/>
+                                <TreeViewItem Header="БННГ"/>
+                                <TreeViewItem Header="БПП"/>
+                                <TreeViewItem Header="БЭ"/>
+                                <TreeViewItem Header="БЭП"/>
+                            </TreeViewItem>
+                        </TreeViewItem>
+                        <TreeViewItem Header="Папка 2">
+                            <TreeViewItem Header="Подпапка 2.1">
+                                <TreeViewItem Header="Вложенная подпапка 2.1.1"/>
+                                <TreeViewItem Header="Вложенная подпапка 2.1.2"/>
+                            </TreeViewItem>
+                            <TreeViewItem Header="Подпапка 2.2">
+                                <TreeViewItem Header="Вложенная подпапка 2.2.1"/>
+                                <TreeViewItem Header="Вложенная подпапка 2.2.2"/>
+                            </TreeViewItem>
+                        </TreeViewItem>
+                    </TreeView>
+                </Grid>
+
             </TabItem>
+            
         </TabControl>
     </DockPanel>
 
