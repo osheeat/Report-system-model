@@ -47,7 +47,7 @@ public class MainWindowViewModel : ViewModelBase
 
     private Unit Execute(KeyfigureModel obj)
     {
-        KeyfigureEditWindow newWindow = new KeyfigureEditWindow();
+        KeyfigureEditWindow newWindow = new KeyfigureEditWindow(obj);
         newWindow.Show();                                         
         
         return Unit.Default;

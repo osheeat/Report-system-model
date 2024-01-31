@@ -10,6 +10,7 @@
         x:Class="Report_system_model.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
+        x:CompileBindings="False"   
         Title="Report_system_model" MinWidth="1250" MinHeight="600">
     <Window.Styles>
         <FluentTheme />
@@ -123,7 +124,7 @@
                             <DataGrid.ContextMenu>
                                 <ContextMenu>
                                     <MenuItem Header="Просмотр"
-                                              Command="{Binding ButtonClickCommand}"
+                                              Command="{Binding ButtonClickCommand_1}"
                                               CommandParameter="{Binding SelectedKeyfigureModel}"/>
                                     <MenuItem Header="Скопировать" />
                                 </ContextMenu>
