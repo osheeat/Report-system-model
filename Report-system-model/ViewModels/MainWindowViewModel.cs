@@ -28,6 +28,9 @@ public class MainWindowViewModel : ViewModelBase
     [Reactive] public string searchString { get; set; }
     private List<KeyfigureModel> keyList;
     public ReactiveCommand<Unit, Unit> ButtonClickCommand { get; private set; }
+    
+    public ReactiveCommand<KeyfigureModel, Unit> ButtonClickCommand_1 { get; private set; }
+    
     public MainWindowViewModel()
     {
         MyDbContext db = new MyDbContext();
@@ -39,6 +42,15 @@ public class MainWindowViewModel : ViewModelBase
         keyfigureModels = new ObservableCollection<KeyfigureModel>(keyList);
 
         ButtonClickCommand = ReactiveCommand.Create(OpenNewWindowButton_Click);
+        ButtonClickCommand_1 = ReactiveCommand.Create<KeyfigureModel, Unit>(Execute);
+    }
+
+    private Unit Execute(KeyfigureModel obj)
+    {
+        KeyfigureEditWindow newWindow = new KeyfigureEditWindow();
+        newWindow.Show();                                         
+        
+        return Unit.Default;
     }
     private void OpenNewWindowButton_Click()    
     {

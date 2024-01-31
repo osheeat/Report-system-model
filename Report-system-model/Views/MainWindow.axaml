@@ -122,7 +122,9 @@
                                   BorderThickness="0.1 0.1 0.1 0.1 " BorderBrush="Gray">
                             <DataGrid.ContextMenu>
                                 <ContextMenu>
-                                    <MenuItem Header="Просмотр" Command="{Binding ButtonClickCommand}"/>
+                                    <MenuItem Header="Просмотр"
+                                              Command="{Binding ButtonClickCommand}"
+                                              CommandParameter="{Binding SelectedKeyfigureModel}"/>
                                     <MenuItem Header="Скопировать" />
                                 </ContextMenu>
                             </DataGrid.ContextMenu> 
@@ -154,6 +156,25 @@
                                                     Binding="{Binding ServiceInformation.MethodOfObtaining.value}" />
                                 <DataGridTextColumn Width="*" MinWidth="100" Header="12"
                                                     Binding="{Binding ServiceInformation.MethodOfObtaining.value}" />
+                                
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.HeaderTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Vertical">
+                                                <TextBlock Text="OLEGOLEGOLEG"
+                                                           TextAlignment="Center"
+                                                           HorizontalAlignment="Stretch"/>
+                                                <TextBox FontSize="8" 
+                                                         HorizontalAlignment="Stretch"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Ellipse Fill="Red" Width="30" Height="30"></Ellipse>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
                             </DataGrid.Columns>
                         </DataGrid>
                     </Border>
