@@ -69,7 +69,11 @@ public partial class MainWindow : Window
         if (Box7.IsChecked.Value) MainDataGrid.Columns[7].IsVisible = true;
         else MainDataGrid.Columns[7].IsVisible = false;
     }
-
+    private void IsLoadTimeChecked(object? sender, RoutedEventArgs e)
+    {
+        if (Box8.IsChecked.Value) MainDataGrid.Columns[8].IsVisible = true;
+        else MainDataGrid.Columns[8].IsVisible = false;
+    }
     // private void TextBox_OnTextChanged(object? sender, TextChangedEventArgs e)
     // {
     //     ((MainWindowViewModel)DataContext).SearchString_OnChange(KeyfigureSearch.Text);
