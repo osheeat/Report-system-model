@@ -10,6 +10,7 @@
         x:Class="Report_system_model.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
+        x:CompileBindings="False"
         Title="Report_system_model" MinWidth="1250" MinHeight="600">
     <Window.Styles>
         <FluentTheme />
@@ -87,8 +88,8 @@
                                               Content="Категория показат." />
                                 </Border>
                                 <Border Grid.Row="1" Grid.Column="2" Margin="0, 10, 10, 0">
-                                    <CheckBox x:Name="Box8" Checked="IsMethodOfObtainingChecked"
-                                              Unchecked="IsMethodOfObtainingChecked"
+                                    <CheckBox x:Name="Box8" Checked="IsLoadTimeChecked"
+                                              Unchecked="IsLoadTimeChecked"
                                               Content="Регламент. срок. загр." />
                                 </Border>
                                 <Border Grid.Row="1" Grid.Column="3" Margin="0, 10, 10, 0">
@@ -122,38 +123,236 @@
                                   BorderThickness="0.1 0.1 0.1 0.1 " BorderBrush="Gray">
                             <DataGrid.ContextMenu>
                                 <ContextMenu>
-                                    <MenuItem Header="Просмотр" Command="{Binding ButtonClickCommand}"/>
-                                    <MenuItem Header="Paste)" />
+                                    <MenuItem Header="Просмотр"
+                                              Command="{Binding ButtonClickCommand_1}"
+                                              CommandParameter="{Binding SelectedKeyfigureModel}" />
+                                    <MenuItem Header="Скопировать" />
                                 </ContextMenu>
-                            </DataGrid.ContextMenu> 
+                            </DataGrid.ContextMenu>
                             <DataGrid.Columns>
-                                <DataGridTextColumn Width="*" MinWidth="100" Header="Код SAP"
-                                                    Binding="{Binding BasicInformation.Keyfigure.SAPCode}" />
-                                <DataGridTextColumn Width="*" MinWidth="100" Header="Полное наименование"
-                                                    Binding="{Binding BasicInformation.Keyfigure.FullName}" />
-                                <DataGridTextColumn Width="*" MinWidth="100" Header="Короткое наименование"
-                                                    Binding="{Binding BasicInformation.Keyfigure.ShortName}" />
-                                <DataGridTextColumn Width="*" MinWidth="100" Header="Статус данных"
-                                                    Binding="{Binding BasicInformation.DataStatus.value}" />
-                                <DataGridTextColumn Width="*" MinWidth="100" Header="Валюта/Еденица измерения"
-                                                    Binding="{Binding ServiceInformation.CurrencyUnit.value}" />
-                                <DataGridTextColumn Width="*" MinWidth="100" Header="Тип значения"
-                                                    Binding="{Binding ServiceInformation.ValueType.value}" />
-                                <DataGridTextColumn Width="*" MinWidth="100" Header="Метод получ. агрег. знач."
-                                                    Binding="{Binding ServiceInformation.MethodOfObtaining.value}" />
-
-                                <DataGridTextColumn Width="*" MinWidth="100" Header="8"
-                                                    Binding="{Binding ServiceInformation.MethodOfObtaining.value}">
-
-                                </DataGridTextColumn>
-                                <DataGridTextColumn Width="*" MinWidth="100" Header="9"
-                                                    Binding="{Binding ServiceInformation.MethodOfObtaining.value}" />
-                                <DataGridTextColumn Width="*" MinWidth="100" Header="10"
-                                                    Binding="{Binding ServiceInformation.MethodOfObtaining.value}" />
-                                <DataGridTextColumn Width="*" MinWidth="100" Header="11"
-                                                    Binding="{Binding ServiceInformation.MethodOfObtaining.value}" />
-                                <DataGridTextColumn Width="*" MinWidth="100" Header="12"
-                                                    Binding="{Binding ServiceInformation.MethodOfObtaining.value}" />
+                                <DataGridTemplateColumn SortMemberPath="BasicInformation.Keyfigure.SAPCode"
+                                                        CanUserSort="True" MaxWidth="200" MinWidth="100" Width="*">
+                                    <DataGridTemplateColumn.HeaderTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Vertical">
+                                                <TextBlock Text="Код SAP"
+                                                           TextAlignment="Center"
+                                                           HorizontalAlignment="Stretch" />
+                                                <TextBox Height="25" FontSize="16" Margin="0 5 0 5"
+                                                         Padding="0 0 0 0"
+                                                         HorizontalAlignment="Stretch" />
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Margin="5 0 0 0" HorizontalAlignment="Center"
+                                                       TextAlignment="Center"
+                                                       Text="{Binding BasicInformation.Keyfigure.SAPCode}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn SortMemberPath="BasicInformation.Keyfigure.FullName"
+                                                        CanUserSort="True" MinWidth="100" Width="*">
+                                    <DataGridTemplateColumn.HeaderTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Vertical">
+                                                <TextBlock Text="Полное наименование"
+                                                           TextAlignment="Center"
+                                                           HorizontalAlignment="Stretch" />
+                                                <TextBox Height="25" FontSize="16" Margin="0 5 0 5"
+                                                         Padding="0 0 0 0"
+                                                         HorizontalAlignment="Stretch" />
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Margin="5 0 0 0" HorizontalAlignment="Left" TextAlignment="Left"
+                                                       Text="{Binding BasicInformation.Keyfigure.FullName}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn SortMemberPath="BasicInformation.Keyfigure.ShortName"
+                                                        CanUserSort="True" MinWidth="100" Width="*">
+                                    <DataGridTemplateColumn.HeaderTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Vertical">
+                                                <TextBlock Text="Короткое наименование"
+                                                           TextAlignment="Center"
+                                                           HorizontalAlignment="Stretch" />
+                                                <TextBox Height="25" FontSize="16" Margin="0 5 0 5"
+                                                         Padding="0 0 0 0"
+                                                         HorizontalAlignment="Stretch" />
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Margin="5 0 0 0" HorizontalAlignment="Left" TextAlignment="Left"
+                                                       Text="{Binding BasicInformation.Keyfigure.ShortName}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn SortMemberPath="BasicInformation.DataStatus.value"
+                                                        CanUserSort="True" MinWidth="100" Width="*"
+                                                        CanUserReorder="False">
+                                    <DataGridTemplateColumn.HeaderTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Vertical">
+                                                <TextBlock Text="Статус данных"
+                                                           TextAlignment="Center"
+                                                           HorizontalAlignment="Stretch" />
+                                                <ComboBox Height="25" FontSize="16" Margin="0 5 0 5"
+                                                          Padding="0 0 0 0">
+                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
+                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
+                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
+                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
+                                                </ComboBox>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Margin="5 0 0 0" HorizontalAlignment="Left" TextAlignment="Left"
+                                                       Text="{Binding BasicInformation.DataStatus.value}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn SortMemberPath="ServiceInformation.CurrencyUnit.value"
+                                                        CanUserSort="True" MinWidth="100" Width="*"
+                                                        CanUserReorder="False">
+                                    <DataGridTemplateColumn.HeaderTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Vertical">
+                                                <TextBlock Text="Валюта/Еденица измерения"
+                                                           TextAlignment="Center"
+                                                           HorizontalAlignment="Stretch" />
+                                                <ComboBox Height="25" FontSize="16" Margin="0 5 0 5"
+                                                          Padding="0 0 0 0">
+                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
+                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
+                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
+                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
+                                                </ComboBox>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Margin="5 0 0 0" HorizontalAlignment="Left" TextAlignment="Left"
+                                                       Text="{Binding ServiceInformation.CurrencyUnit.value}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn SortMemberPath="ServiceInformation.ValueType.value"
+                                                        CanUserSort="True" MinWidth="100" Width="*"
+                                                        CanUserReorder="False">
+                                    <DataGridTemplateColumn.HeaderTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Vertical">
+                                                <TextBlock Text="Тип значения"
+                                                           TextAlignment="Center"
+                                                           HorizontalAlignment="Stretch" />
+                                                <ComboBox Height="25" FontSize="16" Margin="0 5 0 5"
+                                                          Padding="0 0 0 0">
+                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
+                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
+                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
+                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
+                                                </ComboBox>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Margin="5 0 0 0" HorizontalAlignment="Left" TextAlignment="Left"
+                                                       Text="{Binding ServiceInformation.ValueType.value}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn SortMemberPath="ServiceInformation.MethodOfObtaining.value"
+                                                        CanUserSort="True" MinWidth="100" Width="*"
+                                                        CanUserReorder="False">
+                                    <DataGridTemplateColumn.HeaderTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Vertical">
+                                                <TextBlock Text="Метод получ. агрег. знач."
+                                                           TextAlignment="Center"
+                                                           HorizontalAlignment="Stretch" />
+                                                <ComboBox Height="25" FontSize="16" Margin="0 5 0 5"
+                                                          Padding="0 0 0 0">
+                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
+                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
+                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
+                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
+                                                </ComboBox>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Margin="5 0 0 0" HorizontalAlignment="Left" TextAlignment="Left"
+                                                       Text="{Binding ServiceInformation.MethodOfObtaining.value}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn SortMemberPath="ServiceInformation.KeyfigureCategory.value"
+                                                        CanUserSort="True" MinWidth="100" Width="*"
+                                                        CanUserReorder="False">
+                                    <DataGridTemplateColumn.HeaderTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Vertical">
+                                                <TextBlock Text="Категория показателя"
+                                                           TextAlignment="Center"
+                                                           HorizontalAlignment="Stretch" />
+                                                <ComboBox Height="25" FontSize="16" Margin="0 5 0 5"
+                                                          Padding="0 0 0 0">
+                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
+                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
+                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
+                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
+                                                </ComboBox>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Margin="5 0 0 0" HorizontalAlignment="Left" TextAlignment="Left"
+                                                       Text="{Binding ServiceInformation.KeyfigureCategory.value}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                 <DataGridTemplateColumn SortMemberPath="ServiceInformation.LoadTime.value"
+                                                        CanUserSort="True" MinWidth="100" Width="*"
+                                                        CanUserReorder="False">
+                                    <DataGridTemplateColumn.HeaderTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Vertical">
+                                                <TextBlock Text="Регламент. срок. загр."
+                                                           TextAlignment="Center"
+                                                           HorizontalAlignment="Stretch" />
+                                                <ComboBox Height="25" FontSize="16" Margin="0 5 0 5"
+                                                          Padding="0 0 0 0">
+                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
+                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
+                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
+                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
+                                                </ComboBox>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Margin="5 0 0 0" HorizontalAlignment="Left" TextAlignment="Left"
+                                                       Text="{Binding ServiceInformation.LoadTime.value}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTextColumn/>
+                                <DataGridTextColumn/>
+                                <DataGridTextColumn/>
                             </DataGrid.Columns>
                         </DataGrid>
                     </Border>
@@ -165,12 +364,12 @@
             <TabItem Header="Отчеты" FontSize="16">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="4*"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="4*" />
+                        <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
                     <!-- Левая часть -->
-                    
+
 
                     <!-- Правая часть -->
                     <TabControl Grid.Column="0" Margin="0 0 10 0">
@@ -187,32 +386,32 @@
                             <!-- Здесь можно разместить другую информацию или управляющие элементы -->
                         </TabItem>
                     </TabControl>
-                    
+
                     <TreeView Grid.Column="1" Name="foldersTreeView">
                         <TreeViewItem Header="ОХД БС Переработка и сбыт">
                             <TreeViewItem Header="ОХД БС Переработка и сбыт">
-                                <TreeViewItem Header="БКСН"/>
-                                <TreeViewItem Header="БННГ"/>
-                                <TreeViewItem Header="БПП"/>
-                                <TreeViewItem Header="БЭ"/>
-                                <TreeViewItem Header="БЭП"/>
+                                <TreeViewItem Header="БКСН" />
+                                <TreeViewItem Header="БННГ" />
+                                <TreeViewItem Header="БПП" />
+                                <TreeViewItem Header="БЭ" />
+                                <TreeViewItem Header="БЭП" />
                             </TreeViewItem>
                         </TreeViewItem>
                         <TreeViewItem Header="Папка 2">
                             <TreeViewItem Header="Подпапка 2.1">
-                                <TreeViewItem Header="Вложенная подпапка 2.1.1"/>
-                                <TreeViewItem Header="Вложенная подпапка 2.1.2"/>
+                                <TreeViewItem Header="Вложенная подпапка 2.1.1" />
+                                <TreeViewItem Header="Вложенная подпапка 2.1.2" />
                             </TreeViewItem>
                             <TreeViewItem Header="Подпапка 2.2">
-                                <TreeViewItem Header="Вложенная подпапка 2.2.1"/>
-                                <TreeViewItem Header="Вложенная подпапка 2.2.2"/>
+                                <TreeViewItem Header="Вложенная подпапка 2.2.1" />
+                                <TreeViewItem Header="Вложенная подпапка 2.2.2" />
                             </TreeViewItem>
                         </TreeViewItem>
                     </TreeView>
                 </Grid>
 
             </TabItem>
-            
+
         </TabControl>
     </DockPanel>
 

@@ -18,14 +18,20 @@
     <Design.DataContext>
         <views:KeyfigureEditWindow />
     </Design.DataContext>
-    <DockPanel>
-        <Grid DockPanel.Dock="Top">
-            <Border>
-                <Border>
-                    <TextBlock Text="{Binding currModel.BasicInformation.Keyfigure.FullName}"/>
-                </Border>
-            </Border>
-        </Grid>
-    </DockPanel>
-
+    <StackPanel>
+        <Border>
+            <Grid Name="KeyfigureTopPanel" RowDefinitions="*, *, *, *" ColumnDefinitions="*, *">
+                <Label Grid.Column="0" Grid.Row="0" Margin="10 10 0 0 ">Полное наименование</Label>
+                <TextBox Grid.Column="0" Grid.Row="1" Margin="10 5 0 0 " FontSize="14" Text="{Binding currModel.BasicInformation.Keyfigure.FullName}" />
+                <Label Grid.Column="1" Grid.Row="0" Margin="10 10 10 0 ">Краткое наименование</Label>
+                <TextBox Grid.Column="1" Grid.Row="1" Margin="10 5 10 0 " FontSize="14" Text="{Binding currModel.BasicInformation.Keyfigure.ShortName}" />
+                <ComboBox Grid.Column="0" Grid.Row="2" Margin="10 5 0 0 " PlaceholderText="Выбор лаоыдва">
+                    <ComboBoxItem >qwertyu</ComboBoxItem>
+                </ComboBox>
+            </Grid>
+        </Border>
+        <Border>
+            
+        </Border>
+    </StackPanel>
 </Window>
