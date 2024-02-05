@@ -74,8 +74,8 @@ public partial class MainWindow : Window
         if (Box8.IsChecked.Value) MainDataGrid.Columns[8].IsVisible = true;
         else MainDataGrid.Columns[8].IsVisible = false;
     }
-    // private void TextBox_OnTextChanged(object? sender, TextChangedEventArgs e)
-    // {
-    //     ((MainWindowViewModel)DataContext).SearchString_OnChange(KeyfigureSearch.Text);
-    // }
+    private void FullNameStrChanged(object? sender, TextChangedEventArgs e)
+    {
+        //((MainWindowViewModel)DataContext).SearchString_OnChange(FullNameStr.Text);
+    }
 }
