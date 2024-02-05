@@ -115,7 +115,7 @@
                                   SelectedItem="{Binding SelectedKeyfigureModel}"
                                   IsReadOnly="True"
                                   IsScrollInertiaEnabled="True"
-                                  CanUserReorderColumns="True"
+                                  CanUserReorderColumns="False"
                                   CanUserResizeColumns="True"
                                   CanUserSortColumns="True"
                                   GridLinesVisibility="All"
@@ -138,7 +138,7 @@
                                                 <TextBlock Text="Код SAP"
                                                            TextAlignment="Center"
                                                            HorizontalAlignment="Stretch" />
-                                                <TextBox Height="25" FontSize="16" Margin="0 5 0 5"
+                                                <TextBox Name="FullNameStr" Height="25" FontSize="16" Margin="0 5 0 5"
                                                          Padding="0 0 0 0"
                                                          HorizontalAlignment="Stretch" />
                                             </StackPanel>
@@ -160,9 +160,11 @@
                                                 <TextBlock Text="Полное наименование"
                                                            TextAlignment="Center"
                                                            HorizontalAlignment="Stretch" />
-                                                <TextBox Height="25" FontSize="16" Margin="0 5 0 5"
+                                                <TextBox Name="FullNameStr" Height="25" FontSize="16"
+                                                         Margin="0 5 0 5"
                                                          Padding="0 0 0 0"
-                                                         HorizontalAlignment="Stretch" />
+                                                         HorizontalAlignment="Stretch"
+                                                         TextChanged="FullNameStrChanged" />
                                             </StackPanel>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.HeaderTemplate>
@@ -195,8 +197,7 @@
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
                                 <DataGridTemplateColumn SortMemberPath="BasicInformation.DataStatus.value"
-                                                        CanUserSort="True" MinWidth="100" Width="*"
-                                                        CanUserReorder="False">
+                                                        CanUserSort="True" MinWidth="100" Width="*">
                                     <DataGridTemplateColumn.HeaderTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Vertical">
@@ -221,8 +222,7 @@
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
                                 <DataGridTemplateColumn SortMemberPath="ServiceInformation.CurrencyUnit.value"
-                                                        CanUserSort="True" MinWidth="100" Width="*"
-                                                        CanUserReorder="False">
+                                                        CanUserSort="True" MinWidth="100" Width="*">
                                     <DataGridTemplateColumn.HeaderTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Vertical">
@@ -247,8 +247,7 @@
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
                                 <DataGridTemplateColumn SortMemberPath="ServiceInformation.ValueType.value"
-                                                        CanUserSort="True" MinWidth="100" Width="*"
-                                                        CanUserReorder="False">
+                                                        CanUserSort="True" MinWidth="100" Width="*">
                                     <DataGridTemplateColumn.HeaderTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Vertical">
@@ -273,8 +272,7 @@
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
                                 <DataGridTemplateColumn SortMemberPath="ServiceInformation.MethodOfObtaining.value"
-                                                        CanUserSort="True" MinWidth="100" Width="*"
-                                                        CanUserReorder="False">
+                                                        CanUserSort="True" MinWidth="100" Width="*">
                                     <DataGridTemplateColumn.HeaderTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Vertical">
@@ -299,8 +297,7 @@
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
                                 <DataGridTemplateColumn SortMemberPath="ServiceInformation.KeyfigureCategory.value"
-                                                        CanUserSort="True" MinWidth="100" Width="*"
-                                                        CanUserReorder="False">
+                                                        CanUserSort="True" MinWidth="100" Width="*">
                                     <DataGridTemplateColumn.HeaderTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Vertical">
@@ -324,9 +321,8 @@
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
-                                 <DataGridTemplateColumn SortMemberPath="ServiceInformation.LoadTime.value"
-                                                        CanUserSort="True" MinWidth="100" Width="*"
-                                                        CanUserReorder="False">
+                                <DataGridTemplateColumn SortMemberPath="ServiceInformation.LoadTime.value"
+                                                        CanUserSort="True" MinWidth="100" Width="*">
                                     <DataGridTemplateColumn.HeaderTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Vertical">
@@ -350,9 +346,9 @@
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
-                                <DataGridTextColumn/>
-                                <DataGridTextColumn/>
-                                <DataGridTextColumn/>
+                                <DataGridTextColumn />
+                                <DataGridTextColumn />
+                                <DataGridTextColumn />
                             </DataGrid.Columns>
                         </DataGrid>
                     </Border>
