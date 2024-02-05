@@ -6,5 +6,5 @@ namespace Report_system_model.DBModels;
 [Table("business_process")]
 public class BusinessProcess
 {
-    [Key] [MaxLength(200)] public string bp_name { get; set; }
+    [Key] [MaxLength(200)] public string value { get; set; }
 }
