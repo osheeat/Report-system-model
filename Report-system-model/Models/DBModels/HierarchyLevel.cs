@@ -3,8 +3,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Report_system_model.DBModels;
 
-[Table("report_title")]
-public class ReportTitle
+[Table("hierarchy_level")]
+public class HierarchyLevel
 {
-    [Key] [MaxLength(500)] public string value { get; set; }
+    [Key] public int value { get; set; }
 }
