@@ -22,7 +22,7 @@
         <TabItem Header="Базовая информация" FontSize="14">
             <StackPanel>
                 <Border>
-                    <Grid Name="KeyfigureTopPanel" RowDefinitions="*, *, *, *" ColumnDefinitions="*, *">
+                    <Grid Name="KeyfigureTopPanel" RowDefinitions="*, *, *, *, *, *, *, *, *, *, *, *" ColumnDefinitions="*, *">
                         <Label Grid.Column="0" Grid.Row="0" Margin="10 10 0 0 ">Полное наименование</Label>
                         <TextBox Grid.Column="0" Grid.Row="1" Margin="10 5 0 0 " FontSize="14"
                                  Text="{Binding currModel.BasicInformation.Keyfigure.FullName}" />
@@ -42,11 +42,101 @@
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
                         </ComboBox>
-                        
+                        <Label Grid.Column="1" Grid.Row="2" Margin="10 10 10 0 ">Статус данных</Label>
+                        <ComboBox Grid.Column="1" Grid.Row="3" Margin="10 5 0 0 "
+                                  HorizontalAlignment="Stretch"
+                                  ItemsSource="{Binding dataStatusList, Mode=OneWay}"
+                                  SelectedItem="{Binding selectedDataStatus, Mode=TwoWay}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding value}" />
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <Label Grid.Column="0" Grid.Row="4" Margin="10 10 10 0 ">Тип значения</Label>
+                        <ComboBox Grid.Column="0" Grid.Row="5" Margin="10 5 0 0 "
+                                  HorizontalAlignment="Stretch"
+                                  ItemsSource="{Binding dataStatusList, Mode=OneWay}"
+                                  SelectedItem="{Binding selectedDataStatus, Mode=TwoWay}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding value}" />
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <Label Grid.Column="1" Grid.Row="4" Margin="10 10 10 0 ">Валюта/Еденица измерения</Label>
+                        <ComboBox Grid.Column="1" Grid.Row="5" Margin="10 5 0 0 "
+                                  HorizontalAlignment="Stretch"
+                                  ItemsSource="{Binding dataStatusList, Mode=OneWay}"
+                                  SelectedItem="{Binding selectedDataStatus, Mode=TwoWay}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding value}" />
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <Label Grid.Column="0" Grid.Row="6" Margin="10 10 10 0 ">Метод получения агрегированного значения</Label>
+                        <ComboBox Grid.Column="0" Grid.Row="7" Margin="10 5 0 0 "
+                                  HorizontalAlignment="Stretch"
+                                  ItemsSource="{Binding dataStatusList, Mode=OneWay}"
+                                  SelectedItem="{Binding selectedDataStatus, Mode=TwoWay}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding value}" />
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <Label Grid.Column="1" Grid.Row="6" Margin="10 10 10 0 ">Категория показателя</Label>
+                        <ComboBox Grid.Column="1" Grid.Row="7" Margin="10 5 0 0 "
+                                  HorizontalAlignment="Stretch"
+                                  ItemsSource="{Binding dataStatusList, Mode=OneWay}"
+                                  SelectedItem="{Binding selectedDataStatus, Mode=TwoWay}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding value}" />
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <Label Grid.Column="0" Grid.Row="8" Margin="10 10 10 0 ">Регламентный срок загрузки</Label>
+                        <ComboBox Grid.Column="0" Grid.Row="9" Margin="10 5 0 0 "
+                                  HorizontalAlignment="Stretch"
+                                  ItemsSource="{Binding dataStatusList, Mode=OneWay}"
+                                  SelectedItem="{Binding selectedDataStatus, Mode=TwoWay}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding value}" />
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <Label Grid.Column="1" Grid.Row="8" Margin="10 10 10 0 ">Срок загрузки гибкого отчета</Label>
+                        <ComboBox Grid.Column="1" Grid.Row="9" Margin="10 5 0 0 "
+                                  HorizontalAlignment="Stretch"
+                                  ItemsSource="{Binding dataStatusList, Mode=OneWay}"
+                                  SelectedItem="{Binding selectedDataStatus, Mode=TwoWay}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding value}" />
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <Label Grid.Column="0" Grid.Row="10" Margin="10 10 10 0 ">Индикотор использования в отчете</Label>
+                        <ComboBox Grid.Column="0" Grid.Row="11" Margin="10 5 0 0 "
+                                  HorizontalAlignment="Stretch"
+                                  ItemsSource="{Binding dataStatusList, Mode=OneWay}"
+                                  SelectedItem="{Binding selectedDataStatus, Mode=TwoWay}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding value}" />
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <Label Grid.Column="1" Grid.Row="10" Margin="10 10 10 0 ">Ответственный за БП</Label>
+                        <TextBox Grid.Column="1" Grid.Row="11" Margin="10 5 0 0 " FontSize="14"/>
+ 
                     </Grid>
                 </Border>
                 <Border>
-
+                    <Button Margin="0 20 0 0 " HorizontalAlignment="Right" Width="100">Save</Button>
                 </Border>
             </StackPanel>
         </TabItem>

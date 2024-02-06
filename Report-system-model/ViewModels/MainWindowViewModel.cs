@@ -42,13 +42,19 @@ public class MainWindowViewModel : ViewModelBase
         staticKeyfigureModels = new ObservableCollection<KeyfigureModel>(keyList);
         keyfigureModels = new ObservableCollection<KeyfigureModel>(keyList);
         ButtonClickCommand_1 = ReactiveCommand.Create<KeyfigureModel, Unit>(Execute);
+        Execute();
     }
 
     private Unit Execute(KeyfigureModel obj)
     {
         KeyfigureEditWindow newWindow = new KeyfigureEditWindow(obj);
         newWindow.Show();
-
+        return Unit.Default;
+    }
+    private Unit Execute()
+    {
+        KeyfigureEditWindow newWindow = new KeyfigureEditWindow();
+        newWindow.Show();
         return Unit.Default;
     }
 
