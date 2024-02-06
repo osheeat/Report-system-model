@@ -38,7 +38,8 @@
                             <!-- Здесь можно разместить другую информацию или управляющие элементы -->
                         </TabItem>
                     </TabControl>
-                    <TreeView Grid.Column="1" Name="foldersTreeView" FlowDirection="RightToLeft">
+
+                    <TreeView Grid.Column="1" Name="foldersTreeView">
                         <TreeViewItem Header="ОХД БС Переработка и сбыт">
                             <TreeViewItem Header="ОХД БС Переработка и сбыт">
                                 <TreeViewItem Header="БКСН" />
