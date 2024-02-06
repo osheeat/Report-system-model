@@ -3,8 +3,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Report_system_model.DBModels;
 
-[Table("report_title")]
-public class ReportTitle
+[Table("ksss")]
+public class KSSS
 {
-    [Key] [MaxLength(500)] public string value { get; set; }
+    [Key] [MaxLength(200)] public string value { get; set; }
 }

@@ -3,8 +3,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Report_system_model.DBModels;
 
-[Table("report_title")]
-public class ReportTitle
+[Table("load type ")]
+public class LoadType
 {
-    [Key] [MaxLength(500)] public string value { get; set; }
+    [Key] [MaxLength(50)] public string value { get; set; }
 }
