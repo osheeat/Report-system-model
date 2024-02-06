@@ -33,6 +33,10 @@ public class DirectoryRegister
     [MaxLength(200)] public string AnalyticalId { get; set; }
     public virtual Analytical? VirtualAnalytical { get; set; }
     
+    [Column("nsi_obj_id")]
+    [MaxLength(200)] public string NsiObjId { get; set; }
+    public virtual NsiObj? VirtualNsiObj { get; set; }
+    
     [Column("source_table_in_dw_id")]
     [MaxLength(200)] public string SourceTableInDWId { get; set; }
     public virtual SourceTableInDW? VirtualSourceTableInDW{ get; set; }
