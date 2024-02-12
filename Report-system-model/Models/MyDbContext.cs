@@ -21,6 +21,7 @@ public class MyDbContext : DbContext
     public DbSet<SourceSystem> SourceSystems { get; set; }
     public DbSet<UploadDeadline> UploadDeadlines { get; set; }
     public DbSet<ValueType> ValueTypes { get; set; }
+
     public DbSet<AnalyticalFeature> AnalyticalFeatures { get; set; }
     public DbSet<BusinessProcess> BusinessProcesses { get; set; }
     public DbSet<FormationFrequency> FormationFrequencies { get; set; }
@@ -46,13 +47,16 @@ public class MyDbContext : DbContext
     public DbSet<SourceTableInDW> SourceTableInDws { get; set; }
     
 
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         var builder = new NpgsqlConnectionStringBuilder
         {
             Host = "localhost",
             Port = 5432,
+
             Database = "rsm9",
+
             Username = "postgres",
             Password = "postgres",
         };

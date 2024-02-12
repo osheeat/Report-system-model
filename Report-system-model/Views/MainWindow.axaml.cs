@@ -16,6 +16,7 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+
         // MainDataGrid.Columns[0].IsVisible = false;
         // MainDataGrid.Columns[1].IsVisible = false;
         // MainDataGrid.Columns[2].IsVisible = false;
@@ -77,5 +78,6 @@ public partial class MainWindow : Window
     // private void FullNameStrChanged(object? sender, TextChangedEventArgs e)
     // {
     //     //((MainWindowViewModel)DataContext).SearchString_OnChange(FullNameStr.Text);
+
     // }
 }

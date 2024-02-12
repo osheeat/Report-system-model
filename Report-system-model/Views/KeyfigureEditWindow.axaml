@@ -8,7 +8,9 @@
         xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
         xmlns:views="clr-namespace:Report_system_model.Views"
         Icon="/Assets/avalonia-logo.ico"
+
         Title="{Binding currModel.BasicInformation.Keyfigure.SAPCode}"
+
         x:DataType="vm:KeyfigureEditViewModel">
     <Window.Styles>
         <FluentTheme />
@@ -16,6 +18,7 @@
         <actipro:ModernTheme Includes="Pro" />
     </Window.Styles>
     <Design.DataContext>
+
         <vm:KeyfigureEditViewModel />
     </Design.DataContext>
     <TabControl Margin="5" TabStripPlacement="Top">
@@ -55,5 +58,6 @@
         <TabItem Header="Использующиеся справочники" FontSize="14">
         </TabItem>
     </TabControl>
+
 
 </Window>

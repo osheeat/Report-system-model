@@ -6,12 +6,16 @@
         xmlns:database="clr-namespace:Report_system_model.DBModels"
         xmlns:appModels="clr-namespace:Report_system_model.AppModels"
         xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
+
         xmlns:views="clr-namespace:Report_system_model.Views"
+
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Report_system_model.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
+
         x:CompileBindings="False"
+
         Title="Report_system_model" MinWidth="1250" MinHeight="600">
     <Window.Styles>
         <FluentTheme />
@@ -46,6 +50,7 @@
             <TabItem Header="Отчеты" FontSize="16">
                 <views:ReportC/>
             </TabItem>
+
 
         </TabControl>
     </DockPanel>

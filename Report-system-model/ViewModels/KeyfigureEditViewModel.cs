@@ -15,7 +15,9 @@ using Avalonia.Media;
 using Microsoft.EntityFrameworkCore;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
+
 using Report_system_model.DBModels;
+
 using SkiaSharp;
 using Report_system_model.Views;
 
@@ -39,5 +41,6 @@ public class KeyfigureEditViewModel
         selectedDataStatus = currModel.BasicInformation.DataStatus;
         var dbContext = new MyDbContext();
         dataStatusList = new ObservableCollection<DataStatus>(dbContext.DataStatuss.ToList());
+
     }
 }
