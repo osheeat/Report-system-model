@@ -8,7 +8,9 @@
         xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
         xmlns:views="clr-namespace:Report_system_model.Views"
         Icon="/Assets/avalonia-logo.ico"
-        Title="KeyfigureEditWindow"
+
+        Title="{Binding currModel.BasicInformation.Keyfigure.SAPCode}"
+
         x:DataType="vm:KeyfigureEditViewModel">
     <Window.Styles>
         <FluentTheme />
@@ -16,16 +18,46 @@
         <actipro:ModernTheme Includes="Pro" />
     </Window.Styles>
     <Design.DataContext>
-        <views:KeyfigureEditWindow />
+
+        <vm:KeyfigureEditViewModel />
     </Design.DataContext>
-    <DockPanel>
-        <Grid DockPanel.Dock="Top">
-            <Border>
+    <TabControl Margin="5" TabStripPlacement="Top">
+        <TabItem Header="Базовая информация" FontSize="14">
+            <StackPanel>
                 <Border>
-                    <TextBlock Text="{Binding currModel.BasicInformation.Keyfigure.FullName}"/>
+                    <Grid Name="KeyfigureTopPanel" RowDefinitions="*, *, *, *" ColumnDefinitions="*, *">
+                        <Label Grid.Column="0" Grid.Row="0" Margin="10 10 0 0 ">Полное наименование</Label>
+                        <TextBox Grid.Column="0" Grid.Row="1" Margin="10 5 0 0 " FontSize="14"
+                                 Text="{Binding currModel.BasicInformation.Keyfigure.FullName}" />
+
+                        <Label Grid.Column="1" Grid.Row="0" Margin="10 10 10 0 ">Краткое наименование</Label>
+                        <TextBox Grid.Column="1" Grid.Row="1" Margin="10 5 10 0 " FontSize="14"
+                                 Text="{Binding currModel.BasicInformation.Keyfigure.ShortName}" />
+
+                        <Label Grid.Column="0" Grid.Row="2" Margin="10 10 10 0 ">Статус данных</Label>
+                        <ComboBox Name="ComboBox" Grid.Column="0" Grid.Row="3" Margin="10 5 0 0 "
+                                  HorizontalAlignment="Stretch"
+                                  ItemsSource="{Binding dataStatusList, Mode=OneWay}"
+                                  SelectedItem="{Binding selectedDataStatus, Mode=TwoWay}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding value}" />
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        
+                    </Grid>
                 </Border>
-            </Border>
-        </Grid>
-    </DockPanel>
+                <Border>
+
+                </Border>
+            </StackPanel>
+        </TabItem>
+        <TabItem Header="Системы-источники" FontSize="14">
+        </TabItem>
+        <TabItem Header="Использующиеся справочники" FontSize="14">
+        </TabItem>
+    </TabControl>
+
 
 </Window>
