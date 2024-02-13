@@ -16,6 +16,7 @@ namespace Report_system_model.Views;
 
 public partial class KeyfigureC : UserControl
 {
+    [Reactive] public string searchString12 { get; set; }
     public KeyfigureC()
     {
         InitializeComponent();
@@ -28,9 +29,6 @@ public partial class KeyfigureC : UserControl
         MainDataGrid.Columns[6].IsVisible = false;
         MainDataGrid.Columns[7].IsVisible = false;
         MainDataGrid.Columns[8].IsVisible = false;
-        MainDataGrid.Columns[9].IsVisible = false;
-        MainDataGrid.Columns[10].IsVisible = false;
-        MainDataGrid.Columns[11].IsVisible = false;
     }
 
     private void IsSAPCodeCheckBoxChecked(object? sender, RoutedEventArgs e)

@@ -22,46 +22,8 @@ namespace Report_system_model.ViewModels;
 
 public class MainWindowViewModel : ViewModelBase
 {
-    [Reactive] public ObservableCollection<KeyfigureModel> keyfigureModels { get; set; }
-    [Reactive] public ObservableCollection<KeyfigureModel> staticKeyfigureModels { get; set; }
-    [Reactive] KeyfigureModel SelectedKeyfigureModel { get; set; }
-    [Reactive] public string searchString { get; set; }
-    
-    private List<KeyfigureModel> keyList;
-    public ReactiveCommand<Unit, Unit> ButtonClickCommand { get; private set; }
-
-    public ReactiveCommand<KeyfigureModel, Unit> ButtonClickCommand_1 { get; private set; }
-
     public MainWindowViewModel()
     {
-        MyDbContext db = new MyDbContext();
-        db.Database.EnsureCreated();
-        KeyfigureModel tmp = new KeyfigureModel();
-        keyList = tmp.GetCompleteInformation().ToList();
-        SelectedKeyfigureModel = new KeyfigureModel();
-        staticKeyfigureModels = new ObservableCollection<KeyfigureModel>(keyList);
-        keyfigureModels = new ObservableCollection<KeyfigureModel>(keyList);
-        ButtonClickCommand_1 = ReactiveCommand.Create<KeyfigureModel, Unit>(Execute);
-        Execute();
-    }
-
-    private Unit Execute(KeyfigureModel obj)
-    {
-        KeyfigureEditWindow newWindow = new KeyfigureEditWindow(obj);
-        newWindow.Show();
-        return Unit.Default;
-    }
-    private Unit Execute()
-    {
-        KeyfigureEditWindow newWindow = new KeyfigureEditWindow();
-        newWindow.Show();
-        return Unit.Default;
-    }
-
-    public void SearchString_OnChange()
-    {
-        if (searchString != null)
-            if (searchString.Length > 5)
-                Console.WriteLine(searchString);
+        
     }
 }
