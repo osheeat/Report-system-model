@@ -90,7 +90,7 @@
                         </Expander>
                     </Border>
                     <Border DockPanel.Dock="Top">
-                        <DataGrid Name="MainDataGrid" ItemsSource="{Binding keyfigureModels}"
+                        <DataGrid Name="MainDataGrid" ItemsSource="{Binding  ReportModels}"
                                   SelectedItem="{Binding SelectedKeyfigureModel}"
                                   IsReadOnly="True"
                                   IsScrollInertiaEnabled="True"
@@ -127,7 +127,7 @@
                                         <DataTemplate>
                                             <TextBlock Margin="5 0 0 0" HorizontalAlignment="Center"
                                                        TextAlignment="Center"
-                                                       Text="{Binding BasicInformation.Keyfigure.SAPCode}" />
+                                                       Text="{Binding  ReportIndicatorId}" />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
@@ -150,7 +150,7 @@
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <TextBlock Margin="5 0 0 0" HorizontalAlignment="Left" TextAlignment="Left"
-                                                       Text="{Binding BasicInformation.Keyfigure.FullName}" />
+                                                       Text="{Binding VirtualRelease.value}" />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
@@ -171,7 +171,7 @@
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <TextBlock Margin="5 0 0 0" HorizontalAlignment="Left" TextAlignment="Left"
-                                                       Text="{Binding BasicInformation.Keyfigure.ShortName}" />
+                                                       Text="{Binding VirtualReportCode.value}" />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
@@ -196,7 +196,7 @@
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <TextBlock Margin="5 0 0 0" HorizontalAlignment="Left" TextAlignment="Left"
-                                                       Text="{Binding BasicInformation.DataStatus.value}" />
+                                                       Text="{Binding VirtualReportId.value}" />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
@@ -221,7 +221,7 @@
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <TextBlock Margin="5 0 0 0" HorizontalAlignment="Left" TextAlignment="Left"
-                                                       Text="{Binding ServiceInformation.CurrencyUnit.value}" />
+                                                       Text="{Binding VirtualReportTitle.value}" />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
@@ -246,7 +246,7 @@
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <TextBlock Margin="5 0 0 0" HorizontalAlignment="Left" TextAlignment="Left"
-                                                       Text="{Binding ServiceInformation.ValueType.value}" />
+                                                       Text="{Binding VirtualFormationFrequency.value}" />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
@@ -271,7 +271,7 @@
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <TextBlock Margin="5 0 0 0" HorizontalAlignment="Left" TextAlignment="Left"
-                                                       Text="{Binding ServiceInformation.MethodOfObtaining.value}" />
+                                                       Text="{Binding VirtualBusinessProcess.value}" />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
@@ -296,7 +296,7 @@
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <TextBlock Margin="5 0 0 0" HorizontalAlignment="Left" TextAlignment="Left"
-                                                       Text="{Binding ServiceInformation.KeyfigureCategory.value}" />
+                                                       Text="{Binding VirtualKeyfigure.SAPCode}" />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
@@ -322,7 +322,7 @@
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <TextBlock Margin="5 0 0 0" HorizontalAlignment="Left" TextAlignment="Left"
-                                                       Text="{Binding ServiceInformation.LoadTime.value}" />
+                                                       Text="{Binding VirtualKeyfigure.FullName}" />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
@@ -344,7 +344,7 @@
                                         <DataTemplate>
                                             <TextBlock Margin="5 0 0 0" HorizontalAlignment="Center"
                                                        TextAlignment="Center"
-                                                       Text="{Binding BasicInformation.Keyfigure.SAPCode}" />
+                                                       Text="{Binding VirtualKeyfigure.VirtualDataStatus.value}" />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
@@ -366,7 +366,7 @@
                                         <DataTemplate>
                                             <TextBlock Margin="5 0 0 0" HorizontalAlignment="Center"
                                                        TextAlignment="Center"
-                                                       Text="{Binding BasicInformation.Keyfigure.SAPCode}" />
+                                                       Text="{Binding VirtualKeyfigure.VirtualKeyfigureCategory.value}" />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
@@ -388,7 +388,7 @@
                                         <DataTemplate>
                                             <TextBlock Margin="5 0 0 0" HorizontalAlignment="Center"
                                                        TextAlignment="Center"
-                                                       Text="{Binding BasicInformation.Keyfigure.SAPCode}" />
+                                                       Text="{Binding VirtualAnalyticalFeature.value}" />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>

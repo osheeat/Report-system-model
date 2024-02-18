@@ -19,6 +19,7 @@ public partial class ReportC : UserControl
     public ReportC()
     {
         InitializeComponent();
+        DataContext = new ReportCVM();
         MainDataGrid.Columns[0].IsVisible = false;
         MainDataGrid.Columns[1].IsVisible = false;
         MainDataGrid.Columns[2].IsVisible = false;
