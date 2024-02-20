@@ -6,7 +6,7 @@
              xmlns:viewModels="clr-namespace:Report_system_model.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Report_system_model.Views.ReportC"
-             x:DataType="viewModels:ReportCVM">
+             x:DataType="viewModels:ReportCVM" x:CompileBindings="False">
              
     <UserControl.Styles>
         <FluentTheme />
@@ -14,7 +14,7 @@
         <actipro:ModernTheme Includes="Pro" />
     </UserControl.Styles>
     <Design.DataContext>
-        <viewModels:MainWindowViewModel />
+        <viewModels:ReportCVM />
     </Design.DataContext>
     <DockPanel>
                     <Border DockPanel.Dock="Top">
@@ -117,9 +117,10 @@
                                                 <TextBlock Text="Индикатор ФВ/Отчета"
                                                            TextAlignment="Center"
                                                            HorizontalAlignment="Stretch" />
-                                                <TextBox Name="FullNameStr" Height="25" FontSize="16" Margin="0 5 0 5"
-                                                         Padding="0 0 0 0"
-                                                         HorizontalAlignment="Stretch" />
+                                                
+                                                <ComboBox x:Name="MycomboBox" FontSize="16" Margin="0 5 0 5" Padding="0 0 0 0" 
+                                                          ItemsSource="{Binding ComboBoxItems}"  ZIndex="1000">
+                                                </ComboBox>
                                             </StackPanel>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.HeaderTemplate>
@@ -139,11 +140,12 @@
                                                 <TextBlock Text="Релиз"
                                                            TextAlignment="Center"
                                                            HorizontalAlignment="Stretch" />
-                                                <TextBox Name="FullNameStr" Height="25" FontSize="16"
-                                                         Margin="0 5 0 5"
-                                                         Padding="0 0 0 0"
-                                                         HorizontalAlignment="Stretch"
-                                                         TextChanged="FullNameStrChanged" />
+                                                <ComboBox Height="25" FontSize="16" Margin="0 5 0 5"
+                                                          Padding="0 0 0 0">
+                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
+                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
+                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
+                                                </ComboBox> 
                                             </StackPanel>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.HeaderTemplate>
@@ -183,13 +185,9 @@
                                                 <TextBlock Text="ID отчета/ФВ"
                                                            TextAlignment="Center"
                                                            HorizontalAlignment="Stretch" />
-                                                <ComboBox Height="25" FontSize="16" Margin="0 5 0 5"
-                                                          Padding="0 0 0 0">
-                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
-                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
-                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
-                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
-                                                </ComboBox>
+                                                <TextBox Height="25" FontSize="16" Margin="0 5 0 5"
+                                                                                                         Padding="0 0 0 0"
+                                                                                                         HorizontalAlignment="Stretch" />
                                             </StackPanel>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.HeaderTemplate>
@@ -208,13 +206,9 @@
                                                 <TextBlock Text="Наименование отчета/ФВ"
                                                            TextAlignment="Center"
                                                            HorizontalAlignment="Stretch" />
-                                                <ComboBox Height="25" FontSize="16" Margin="0 5 0 5"
-                                                          Padding="0 0 0 0">
-                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
-                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
-                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
-                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
-                                                </ComboBox>
+                                                <TextBox Name="FullNameStr" Height="25" FontSize="16" Margin="0 5 0 5"
+                                                         Padding="0 0 0 0"
+                                                         HorizontalAlignment="Stretch" />
                                             </StackPanel>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.HeaderTemplate>
@@ -235,6 +229,10 @@
                                                            HorizontalAlignment="Stretch" />
                                                 <ComboBox Height="25" FontSize="16" Margin="0 5 0 5"
                                                           Padding="0 0 0 0">
+                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
+                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
+                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
+                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
                                                     <ComboBoxItem>qwertyu</ComboBoxItem>
                                                     <ComboBoxItem>qwertyu</ComboBoxItem>
                                                     <ComboBoxItem>qwertyu</ComboBoxItem>
@@ -264,6 +262,10 @@
                                                     <ComboBoxItem>qwertyu</ComboBoxItem>
                                                     <ComboBoxItem>qwertyu</ComboBoxItem>
                                                     <ComboBoxItem>qwertyu</ComboBoxItem>
+                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
+                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
+                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
+                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
                                                 </ComboBox>
                                             </StackPanel>
                                         </DataTemplate>
@@ -283,13 +285,9 @@
                                                 <TextBlock Text="Код показателя to be"
                                                            TextAlignment="Center"
                                                            HorizontalAlignment="Stretch" />
-                                                <ComboBox Height="25" FontSize="16" Margin="0 5 0 5"
-                                                          Padding="0 0 0 0">
-                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
-                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
-                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
-                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
-                                                </ComboBox>
+                                                <TextBox Height="25" FontSize="16" Margin="0 5 0 5"
+                                                         Padding="0 0 0 0"
+                                                         HorizontalAlignment="Stretch" />
                                             </StackPanel>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.HeaderTemplate>
@@ -308,13 +306,9 @@
                                                 <TextBlock Text="Наименование показателя"
                                                            TextAlignment="Center"
                                                            HorizontalAlignment="Stretch" />
-                                                <ComboBox Height="25" FontSize="16" Margin="0 5 0 5"
-                                                          Padding="0 0 0 0">
-                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
-                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
-                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
-                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
-                                                </ComboBox>
+                                                <TextBox Height="25" FontSize="16" Margin="0 5 0 5"
+                                                         Padding="0 0 0 0"
+                                                         HorizontalAlignment="Stretch" />
                                             </StackPanel>
                                         </DataTemplate>
                                         
@@ -334,9 +328,13 @@
                                                 <TextBlock Text="Статус данных"
                                                            TextAlignment="Center"
                                                            HorizontalAlignment="Stretch" />
-                                                <TextBox Name="FullNameStr" Height="25" FontSize="16" Margin="0 5 0 5"
-                                                         Padding="0 0 0 0"
-                                                         HorizontalAlignment="Stretch" />
+                                                <ComboBox Height="25" FontSize="16" Margin="0 5 0 5"
+                                                          Padding="0 0 0 0">
+                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
+                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
+                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
+                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
+                                                </ComboBox>
                                             </StackPanel>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.HeaderTemplate>
@@ -356,9 +354,12 @@
                                                 <TextBlock Text="Тип показателя"
                                                            TextAlignment="Center"
                                                            HorizontalAlignment="Stretch" />
-                                                <TextBox Name="FullNameStr" Height="25" FontSize="16" Margin="0 5 0 5"
-                                                         Padding="0 0 0 0"
-                                                         HorizontalAlignment="Stretch" />
+                                                <ComboBox Height="25" FontSize="16" Margin="0 5 0 5"
+                                                          Padding="0 0 0 0">
+                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
+                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
+                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
+                                                </ComboBox>
                                             </StackPanel>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.HeaderTemplate>

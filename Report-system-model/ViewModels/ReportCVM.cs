@@ -23,9 +23,8 @@ namespace Report_system_model.ViewModels;
 
 public class ReportCVM : ViewModelBase
 {
-    //[Reactive] public ObservableCollection<KeyfigureModel> keyfigureModels { get; set; }
-    
     [Reactive] public ObservableCollection<Report> ReportModels { get; set; }
+    [Reactive] public ObservableCollection<ReportIndicator> ComboBoxItems { get; set; }
     [Reactive] KeyfigureModel SelectedKeyfigureModel { get; set; }
     [Reactive] public string searchString { get; set; }
     public ReactiveCommand<KeyfigureModel, Unit> ButtonClickCommand_1 { get; private set; }
@@ -49,6 +48,11 @@ public class ReportCVM : ViewModelBase
             .Include(x => x.VirtualAnalyticalFeature)
             .ToList();
 
+        var cbItems = Context.ReportIndicators.ToList();
+
+        ComboBoxItems = new(cbItems);
         ReportModels = new(items);
+        
+       
     }
 }

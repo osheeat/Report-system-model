@@ -35,6 +35,10 @@ public partial class ReportC : UserControl
         
     }
     
+    public ObservableCollection<string> ComboBoxItems { get; set; }
+
+
+    
     private void IsIndicatorCheckBoxChecked(object? sender, RoutedEventArgs e)
     {
         if (Box0.IsChecked.Value) MainDataGrid.Columns[0].IsVisible = true;
