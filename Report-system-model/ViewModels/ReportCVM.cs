@@ -24,7 +24,12 @@ namespace Report_system_model.ViewModels;
 public class ReportCVM : ViewModelBase
 {
     [Reactive] public ObservableCollection<Report> ReportModels { get; set; }
-    [Reactive] public ObservableCollection<ReportIndicator> ComboBoxItems { get; set; }
+    [Reactive] public ObservableCollection<ReportIndicator> ReportIndicators { get; set; }
+    [Reactive] public ObservableCollection<Release> ReportReleases { get; set; }
+    [Reactive] public ObservableCollection<FormationFrequency> FormationPeriodicity { get; set; }
+    [Reactive] public ObservableCollection<BusinessProcess> BusinessProcess { get; set; }
+    [Reactive] public ObservableCollection<DataStatus> DataStatuses { get; set; }
+    [Reactive] public ObservableCollection<KeyfigureCategory> KeyfigureTypes { get; set; }
     [Reactive] KeyfigureModel SelectedKeyfigureModel { get; set; }
     [Reactive] public string searchString { get; set; }
     public ReactiveCommand<KeyfigureModel, Unit> ButtonClickCommand_1 { get; private set; }
@@ -49,10 +54,20 @@ public class ReportCVM : ViewModelBase
             .ToList();
 
         var cbItems = Context.ReportIndicators.ToList();
+        var relItems = Context.Releases.ToList();
+        var periodItems = Context.FormationFrequencies.ToList();
+        var bpItems = Context.BusinessProcesses.ToList();
+        var statuses = Context.DataStatuss.ToList();
+        var categories = Context.KeyfigureCategories.ToList();
 
-        ComboBoxItems = new(cbItems);
-        ReportModels = new(items);
+        ReportIndicators = new(cbItems);
+        ReportReleases = new(relItems);
+        FormationPeriodicity = new(periodItems);
+        BusinessProcess = new(bpItems);
+        DataStatuses = new(statuses);
+        KeyfigureTypes = new(categories);
         
-       
+        
+        ReportModels = new(items);
     }
 }

@@ -120,7 +120,7 @@
                                                            HorizontalAlignment="Stretch" />
                                                 
                                                 <ComboBox x:Name="MycomboBox" FontSize="16" Margin="0 5 0 5" Padding="0 0 0 0" 
-                                                          ItemsSource="{Binding DataContext.ComboBoxItems, RelativeSource={RelativeSource AncestorType=UserControl}}"  ZIndex="1000">
+                                                          ItemsSource="{Binding DataContext.ReportIndicators, RelativeSource={RelativeSource AncestorType=UserControl}}">
                                                     <ComboBox.ItemTemplate>
                                                         <DataTemplate>
                                                             <TextBlock Text="{Binding value}"></TextBlock>
@@ -146,12 +146,14 @@
                                                 <TextBlock Text="Релиз"
                                                            TextAlignment="Center"
                                                            HorizontalAlignment="Stretch" />
-                                                <ComboBox Height="25" FontSize="16" Margin="0 5 0 5"
-                                                          Padding="0 0 0 0">
-                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
-                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
-                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
-                                                </ComboBox> 
+                                                <ComboBox x:Name="MycomboBox" FontSize="16" Margin="0 5 0 5" Padding="0 0 0 0" 
+                                                          ItemsSource="{Binding DataContext.ReportReleases, RelativeSource={RelativeSource AncestorType=UserControl}}"  ZIndex="1000">
+                                                    <ComboBox.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <TextBlock Text="{Binding value}"></TextBlock>
+                                                        </DataTemplate>
+                                                    </ComboBox.ItemTemplate>
+                                                </ComboBox>
                                             </StackPanel>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.HeaderTemplate>
@@ -233,16 +235,13 @@
                                                 <TextBlock Text="Периодичность формирования отчета"
                                                            TextAlignment="Center"
                                                            HorizontalAlignment="Stretch" />
-                                                <ComboBox Height="25" FontSize="16" Margin="0 5 0 5"
-                                                          Padding="0 0 0 0">
-                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
-                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
-                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
-                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
-                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
-                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
-                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
-                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
+                                                <ComboBox x:Name="MycomboBox" FontSize="16" Margin="0 5 0 5" Padding="0 0 0 0" 
+                                                          ItemsSource="{Binding DataContext.FormationPeriodicity, RelativeSource={RelativeSource AncestorType=UserControl}}">
+                                                    <ComboBox.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <TextBlock Text="{Binding value}"></TextBlock>
+                                                        </DataTemplate>
+                                                    </ComboBox.ItemTemplate>
                                                 </ComboBox>
                                             </StackPanel>
                                         </DataTemplate>
@@ -262,16 +261,13 @@
                                                 <TextBlock Text="Бизнес-процесс в рамках которого формируется отчет/Направление ФВ"
                                                            TextAlignment="Center"
                                                            HorizontalAlignment="Stretch" />
-                                                <ComboBox Height="25" FontSize="16" Margin="0 5 0 5"
-                                                          Padding="0 0 0 0">
-                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
-                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
-                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
-                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
-                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
-                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
-                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
-                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
+                                                <ComboBox x:Name="MycomboBox" FontSize="16" Margin="0 5 0 5" Padding="0 0 0 0" 
+                                                          ItemsSource="{Binding DataContext.BusinessProcess, RelativeSource={RelativeSource AncestorType=UserControl}}">
+                                                    <ComboBox.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <TextBlock Text="{Binding value}"></TextBlock>
+                                                        </DataTemplate>
+                                                    </ComboBox.ItemTemplate>
                                                 </ComboBox>
                                             </StackPanel>
                                         </DataTemplate>
@@ -334,12 +330,13 @@
                                                 <TextBlock Text="Статус данных"
                                                            TextAlignment="Center"
                                                            HorizontalAlignment="Stretch" />
-                                                <ComboBox Height="25" FontSize="16" Margin="0 5 0 5"
-                                                          Padding="0 0 0 0">
-                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
-                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
-                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
-                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
+                                                <ComboBox x:Name="MycomboBox" FontSize="16" Margin="0 5 0 5" Padding="0 0 0 0" 
+                                                          ItemsSource="{Binding DataContext.DataStatuses, RelativeSource={RelativeSource AncestorType=UserControl}}">
+                                                    <ComboBox.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <TextBlock Text="{Binding value}"></TextBlock>
+                                                        </DataTemplate>
+                                                    </ComboBox.ItemTemplate>
                                                 </ComboBox>
                                             </StackPanel>
                                         </DataTemplate>
@@ -360,11 +357,13 @@
                                                 <TextBlock Text="Тип показателя"
                                                            TextAlignment="Center"
                                                            HorizontalAlignment="Stretch" />
-                                                <ComboBox Height="25" FontSize="16" Margin="0 5 0 5"
-                                                          Padding="0 0 0 0">
-                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
-                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
-                                                    <ComboBoxItem>qwertyu</ComboBoxItem>
+                                                <ComboBox x:Name="MycomboBox" FontSize="16" Margin="0 5 0 5" Padding="0 0 0 0" 
+                                                          ItemsSource="{Binding DataContext.KeyfigureTypes, RelativeSource={RelativeSource AncestorType=UserControl}}">
+                                                    <ComboBox.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <TextBlock Text="{Binding value}"></TextBlock>
+                                                        </DataTemplate>
+                                                    </ComboBox.ItemTemplate>
                                                 </ComboBox>
                                             </StackPanel>
                                         </DataTemplate>
