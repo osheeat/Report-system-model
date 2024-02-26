@@ -16,7 +16,6 @@ namespace Report_system_model.Views;
 
 public partial class KeyfigureC : UserControl
 {
-    [Reactive] public string searchString12 { get; set; }
     public KeyfigureC()
     {
         InitializeComponent();
@@ -94,6 +93,6 @@ public partial class KeyfigureC : UserControl
     private void FullNameStrChanged(object? sender, TextChangedEventArgs e)
     {
         var textbox = (TextBox)sender;
-        ((KeyfigureCVM)DataContext).SearchString_OnChange(textbox.Text);
+        ((KeyfigureCVM)DataContext).FullNameSearchString_OnChange(textbox.Text);
     }
 }   
