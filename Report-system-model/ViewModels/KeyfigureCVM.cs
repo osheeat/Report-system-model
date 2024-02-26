@@ -16,6 +16,7 @@ using Avalonia.Media;
 using Microsoft.EntityFrameworkCore;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
+using Report_system_model.DBModels;
 using SkiaSharp;
 using Report_system_model.Views;
 
@@ -32,7 +33,7 @@ public class KeyfigureCVM : ViewModelBase
     public ReactiveCommand<Unit, Unit> ButtonClickCommand { get; private set; }
 
     public ReactiveCommand<KeyfigureModel, Unit> ButtonClickCommand_1 { get; private set; }
-    [Reactive] public List<string> dataStatusFilter { get; set; }
+    [Reactive] public ObservableCollection<DataStatus> dataStatusFilter { get; set; }
     [Reactive] public string dataStatusSelected { get; set; }
 
     public KeyfigureCVM()
@@ -45,10 +46,11 @@ public class KeyfigureCVM : ViewModelBase
         staticKeyfigureModels = new ObservableCollection<KeyfigureModel>(keyList);
         keyfigureModels = new ObservableCollection<KeyfigureModel>(keyList);
         ButtonClickCommand_1 = ReactiveCommand.Create<KeyfigureModel, Unit>(Execute);
-        dataStatusFilter = staticKeyfigureModels
-            .Select(m => m.BasicInformation.DataStatus.value)
-            .Distinct()
-            .ToList();
+        List<DataStatus> tempList = new List<DataStatus>();
+        tempList = staticKeyfigureModels
+            .Select(m => m.BasicInformation.DataStatus).Distinct().ToList();
+        dataStatusFilter = new ObservableCollection<DataStatus>(tempList);
+
     }
 
     private Unit Execute(KeyfigureModel obj)

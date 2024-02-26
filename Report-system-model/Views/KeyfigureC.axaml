@@ -186,8 +186,12 @@
                                                HorizontalAlignment="Stretch" />
                                     <ComboBox Height="25" FontSize="16" Margin="0 5 0 5"
                                               Padding="0 0 0 0"
-                                              ItemsSource="{Binding dataStatusFilter, Mode=TwoWay}"
-                                              SelectedItem="{Binding dataStatusSelected, Mode=TwoWay}">
+                                              ItemsSource="{Binding DataContext.dataStatusFilter, RelativeSource={RelativeSource AncestorType=UserControl}}">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding value}"/>
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
                                     </ComboBox>
                                 </StackPanel>
                             </DataTemplate>
