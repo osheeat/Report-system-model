@@ -21,8 +21,6 @@ public partial class KeyfigureC : UserControl
     {
         InitializeComponent();
         DataContext = new KeyfigureCVM();
-        MainDataGrid.Columns[0].IsVisible = false;
-        MainDataGrid.Columns[1].IsVisible = false;
         MainDataGrid.Columns[2].IsVisible = false;
         MainDataGrid.Columns[3].IsVisible = false;
         MainDataGrid.Columns[4].IsVisible = false;
@@ -30,20 +28,10 @@ public partial class KeyfigureC : UserControl
         MainDataGrid.Columns[6].IsVisible = false;
         MainDataGrid.Columns[7].IsVisible = false;
         MainDataGrid.Columns[8].IsVisible = false;
+        MainDataGrid.Columns[9].IsVisible = false;
+        MainDataGrid.Columns[10].IsVisible = false;
+        ((KeyfigureCVM)DataContext).SwitchCollectionWithDataStatus(false);
     }
-
-    private void IsSAPCodeCheckBoxChecked(object? sender, RoutedEventArgs e)
-    {
-        if (Box0.IsChecked.Value) MainDataGrid.Columns[0].IsVisible = true;
-        else MainDataGrid.Columns[0].IsVisible = false;
-    }
-
-    private void IsFullNameCheckBoxChecked(object? sender, RoutedEventArgs e)
-    {
-        if (Box1.IsChecked.Value) MainDataGrid.Columns[1].IsVisible = true;
-        else MainDataGrid.Columns[1].IsVisible = false;
-    }
-
     private void IsShortNameCheckBoxChecked(object? sender, RoutedEventArgs e)
     {
         if (Box2.IsChecked.Value) MainDataGrid.Columns[2].IsVisible = true;
@@ -93,7 +81,16 @@ public partial class KeyfigureC : UserControl
         if (Box8.IsChecked.Value) MainDataGrid.Columns[8].IsVisible = true;
         else MainDataGrid.Columns[8].IsVisible = false;
     }
-
+    private void IsUsageIndicatorChecked(object? sender, RoutedEventArgs e)
+    {
+        if (Box9.IsChecked.Value) MainDataGrid.Columns[9].IsVisible = true;
+        else MainDataGrid.Columns[9].IsVisible = false;
+    }
+    private void IsUploadDeadlineChecked(object? sender, RoutedEventArgs e)
+    {
+        if (Box10.IsChecked.Value) MainDataGrid.Columns[10].IsVisible = true;
+        else MainDataGrid.Columns[10].IsVisible = false;
+    }
     private void FullNameStrChanged(object? sender, TextChangedEventArgs e)
     {
         var textbox = (TextBox)sender;
