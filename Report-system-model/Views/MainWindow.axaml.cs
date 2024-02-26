@@ -16,8 +16,6 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-        KeyfigureCVM viewModel = new KeyfigureCVM();
-        DataContext = viewModel;
     }
 
 }
