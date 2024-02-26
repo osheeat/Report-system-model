@@ -20,6 +20,7 @@ public partial class KeyfigureC : UserControl
     public KeyfigureC()
     {
         InitializeComponent();
+        DataContext = new KeyfigureCVM();
         MainDataGrid.Columns[0].IsVisible = false;
         MainDataGrid.Columns[1].IsVisible = false;
         MainDataGrid.Columns[2].IsVisible = false;
@@ -51,8 +52,16 @@ public partial class KeyfigureC : UserControl
 
     private void IsDataStatusCheckBoxChecked(object? sender, RoutedEventArgs e)
     {
-        if (Box3.IsChecked.Value) MainDataGrid.Columns[3].IsVisible = true;
-        else MainDataGrid.Columns[3].IsVisible = false;
+        if (Box3.IsChecked.Value)
+        {
+            MainDataGrid.Columns[3].IsVisible = true;
+            ((KeyfigureCVM)DataContext).SwitchCollectionWithDataStatus(true);
+        }
+        else
+        {
+            MainDataGrid.Columns[3].IsVisible = false;
+            ((KeyfigureCVM)DataContext).SwitchCollectionWithDataStatus(false);
+        }
     }
 
     private void IsValueTypeCheckBoxChecked(object? sender, RoutedEventArgs e)
@@ -87,6 +96,7 @@ public partial class KeyfigureC : UserControl
 
     private void FullNameStrChanged(object? sender, TextChangedEventArgs e)
     {
-        //((MainWindowViewModel)DataContext).SearchString_OnChange(FullNameStr.Text);
+        var textbox = (TextBox)sender;
+        ((KeyfigureCVM)DataContext).SearchString_OnChange(textbox.Text);
     }
-}
+}   

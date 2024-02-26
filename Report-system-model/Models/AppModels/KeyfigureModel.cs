@@ -11,7 +11,6 @@ public class KeyfigureModel
     public KeyfigureBasicInformation BasicInformation { get; set; }
     public KeyfigureServiceInformation ServiceInformation { get; set; }
     public KeyfigureSystemSource SystemSource { get; set; }
-
     public List<KeyfigureModel> GetCompleteInformation()
     {
         List<KeyfigureModel> curList = new List<KeyfigureModel>();

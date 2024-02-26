@@ -5,6 +5,7 @@
              xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
              xmlns:viewModels="clr-namespace:Report_system_model.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:CompileBindings="False"
              x:Class="Report_system_model.Views.KeyfigureC"
              x:DataType="viewModels:KeyfigureCVM">
     <UserControl.Styles>
@@ -89,7 +90,8 @@
             </Expander>
         </Border>
         <Border DockPanel.Dock="Top">
-            <DataGrid Name="MainDataGrid" ItemsSource="{Binding keyfigureModels}"
+            <DataGrid Name="MainDataGrid"
+                      ItemsSource="{Binding keyfigureModels}"
                       SelectedItem="{Binding SelectedKeyfigureModel}"
                       IsReadOnly="True"
                       IsScrollInertiaEnabled="True"
@@ -138,7 +140,7 @@
                                     <TextBlock Text="Полное наименование"
                                                TextAlignment="Center"
                                                HorizontalAlignment="Stretch" />
-                                    <TextBox Name="FullNameStr" Height="25" FontSize="16"
+                                    <TextBox x:Name="FullNameStr" Height="25" FontSize="16"
                                              Margin="0 5 0 5"
                                              Padding="0 0 0 0"
                                              HorizontalAlignment="Stretch"
@@ -183,11 +185,9 @@
                                                TextAlignment="Center"
                                                HorizontalAlignment="Stretch" />
                                     <ComboBox Height="25" FontSize="16" Margin="0 5 0 5"
-                                              Padding="0 0 0 0">
-                                        <ComboBoxItem>qwertyu</ComboBoxItem>
-                                        <ComboBoxItem>qwertyu</ComboBoxItem>
-                                        <ComboBoxItem>qwertyu</ComboBoxItem>
-                                        <ComboBoxItem>qwertyu</ComboBoxItem>
+                                              Padding="0 0 0 0"
+                                              ItemsSource="{Binding dataStatusFilter, Mode=TwoWay}"
+                                              SelectedItem="{Binding dataStatusSelected, Mode=TwoWay}">
                                     </ComboBox>
                                 </StackPanel>
                             </DataTemplate>

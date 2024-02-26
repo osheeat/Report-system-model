@@ -144,6 +144,8 @@
         </TabItem>
         <TabItem Header="Использующиеся справочники" FontSize="14">
         </TabItem>
+        <TabItem Header="Использование в отчетах" FontSize="14">
+        </TabItem>
     </TabControl>
 
 </Window>
