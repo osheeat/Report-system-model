@@ -24,34 +24,24 @@
                 </Expander.Header>
                 <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*,*,*,*,*,*" Margin="4">
                     <Border Grid.Row="0" Grid.Column="0" Margin="0, 0, 10, 0">
-                        <CheckBox x:Name="Box0" Checked="IsSAPCodeCheckBoxChecked"
-                                  Unchecked="IsSAPCodeCheckBoxChecked"
-                                  Content="Код в SAP" />
-                    </Border>
-                    <Border Grid.Row="0" Grid.Column="1" Margin="0, 0, 10, 0">
-                        <CheckBox x:Name="Box1" Checked="IsFullNameCheckBoxChecked"
-                                  Unchecked="IsFullNameCheckBoxChecked"
-                                  Content="Полное наименование" />
-                    </Border>
-                    <Border Grid.Row="0" Grid.Column="2" Margin="0, 0, 10, 0">
                         <CheckBox x:Name="Box2"
                                   Checked="IsShortNameCheckBoxChecked"
                                   Unchecked="IsShortNameCheckBoxChecked"
                                   Content="Краткое наименование" />
                     </Border>
-                    <Border Grid.Row="0" Grid.Column="3" Margin="0, 0, 10, 0">
+                    <Border Grid.Row="0" Grid.Column="1" Margin="0, 0, 10, 0">
                         <CheckBox x:Name="Box3"
                                   Checked="IsDataStatusCheckBoxChecked"
                                   Unchecked="IsDataStatusCheckBoxChecked"
                                   Content="Статус данных" />
                     </Border>
-                    <Border Grid.Row="0" Grid.Column="4" Margin="0, 0, 10, 0">
+                    <Border Grid.Row="0" Grid.Column="2" Margin="0, 0, 10, 0">
                         <CheckBox x:Name="Box4"
                                   Checked="IsValueTypeCheckBoxChecked"
                                   Unchecked="IsValueTypeCheckBoxChecked"
                                   Content="Тип значения" />
                     </Border>
-                    <Border Grid.Row="0" Grid.Column="5" Margin="0, 0, 10, 0">
+                    <Border Grid.Row="0" Grid.Column="3" Margin="0, 0, 10, 0">
                         <CheckBox x:Name="Box5" Checked="IsUnitheckBoxChecked"
                                   Unchecked="IsUnitheckBoxChecked"
                                   Content="Валюта/Ед. измер." />
@@ -71,21 +61,21 @@
                                   Unchecked="IsLoadTimeChecked"
                                   Content="Регламент. срок загр." />
                     </Border>
-                    <Border Grid.Row="1" Grid.Column="3" Margin="0, 10, 10, 0">
-                        <CheckBox x:Name="Box9" Checked="IsMethodOfObtainingChecked"
-                                  Unchecked="IsMethodOfObtainingChecked"
-                                  Content="Срок загр. гибк. отч." />
-                    </Border>
-                    <Border Grid.Row="1" Grid.Column="4" Margin="0, 10, 10, 0">
-                        <CheckBox x:Name="Box10" Checked="IsMethodOfObtainingChecked"
-                                  Unchecked="IsMethodOfObtainingChecked"
+                    <Border Grid.Row="0" Grid.Column="4" Margin="0, 10, 10, 0">
+                        <CheckBox x:Name="Box9" Checked="IsUsageIndicatorChecked"
+                                  Unchecked="IsUsageIndicatorChecked"
                                   Content="Инд. использ. в отчете" />
                     </Border>
-                    <Border Grid.Row="1" Grid.Column="5" Margin="0, 10, 10, 0">
-                        <CheckBox x:Name="Box11" Checked="IsMethodOfObtainingChecked"
-                                  Unchecked="IsMethodOfObtainingChecked"
-                                  Content="Ответственный за БП" />
+                    <Border Grid.Row="1" Grid.Column="3" Margin="0, 10, 10, 0">
+                        <CheckBox x:Name="Box10" Checked="IsUploadDeadlineChecked"
+                                  Unchecked="IsUploadDeadlineChecked"
+                                  Content="Срок загр. гибк. отч." />
                     </Border>
+                    <!-- <Border Grid.Row="1" Grid.Column="4" Margin="0, 10, 10, 0"> -->
+                    <!--     <CheckBox x:Name="Box11" Checked="IsMethodOfObtainingChecked" -->
+                    <!--               Unchecked="IsMethodOfObtainingChecked" -->
+                    <!--               Content="Ответственный за БП" /> -->
+                    <!-- </Border> -->
                 </Grid>
             </Expander>
         </Border>
@@ -325,6 +315,56 @@
                             <DataTemplate>
                                 <TextBlock Margin="5 0 0 0" HorizontalAlignment="Left" TextAlignment="Left"
                                            Text="{Binding ServiceInformation.LoadTime.value}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn SortMemberPath="ServiceInformation.ReportUsageIndicator.value"
+                                            CanUserSort="True" MinWidth="100" Width="*">
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="Инд. использ. в отчете"
+                                               TextAlignment="Center"
+                                               HorizontalAlignment="Stretch" />
+                                    <ComboBox Height="25" FontSize="16" Margin="0 5 0 5"
+                                              Padding="0 0 0 0">
+                                        <ComboBoxItem>qwertyu</ComboBoxItem>
+                                        <ComboBoxItem>qwertyu</ComboBoxItem>
+                                        <ComboBoxItem>qwertyu</ComboBoxItem>
+                                        <ComboBoxItem>qwertyu</ComboBoxItem>
+                                    </ComboBox>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Margin="5 0 0 0" HorizontalAlignment="Left" TextAlignment="Left"
+                                           Text="{Binding ServiceInformation.ReportUsageIndicator.value}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn SortMemberPath="ServiceInformation.UploadDeadline.value"
+                                            CanUserSort="True" MinWidth="100" Width="*">
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="Срок загр. гибк. отч."
+                                               TextAlignment="Center"
+                                               HorizontalAlignment="Stretch" />
+                                    <ComboBox Height="25" FontSize="16" Margin="0 5 0 5"
+                                              Padding="0 0 0 0">
+                                        <ComboBoxItem>qwertyu</ComboBoxItem>
+                                        <ComboBoxItem>qwertyu</ComboBoxItem>
+                                        <ComboBoxItem>qwertyu</ComboBoxItem>
+                                        <ComboBoxItem>qwertyu</ComboBoxItem>
+                                    </ComboBox>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Margin="5 0 0 0" HorizontalAlignment="Left" TextAlignment="Left"
+                                           Text="{Binding ServiceInformation.UploadDeadline.value}" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>

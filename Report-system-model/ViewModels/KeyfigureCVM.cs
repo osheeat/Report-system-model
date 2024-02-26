@@ -50,7 +50,6 @@ public class KeyfigureCVM : ViewModelBase
         tempList = staticKeyfigureModels
             .Select(m => m.BasicInformation.DataStatus).Distinct().ToList();
         dataStatusFilter = new ObservableCollection<DataStatus>(tempList);
-
     }
 
     private Unit Execute(KeyfigureModel obj)
@@ -90,32 +89,20 @@ public class KeyfigureCVM : ViewModelBase
     /// <param name="switchStatus">Отображается ли столбец со статусом данных</param>
     public void SwitchCollectionWithDataStatus(bool switchStatus)
     {
-        // List<string> uniqueListStr = staticKeyfigureModels
-        //     .Select(m => m.BasicInformation.Keyfigure.FullName)
-        //     .Distinct()
-        //     .ToList();
-        // List<KeyfigureModel> uniqueList = new List<KeyfigureModel>();
-        // if (switchStatus == true)
-        // {
-        //     // foreach (var item in staticKeyfigureModels)
-        //     // {
-        //     //     if (uniqueList.Count != 0)
-        //     //         foreach (var iqwe in uniqueList)
-        //     //         {
-        //     //             if (ComparisonByDataStatus(item, iqwe))
-        //     //             {
-        //     //                 uniqueList.Add(item);
-        //     //             }
-        //     //         }
-        //     //     else uniqueList.Add(item);
-        //     // }
-        //     keyfigureModels = new ObservableCollection<KeyfigureModel>(uniqueList);
-        // }
-        // else
-        // {
-        //     keyfigureModels = staticKeyfigureModels;
-        // }
-        keyfigureModels = staticKeyfigureModels;
+        if (switchStatus)
+        {
+            keyfigureModels = staticKeyfigureModels;
+        }
+        else
+        {
+            keyfigureModels = new ObservableCollection<KeyfigureModel>();
+            foreach (var item in staticKeyfigureModels)
+            {
+                if (!keyfigureModels.Select(x => x.BasicInformation.Keyfigure.FullName)
+                        .Contains(item.BasicInformation.Keyfigure.FullName))
+                    keyfigureModels.Add(item);
+            }
+        }
     }
 
     public bool ComparisonByDataStatus(KeyfigureModel a, KeyfigureModel b)
