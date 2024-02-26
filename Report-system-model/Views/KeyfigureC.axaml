@@ -176,7 +176,8 @@
                                                HorizontalAlignment="Stretch" />
                                     <ComboBox Height="25" FontSize="16" Margin="0 5 0 5"
                                               Padding="0 0 0 0"
-                                              ItemsSource="{Binding DataContext.dataStatusFilter, RelativeSource={RelativeSource AncestorType=UserControl}}">
+                                              ItemsSource="{Binding DataContext.dataStatusFilter, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                              SelectedItem="{Binding dataStatusSelected}">
                                         <ComboBox.ItemTemplate>
                                             <DataTemplate>
                                                 <TextBlock Text="{Binding value}"/>
@@ -193,31 +194,6 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTemplateColumn SortMemberPath="ServiceInformation.CurrencyUnit.value"
-                                            CanUserSort="True" MinWidth="100" Width="*">
-                        <DataGridTemplateColumn.HeaderTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock Text="Валюта/Еденица измерения"
-                                               TextAlignment="Center"
-                                               HorizontalAlignment="Stretch" />
-                                    <ComboBox Height="25" FontSize="16" Margin="0 5 0 5"
-                                              Padding="0 0 0 0">
-                                        <ComboBoxItem>qwertyu</ComboBoxItem>
-                                        <ComboBoxItem>qwertyu</ComboBoxItem>
-                                        <ComboBoxItem>qwertyu</ComboBoxItem>
-                                        <ComboBoxItem>qwertyu</ComboBoxItem>
-                                    </ComboBox>
-                                </StackPanel>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.HeaderTemplate>
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Margin="5 0 0 0" HorizontalAlignment="Left" TextAlignment="Left"
-                                           Text="{Binding ServiceInformation.CurrencyUnit.value}" />
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
                     <DataGridTemplateColumn SortMemberPath="ServiceInformation.ValueType.value"
                                             CanUserSort="True" MinWidth="100" Width="*">
                         <DataGridTemplateColumn.HeaderTemplate>
@@ -227,11 +203,14 @@
                                                TextAlignment="Center"
                                                HorizontalAlignment="Stretch" />
                                     <ComboBox Height="25" FontSize="16" Margin="0 5 0 5"
-                                              Padding="0 0 0 0">
-                                        <ComboBoxItem>qwertyu</ComboBoxItem>
-                                        <ComboBoxItem>qwertyu</ComboBoxItem>
-                                        <ComboBoxItem>qwertyu</ComboBoxItem>
-                                        <ComboBoxItem>qwertyu</ComboBoxItem>
+                                              Padding="0 0 0 0"
+                                              ItemsSource="{Binding DataContext.valueTypeFilter, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                              SelectedItem="{Binding ValueTypeSelected}">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding value}"/>
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
                                     </ComboBox>
                                 </StackPanel>
                             </DataTemplate>
@@ -240,6 +219,34 @@
                             <DataTemplate>
                                 <TextBlock Margin="5 0 0 0" HorizontalAlignment="Left" TextAlignment="Left"
                                            Text="{Binding ServiceInformation.ValueType.value}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>  
+                    <DataGridTemplateColumn SortMemberPath="ServiceInformation.CurrencyUnit.value"
+                                            CanUserSort="True" MinWidth="100" Width="*">
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="Валюта/Еденица измерения"
+                                               TextAlignment="Center"
+                                               HorizontalAlignment="Stretch" />
+                                    <ComboBox Height="25" FontSize="16" Margin="0 5 0 5"
+                                              Padding="0 0 0 0"
+                                              ItemsSource="{Binding DataContext.сurrencyUnitFilter, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                              SelectedItem="{Binding currencyUnitSelected}">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding value}" Width="350"/>
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
+                                    </ComboBox>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Margin="5 0 0 0" HorizontalAlignment="Left" TextAlignment="Left"
+                                           Text="{Binding ServiceInformation.CurrencyUnit.value}" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
@@ -252,11 +259,14 @@
                                                TextAlignment="Center"
                                                HorizontalAlignment="Stretch" />
                                     <ComboBox Height="25" FontSize="16" Margin="0 5 0 5"
-                                              Padding="0 0 0 0">
-                                        <ComboBoxItem>qwertyu</ComboBoxItem>
-                                        <ComboBoxItem>qwertyu</ComboBoxItem>
-                                        <ComboBoxItem>qwertyu</ComboBoxItem>
-                                        <ComboBoxItem>qwertyu</ComboBoxItem>
+                                              Padding="0 0 0 0"
+                                              ItemsSource="{Binding DataContext.methodOfObtainingFilter, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                              SelectedItem="{Binding methodOfObtainingSelected}">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding value}" Width="550"/>
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
                                     </ComboBox>
                                 </StackPanel>
                             </DataTemplate>
@@ -277,11 +287,14 @@
                                                TextAlignment="Center"
                                                HorizontalAlignment="Stretch" />
                                     <ComboBox Height="25" FontSize="16" Margin="0 5 0 5"
-                                              Padding="0 0 0 0">
-                                        <ComboBoxItem>qwertyu</ComboBoxItem>
-                                        <ComboBoxItem>qwertyu</ComboBoxItem>
-                                        <ComboBoxItem>qwertyu</ComboBoxItem>
-                                        <ComboBoxItem>qwertyu</ComboBoxItem>
+                                              Padding="0 0 0 0"
+                                              ItemsSource="{Binding DataContext.keyfigureCategoryFilter, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                              SelectedItem="{Binding keyfigureCategorySelected}">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding value}"/>
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
                                     </ComboBox>
                                 </StackPanel>
                             </DataTemplate>
@@ -302,11 +315,14 @@
                                                TextAlignment="Center"
                                                HorizontalAlignment="Stretch" />
                                     <ComboBox Height="25" FontSize="16" Margin="0 5 0 5"
-                                              Padding="0 0 0 0">
-                                        <ComboBoxItem>qwertyu</ComboBoxItem>
-                                        <ComboBoxItem>qwertyu</ComboBoxItem>
-                                        <ComboBoxItem>qwertyu</ComboBoxItem>
-                                        <ComboBoxItem>qwertyu</ComboBoxItem>
+                                              Padding="0 0 0 0"
+                                              ItemsSource="{Binding DataContext.loadTimeFilter, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                              SelectedItem="{Binding loadTimeSelected}">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding value}"/>
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
                                     </ComboBox>
                                 </StackPanel>
                             </DataTemplate>
@@ -327,11 +343,14 @@
                                                TextAlignment="Center"
                                                HorizontalAlignment="Stretch" />
                                     <ComboBox Height="25" FontSize="16" Margin="0 5 0 5"
-                                              Padding="0 0 0 0">
-                                        <ComboBoxItem>qwertyu</ComboBoxItem>
-                                        <ComboBoxItem>qwertyu</ComboBoxItem>
-                                        <ComboBoxItem>qwertyu</ComboBoxItem>
-                                        <ComboBoxItem>qwertyu</ComboBoxItem>
+                                              Padding="0 0 0 0"
+                                              ItemsSource="{Binding DataContext.reportUsageIndicatorFilter, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                              SelectedItem="{Binding reportUsageIndicatorSelected}">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding value}"/>
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
                                     </ComboBox>
                                 </StackPanel>
                             </DataTemplate>
@@ -352,11 +371,14 @@
                                                TextAlignment="Center"
                                                HorizontalAlignment="Stretch" />
                                     <ComboBox Height="25" FontSize="16" Margin="0 5 0 5"
-                                              Padding="0 0 0 0">
-                                        <ComboBoxItem>qwertyu</ComboBoxItem>
-                                        <ComboBoxItem>qwertyu</ComboBoxItem>
-                                        <ComboBoxItem>qwertyu</ComboBoxItem>
-                                        <ComboBoxItem>qwertyu</ComboBoxItem>
+                                              Padding="0 0 0 0"
+                                              ItemsSource="{Binding DataContext.uploadDeadlineFilter, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                              SelectedItem="{Binding uploadDeadlineSelected}">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding value}"/>
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
                                     </ComboBox>
                                 </StackPanel>
                             </DataTemplate>
