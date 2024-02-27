@@ -37,11 +37,18 @@
                     <MenuItem Header="Copy" />
                     <MenuItem Header="Paste" />
                 </MenuItem>
+
+                <MenuItem Header="_Settings">
+                    <MenuItem Header="Theme" />
+                    <MenuItem Header="Paste" />
+                </MenuItem>
+
             </Menu>
             <actipro:ToggleThemeButton Grid.Column="1" HorizontalAlignment="Right" />
         </Grid>
         <TabControl Margin="5" TabStripPlacement="Left">
             <TabItem Header="Показатели" FontSize="16">
+
                 <views:KeyfigureC/>
             </TabItem>
             <TabItem Header="Справочники" FontSize="16">
@@ -50,8 +57,6 @@
             <TabItem Header="Отчеты" FontSize="16">
                 <views:ReportC/>
             </TabItem>
-
-
         </TabControl>
     </DockPanel>
 
