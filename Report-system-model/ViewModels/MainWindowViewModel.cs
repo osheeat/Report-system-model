@@ -18,6 +18,7 @@ using ReactiveUI.Fody.Helpers;
 using SkiaSharp;
 using Report_system_model.Views;
 
+
 namespace Report_system_model.ViewModels;
 
 public class MainWindowViewModel : ViewModelBase
@@ -29,7 +30,9 @@ public class MainWindowViewModel : ViewModelBase
 
     [Reactive] public ObservableCollection<KeyfigureModel> keyfigureModels { get; set; }
     [Reactive] public ObservableCollection<KeyfigureModel> staticKeyfigureModels { get; set; }
+
     [Reactive] public KeyfigureModel SelectedKeyfigureModel { get; set; }
+
     [Reactive] public string searchString { get; set; }
     private List<KeyfigureModel> keyList;
     public ReactiveCommand<Unit, Unit> ButtonClickCommand { get; private set; }
@@ -42,6 +45,8 @@ public class MainWindowViewModel : ViewModelBase
         SelectedKeyfigureModel = new KeyfigureModel();
         staticKeyfigureModels = new ObservableCollection<KeyfigureModel>(keyList);
         keyfigureModels = new ObservableCollection<KeyfigureModel>(keyList);
+        ButtonClickCommand_1 = ReactiveCommand.Create<KeyfigureModel, Unit>(Execute);
+
 
         ButtonClickCommand = ReactiveCommand.Create(OpenNewWindowButton_Click);
     }
@@ -49,6 +54,5 @@ public class MainWindowViewModel : ViewModelBase
     {
         KeyfigureEditWindow newWindow = new KeyfigureEditWindow();
         newWindow.Show();
-
     }
 }

@@ -8,8 +8,10 @@
         xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
         xmlns:views="clr-namespace:Report_system_model.Views"
         Icon="/Assets/avalonia-logo.ico"
+
         Title="{Binding currModel.BasicInformation.Keyfigure.SAPCode}"
         Title="KeyfigureEditWindow"
+
 
         x:DataType="vm:KeyfigureEditViewModel">
     <Window.Styles>
@@ -18,6 +20,7 @@
         <actipro:ModernTheme Includes="Pro" />
     </Window.Styles>
     <Design.DataContext>
+
         <vm:KeyfigureEditViewModel />
     </Design.DataContext>
     <TabControl Margin="5" TabStripPlacement="Top">
@@ -150,5 +153,6 @@
             </Border>
         </Grid>
     </DockPanel>
+
 
 </Window>

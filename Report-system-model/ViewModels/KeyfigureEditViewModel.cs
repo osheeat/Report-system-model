@@ -17,6 +17,7 @@ using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 
 using Report_system_model.DBModels;
+
 using SkiaSharp;
 using Report_system_model.Views;
 using ValueType = Report_system_model.DBModels.ValueType;
@@ -56,6 +57,7 @@ public class KeyfigureEditViewModel
         currModel = selectedModel;
         var dbContext = new MyDbContext();
         dataStatusList = new ObservableCollection<DataStatus>(dbContext.DataStatuss.ToList());
+
         valueTypeList = new ObservableCollection<ValueType>(dbContext.ValueTypes.ToList());
         currencyUnitList = new ObservableCollection<CurrencyUnit>(dbContext.CurrencyUnits.ToList());
         keyfigureCategoryList = new ObservableCollection<KeyfigureCategory>(dbContext.KeyfigureCategories.ToList());

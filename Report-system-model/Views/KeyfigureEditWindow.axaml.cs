@@ -26,6 +26,5 @@ public partial class KeyfigureEditWindow : Window
     public KeyfigureEditWindow()
     {
         InitializeComponent();
-
     }
 }

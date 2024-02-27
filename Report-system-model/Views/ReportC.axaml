@@ -5,59 +5,404 @@
              xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
              xmlns:viewModels="clr-namespace:Report_system_model.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="Report_system_model.Views.ReportC">
+             x:Class="Report_system_model.Views.ReportC"
+             x:DataType="viewModels:ReportCVM" x:CompileBindings="False">
+             
     <UserControl.Styles>
         <FluentTheme />
         <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml" />
         <actipro:ModernTheme Includes="Pro" />
     </UserControl.Styles>
     <Design.DataContext>
-        <viewModels:MainWindowViewModel />
+        <viewModels:ReportCVM />
     </Design.DataContext>
-    <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="4*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
+    <DockPanel>
+                    <Border DockPanel.Dock="Top">
+                        <Expander Margin="0, 0, 0, 10">
+                            <Expander.Header>
+                                Выбор параметров
+                            </Expander.Header>
+                            <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*,*,*,*,*,*" Margin="4">
+                                <Border Grid.Row="0" Grid.Column="0" Margin="0, 0, 10, 0">
+                                    <CheckBox x:Name="Box0" Checked="IsIndicatorCheckBoxChecked"
+                                              Unchecked="IsIndicatorCheckBoxChecked"
+                                              Content="Индикатор ФВ/Отчета" />
+                                </Border>
+                                <Border Grid.Row="0" Grid.Column="1" Margin="0, 0, 10, 0">
+                                    <CheckBox x:Name="Box1" Checked="IsReleaseCheckBoxChecked"
+                                              Unchecked="IsReleaseCheckBoxChecked"
+                                              Content="Релиз" />
+                                </Border>
+                                <Border Grid.Row="0" Grid.Column="2" Margin="0, 0, 10, 0">
+                                    <CheckBox x:Name="Box2"
+                                              Checked="IsReportCodeCheckBoxChecked"
+                                              Unchecked="IsReportCodeCheckBoxChecked"
+                                              Content="Код отчета САО/ФВ" />
+                                </Border>
+                                <Border Grid.Row="0" Grid.Column="3" Margin="0, 0, 10, 0">
+                                    <CheckBox x:Name="Box3"
+                                              Checked="IsReportIdCheckBoxChecked"
+                                              Unchecked="IsReportIdCheckBoxChecked"
+                                              Content="ID отчета/ФВ" />
+                                </Border>
+                                <Border Grid.Row="0" Grid.Column="4" Margin="0, 0, 10, 0">
+                                    <CheckBox x:Name="Box4"
+                                              Checked="IsReportTitleCheckBoxChecked"
+                                              Unchecked="IsReportTitleCheckBoxChecked"
+                                              Content="Наименование отчета/ФВ" />
+                                </Border>
+                                <Border Grid.Row="0" Grid.Column="5" Margin="0, 0, 10, 0">
+                                    <CheckBox x:Name="Box5" Checked="IsPeriodicityCheckBoxChecked"
+                                              Unchecked="IsPeriodicityCheckBoxChecked"
+                                              Content="Периодичность формирования отчета" />
+                                </Border>
+                                <Border Grid.Row="1" Grid.Column="0" Margin="0, 10, 10, 0">
+                                    <CheckBox x:Name="Box6" Checked="IsBusinessProcessCheckBoxChecked"
+                                              Unchecked="IsBusinessProcessCheckBoxChecked"
+                                              Content="Бизнес-процесс в рамках которого формируется отчет/Направление ФВ" />
+                                </Border>
+                                <Border Grid.Row="1" Grid.Column="1" Margin="0, 10, 10, 0">
+                                    <CheckBox x:Name="Box7" Checked="IsKeyfigureCodeCheckBoxChecked"
+                                              Unchecked="IsKeyfigureCodeCheckBoxChecked"
+                                              Content="Код показателя to be" />
+                                </Border>
+                                <Border Grid.Row="1" Grid.Column="2" Margin="0, 10, 10, 0">
+                                    <CheckBox x:Name="Box8" Checked="IsKeyfigTitleChecked"
+                                              Unchecked="IsKeyfigTitleChecked"
+                                              Content="Наименование показателя" />
+                                </Border>
+                                <Border Grid.Row="1" Grid.Column="3" Margin="0, 10, 10, 0">
+                                    <CheckBox x:Name="Box9" Checked="IsDataStatusCheckBoxChecked"
+                                              Unchecked="IsDataStatusCheckBoxChecked"
+                                              Content="Статус данных" />
+                                </Border>
+                                <Border Grid.Row="1" Grid.Column="4" Margin="0, 10, 10, 0">
+                                    <CheckBox x:Name="Box10" Checked="IsKeyfigTypeCheckBoxChecked"
+                                              Unchecked="IsKeyfigTypeCheckBoxChecked"
+                                              Content="Тип показателя" />
+                                </Border>
+                                <Border Grid.Row="1" Grid.Column="5" Margin="0, 10, 10, 0">
+                                    <CheckBox x:Name="Box11" Checked="IsAnalytAttributeTitleChecked"
+                                              Unchecked="IsAnalytAttributeTitleChecked"
+                                              Content="Наименование аналитического признака" />
+                                </Border>
+                            </Grid>
+                        </Expander>
+                    </Border>
+                    <Border DockPanel.Dock="Top">
+                    
+                        <DataGrid Name="MainDataGrid" ItemsSource="{Binding  ReportModels}"
+                                  SelectedItem="{Binding SelectedKeyfigureModel}"
+                                  IsReadOnly="True"
+                                  IsScrollInertiaEnabled="True"
+                                  CanUserReorderColumns="False"
+                                  CanUserResizeColumns="True"
+                                  CanUserSortColumns="True"
+                                  GridLinesVisibility="All"
+                                  HorizontalScrollBarVisibility="Hidden"
+                                  BorderThickness="0.1 0.1 0.1 0.1 " BorderBrush="Gray">
+                            <DataGrid.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="Просмотр"
+                                              Command="{Binding ButtonClickCommand_1}"
+                                              CommandParameter="{Binding SelectedKeyfigureModel}" />
+                                    <MenuItem Header="Скопировать" />
+                                </ContextMenu>
+                            </DataGrid.ContextMenu>
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn SortMemberPath="BasicInformation.Keyfigure.SAPCode"
+                                                        CanUserSort="True" MaxWidth="200" MinWidth="100" Width="*">
+                                    <DataGridTemplateColumn.HeaderTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Vertical">
+                                                <TextBlock Text="Индикатор ФВ/Отчета"
+                                                           TextAlignment="Center"
+                                                           HorizontalAlignment="Stretch" />
+                                                
+                                                <ComboBox x:Name="MycomboBox" FontSize="16" Margin="0 5 0 5" Padding="0 0 0 0" 
+                                                          ItemsSource="{Binding DataContext.ReportIndicators, RelativeSource={RelativeSource AncestorType=UserControl}}">
+                                                    <ComboBox.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <TextBlock Text="{Binding value}"></TextBlock>
+                                                        </DataTemplate>
+                                                    </ComboBox.ItemTemplate>
+                                                </ComboBox>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Margin="5 0 0 0" HorizontalAlignment="Center"
+                                                       TextAlignment="Center"
+                                                       Text="{Binding  ReportIndicatorId}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn SortMemberPath="BasicInformation.Keyfigure.FullName"
+                                                        CanUserSort="True" MinWidth="100" Width="*">
+                                    <DataGridTemplateColumn.HeaderTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Vertical">
+                                                <TextBlock Text="Релиз"
+                                                           TextAlignment="Center"
+                                                           HorizontalAlignment="Stretch" />
+                                                <ComboBox x:Name="MycomboBox" FontSize="16" Margin="0 5 0 5" Padding="0 0 0 0" 
+                                                          ItemsSource="{Binding DataContext.ReportReleases, RelativeSource={RelativeSource AncestorType=UserControl}}"  ZIndex="1000">
+                                                    <ComboBox.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <TextBlock Text="{Binding value}"></TextBlock>
+                                                        </DataTemplate>
+                                                    </ComboBox.ItemTemplate>
+                                                </ComboBox>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Margin="5 0 0 0" HorizontalAlignment="Left" TextAlignment="Left"
+                                                       Text="{Binding VirtualRelease.value}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn SortMemberPath="BasicInformation.Keyfigure.ShortName"
+                                                        CanUserSort="True" MinWidth="100" Width="*">
+                                    <DataGridTemplateColumn.HeaderTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Vertical">
+                                                <TextBlock Text="Код отчета САО/ФВ"
+                                                           TextAlignment="Center"
+                                                           HorizontalAlignment="Stretch" />
+                                                <TextBox Height="25" FontSize="16" Margin="0 5 0 5"
+                                                         Padding="0 0 0 0"
+                                                         HorizontalAlignment="Stretch" />
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Margin="5 0 0 0" HorizontalAlignment="Left" TextAlignment="Left"
+                                                       Text="{Binding VirtualReportCode.value}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn SortMemberPath="BasicInformation.DataStatus.value"
+                                                        CanUserSort="True" MinWidth="100" Width="*">
+                                    <DataGridTemplateColumn.HeaderTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Vertical">
+                                                <TextBlock Text="ID отчета/ФВ"
+                                                           TextAlignment="Center"
+                                                           HorizontalAlignment="Stretch" />
+                                                <TextBox Height="25" FontSize="16" Margin="0 5 0 5"
+                                                                                                         Padding="0 0 0 0"
+                                                                                                         HorizontalAlignment="Stretch" />
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Margin="5 0 0 0" HorizontalAlignment="Left" TextAlignment="Left"
+                                                       Text="{Binding VirtualReportId.value}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn SortMemberPath="ServiceInformation.CurrencyUnit.value"
+                                                        CanUserSort="True" MinWidth="100" Width="*">
+                                    <DataGridTemplateColumn.HeaderTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Vertical">
+                                                <TextBlock Text="Наименование отчета/ФВ"
+                                                           TextAlignment="Center"
+                                                           HorizontalAlignment="Stretch" />
+                                                <TextBox Name="FullNameStr" Height="25" FontSize="16" Margin="0 5 0 5"
+                                                         Padding="0 0 0 0"
+                                                         HorizontalAlignment="Stretch" />
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Margin="5 0 0 0" HorizontalAlignment="Left" TextAlignment="Left"
+                                                       Text="{Binding VirtualReportTitle.value}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn SortMemberPath="ServiceInformation.ValueType.value"
+                                                        CanUserSort="True" MinWidth="100" Width="*">
+                                    <DataGridTemplateColumn.HeaderTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Vertical">
+                                                <TextBlock Text="Периодичность формирования отчета"
+                                                           TextAlignment="Center"
+                                                           HorizontalAlignment="Stretch" />
+                                                <ComboBox x:Name="MycomboBox" FontSize="16" Margin="0 5 0 5" Padding="0 0 0 0" 
+                                                          ItemsSource="{Binding DataContext.FormationPeriodicity, RelativeSource={RelativeSource AncestorType=UserControl}}">
+                                                    <ComboBox.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <TextBlock Text="{Binding value}"></TextBlock>
+                                                        </DataTemplate>
+                                                    </ComboBox.ItemTemplate>
+                                                </ComboBox>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Margin="5 0 0 0" HorizontalAlignment="Left" TextAlignment="Left"
+                                                       Text="{Binding VirtualFormationFrequency.value}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn SortMemberPath="ServiceInformation.MethodOfObtaining.value"
+                                                        CanUserSort="True" MinWidth="100" Width="*">
+                                    <DataGridTemplateColumn.HeaderTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Vertical">
+                                                <TextBlock Text="Бизнес-процесс в рамках которого формируется отчет/Направление ФВ"
+                                                           TextAlignment="Center"
+                                                           HorizontalAlignment="Stretch" />
+                                                <ComboBox x:Name="MycomboBox" FontSize="16" Margin="0 5 0 5" Padding="0 0 0 0" 
+                                                          ItemsSource="{Binding DataContext.BusinessProcess, RelativeSource={RelativeSource AncestorType=UserControl}}">
+                                                    <ComboBox.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <TextBlock Text="{Binding value}"></TextBlock>
+                                                        </DataTemplate>
+                                                    </ComboBox.ItemTemplate>
+                                                </ComboBox>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Margin="5 0 0 0" HorizontalAlignment="Left" TextAlignment="Left"
+                                                       Text="{Binding VirtualBusinessProcess.value}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn SortMemberPath="ServiceInformation.KeyfigureCategory.value"
+                                                        CanUserSort="True" MinWidth="100" Width="*">
+                                    <DataGridTemplateColumn.HeaderTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Vertical">
+                                                <TextBlock Text="Код показателя to be"
+                                                           TextAlignment="Center"
+                                                           HorizontalAlignment="Stretch" />
+                                                <TextBox Height="25" FontSize="16" Margin="0 5 0 5"
+                                                         Padding="0 0 0 0"
+                                                         HorizontalAlignment="Stretch" />
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Margin="5 0 0 0" HorizontalAlignment="Left" TextAlignment="Left"
+                                                       Text="{Binding VirtualKeyfigure.SAPCode}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn SortMemberPath="ServiceInformation.LoadTime.value"
+                                                        CanUserSort="True" MinWidth="100" Width="*">
+                                    <DataGridTemplateColumn.HeaderTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Vertical">
+                                                <TextBlock Text="Наименование показателя"
+                                                           TextAlignment="Center"
+                                                           HorizontalAlignment="Stretch" />
+                                                <TextBox Height="25" FontSize="16" Margin="0 5 0 5"
+                                                         Padding="0 0 0 0"
+                                                         HorizontalAlignment="Stretch" />
+                                            </StackPanel>
+                                        </DataTemplate>
+                                        
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Margin="5 0 0 0" HorizontalAlignment="Left" TextAlignment="Left"
+                                                       Text="{Binding VirtualKeyfigure.FullName}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn SortMemberPath="BasicInformation.Keyfigure.SAPCode"
+                                                        CanUserSort="True" MaxWidth="200" MinWidth="100" Width="*">
+                                    <DataGridTemplateColumn.HeaderTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Vertical">
+                                                <TextBlock Text="Статус данных"
+                                                           TextAlignment="Center"
+                                                           HorizontalAlignment="Stretch" />
+                                                <ComboBox x:Name="MycomboBox" FontSize="16" Margin="0 5 0 5" Padding="0 0 0 0" 
+                                                          ItemsSource="{Binding DataContext.DataStatuses, RelativeSource={RelativeSource AncestorType=UserControl}}">
+                                                    <ComboBox.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <TextBlock Text="{Binding value}"></TextBlock>
+                                                        </DataTemplate>
+                                                    </ComboBox.ItemTemplate>
+                                                </ComboBox>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Margin="5 0 0 0" HorizontalAlignment="Center"
+                                                       TextAlignment="Center"
+                                                       Text="{Binding VirtualKeyfigure.VirtualDataStatus.value}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn SortMemberPath="BasicInformation.Keyfigure.SAPCode"
+                                                        CanUserSort="True" MaxWidth="200" MinWidth="100" Width="*">
+                                    <DataGridTemplateColumn.HeaderTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Vertical">
+                                                <TextBlock Text="Тип показателя"
+                                                           TextAlignment="Center"
+                                                           HorizontalAlignment="Stretch" />
+                                                <ComboBox x:Name="MycomboBox" FontSize="16" Margin="0 5 0 5" Padding="0 0 0 0" 
+                                                          ItemsSource="{Binding DataContext.KeyfigureTypes, RelativeSource={RelativeSource AncestorType=UserControl}}">
+                                                    <ComboBox.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <TextBlock Text="{Binding value}"></TextBlock>
+                                                        </DataTemplate>
+                                                    </ComboBox.ItemTemplate>
+                                                </ComboBox>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Margin="5 0 0 0" HorizontalAlignment="Center"
+                                                       TextAlignment="Center"
+                                                       Text="{Binding VirtualKeyfigure.VirtualKeyfigureCategory.value}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn SortMemberPath="BasicInformation.Keyfigure.SAPCode"
+                                                        CanUserSort="True" MaxWidth="200" MinWidth="100" Width="*">
+                                    <DataGridTemplateColumn.HeaderTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Vertical">
+                                                <TextBlock Text="Наименование аналитического признака"
+                                                           TextAlignment="Center"
+                                                           HorizontalAlignment="Stretch" />
+                                                <TextBox Name="FullNameStr" Height="25" FontSize="16" Margin="0 5 0 5"
+                                                         Padding="0 0 0 0"
+                                                         HorizontalAlignment="Stretch" />
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Margin="5 0 0 0" HorizontalAlignment="Center"
+                                                       TextAlignment="Center"
+                                                       Text="{Binding VirtualAnalyticalFeature.value}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                
+                                
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Border>
+                </DockPanel>
 
-                    <!-- Левая часть -->
-
-
-                    <!-- Правая часть -->
-                    <TabControl Grid.Column="0" Margin="0 0 10 0">
-                        <TabItem Header="Генерация">
-                            <!-- Здесь разместите элемент для отображения информации о файлах -->
-                            <DataGrid Name="fileInfoDataGrid">
-                                <!-- Задайте столбцы и привязки к вашим данным -->
-                            </DataGrid>
-                        </TabItem>
-                        <TabItem Header="Информация об отчете">
-                            <!-- Здесья можно разместить другую информацию или управляющие элементы -->
-                        </TabItem>
-                        <TabItem Header="Показатели">
-                            <!-- Здесь можно разместить другую информацию или управляющие элементы -->
-                        </TabItem>
-                    </TabControl>
-                    <TreeView Grid.Column="1" Name="foldersTreeView" FlowDirection="RightToLeft">
-                        <TreeViewItem Header="ОХД БС Переработка и сбыт">
-                            <TreeViewItem Header="ОХД БС Переработка и сбыт">
-                                <TreeViewItem Header="БКСН" />
-                                <TreeViewItem Header="БННГ" />
-                                <TreeViewItem Header="БПП" />
-                                <TreeViewItem Header="БЭ" />
-                                <TreeViewItem Header="БЭП" />
-                            </TreeViewItem>
-                        </TreeViewItem>
-                        <TreeViewItem Header="Папка 2">
-                            <TreeViewItem Header="Подпапка 2.1">
-                                <TreeViewItem Header="Вложенная подпапка 2.1.1" />
-                                <TreeViewItem Header="Вложенная подпапка 2.1.2" />
-                            </TreeViewItem>
-                            <TreeViewItem Header="Подпапка 2.2">
-                                <TreeViewItem Header="Вложенная подпапка 2.2.1" />
-                                <TreeViewItem Header="Вложенная подпапка 2.2.2" />
-                            </TreeViewItem>
-                        </TreeViewItem>
-                    </TreeView>
-                </Grid>
 </UserControl>
