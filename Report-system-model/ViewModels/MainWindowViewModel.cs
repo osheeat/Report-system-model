@@ -18,11 +18,15 @@ using ReactiveUI.Fody.Helpers;
 using SkiaSharp;
 using Report_system_model.Views;
 
-
 namespace Report_system_model.ViewModels;
 
 public class MainWindowViewModel : ViewModelBase
 {
+
+    public MainWindowViewModel()
+    {
+        
+
     [Reactive] public ObservableCollection<KeyfigureModel> keyfigureModels { get; set; }
     [Reactive] public ObservableCollection<KeyfigureModel> staticKeyfigureModels { get; set; }
     [Reactive] public KeyfigureModel SelectedKeyfigureModel { get; set; }
@@ -45,5 +49,6 @@ public class MainWindowViewModel : ViewModelBase
     {
         KeyfigureEditWindow newWindow = new KeyfigureEditWindow();
         newWindow.Show();
+
     }
 }
