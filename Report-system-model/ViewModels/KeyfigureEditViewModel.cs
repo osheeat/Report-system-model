@@ -15,10 +15,13 @@ using Avalonia.Media;
 using Microsoft.EntityFrameworkCore;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
+
 using Report_system_model.DBModels;
 using SkiaSharp;
 using Report_system_model.Views;
 using ValueType = Report_system_model.DBModels.ValueType;
+using SkiaSharp;
+using Report_system_model.Views;
 
 
 namespace Report_system_model.ViewModels;
@@ -99,6 +102,18 @@ public class KeyfigureEditViewModel
         {
             selectedReportUsageIndicator = reportUsageIndicatorList.FirstOrDefault(value => 
                 value.value == currModel.ServiceInformation.ReportUsageIndicator.value);
+    [Reactive] public KeyfigureModel currModel { get; set; }
+    public KeyfigureEditViewModel(KeyfigureModel selectedModel)
+    {
+        currModel = selectedModel;
+        try
+        {
+            Console.WriteLine(currModel.BasicInformation.Keyfigure.FullName);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
         }
     }
 }

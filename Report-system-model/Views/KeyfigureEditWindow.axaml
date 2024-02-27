@@ -9,6 +9,8 @@
         xmlns:views="clr-namespace:Report_system_model.Views"
         Icon="/Assets/avalonia-logo.ico"
         Title="{Binding currModel.BasicInformation.Keyfigure.SAPCode}"
+        Title="KeyfigureEditWindow"
+
         x:DataType="vm:KeyfigureEditViewModel">
     <Window.Styles>
         <FluentTheme />
@@ -137,5 +139,16 @@
         <TabItem Header="Использование в отчетах" FontSize="14">
         </TabItem>
     </TabControl>
+        <views:KeyfigureEditWindow />
+    </Design.DataContext>
+    <DockPanel>
+        <Grid DockPanel.Dock="Top">
+            <Border>
+                <Border>
+                    <TextBlock Text="{Binding currModel.BasicInformation.Keyfigure.FullName}"/>
+                </Border>
+            </Border>
+        </Grid>
+    </DockPanel>
 
 </Window>
