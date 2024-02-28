@@ -20,11 +20,11 @@ public partial class ReportC : UserControl
     {
         InitializeComponent();
         DataContext = new ReportCVM();
-        MainDataGrid.Columns[0].IsVisible = false;
+        MainDataGrid.Columns[0].IsVisible = true;
         MainDataGrid.Columns[1].IsVisible = false;
-        MainDataGrid.Columns[2].IsVisible = false;
+        MainDataGrid.Columns[2].IsVisible = true;
         MainDataGrid.Columns[3].IsVisible = false;
-        MainDataGrid.Columns[4].IsVisible = false;
+        MainDataGrid.Columns[4].IsVisible = true;
         MainDataGrid.Columns[5].IsVisible = false;
         MainDataGrid.Columns[6].IsVisible = false;
         MainDataGrid.Columns[7].IsVisible = false;
