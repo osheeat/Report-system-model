@@ -21,8 +21,30 @@ using Report_system_model.Views;
 
 namespace Report_system_model.ViewModels;
 
+class ReportPComparer : IEqualityComparer<Report>
+{
+    public bool Equals(Report x, Report y)
+    {
+        if (ReferenceEquals(x, y)) return true;
+        
+        if (ReferenceEquals(x, null)) return false;
+        if (ReferenceEquals(y, null)) return false;
+        
+        if (x.GetType() != y.GetType()) return false;
+        
+        return x.ReportIdId == y.ReportIdId && x.ReportTitleId == y.ReportTitleId;
+    }
+
+    public int GetHashCode(Report obj)
+    {
+        return HashCode.Combine(obj.ReportIdId, obj.ReportTitleId);
+    }
+}
+
 public class ReportCVM : ViewModelBase
 {
+    [Reactive] public ObservableCollection<Report> ReportModelsToList { get; set; }
+    [Reactive] public ObservableCollection<ReportId> ReportIDs { get; set; }
     [Reactive] public ObservableCollection<Report> ReportModels { get; set; }
     [Reactive] public ObservableCollection<ReportIndicator> ReportIndicators { get; set; }
     [Reactive] public ObservableCollection<Release> ReportReleases { get; set; }
@@ -59,7 +81,12 @@ public class ReportCVM : ViewModelBase
         var bpItems = Context.BusinessProcesses.ToList();
         var statuses = Context.DataStatuss.ToList();
         var categories = Context.KeyfigureCategories.ToList();
+        var ids = Context.ReportIds.ToList();
 
+        var models = items.Distinct(new ReportPComparer());
+
+        ReportModelsToList = new(models);
+        ReportIDs = new(ids);
         ReportIndicators = new(cbItems);
         ReportReleases = new(relItems);
         FormationPeriodicity = new(periodItems);
@@ -69,5 +96,7 @@ public class ReportCVM : ViewModelBase
         
         
         ReportModels = new(items);
+        
+        
     }
 }

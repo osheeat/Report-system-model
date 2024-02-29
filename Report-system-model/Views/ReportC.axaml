@@ -415,14 +415,22 @@
                         <ColumnDefinition Width="2*"/>
                         <ColumnDefinition Width="5*"/>
                     </Grid.ColumnDefinitions>
-                    <StackPanel Grid.Column="0" Margin="5">
-                        <ListBox 
-                            ItemsSource="{Binding DataContext.ReportIndicators}">
-                            <DataTemplate>
-                                <TextBlock Text="{Binding}"></TextBlock>
-                            </DataTemplate>
+                    <Grid RowDefinitions="Auto, *">
+                        <TextBox Margin="5"  Grid.Row="0"></TextBox>
+                        <ListBox Grid.Row="1" Grid.Column="0" Margin="5" 
+                                 ItemsSource="{Binding DataContext.ReportModelsToList, RelativeSource={RelativeSource AncestorType=UserControl}}">
+                        
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock>
+                                        <Run Text="{Binding ReportIdId, Mode=OneWay}"/>
+                                        <Run Text="{Binding ReportTitleId, Mode=OneWay}"/>
+                                    </TextBlock>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
                         </ListBox>
-                    </StackPanel>
+                    </Grid>
+                   
 
                     <!-- Правая часть -->
                     <Grid Grid.Column="1">
