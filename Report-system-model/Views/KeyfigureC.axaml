@@ -5,15 +5,15 @@
              xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
              xmlns:viewModels="clr-namespace:Report_system_model.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="Report_system_model.Views.KeyfigureC"
-             x:DataType="viewModels:MainWindowViewModel">
+             x:CompileBindings="False"
+             x:Class="Report_system_model.Views.KeyfigureC">
     <UserControl.Styles>
         <FluentTheme />
         <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml" />
         <actipro:ModernTheme Includes="Pro" />
     </UserControl.Styles>
     <Design.DataContext>
-        <viewModels:MainWindowViewModel />
+        <viewModels:KeyfigureCVM />
     </Design.DataContext>
     <DockPanel>
                     <Border DockPanel.Dock="Top">
