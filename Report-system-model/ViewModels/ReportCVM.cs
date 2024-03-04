@@ -82,7 +82,7 @@ public class ReportCVM : ViewModelBase
         var statuses = Context.DataStatuss.ToList();
         var categories = Context.KeyfigureCategories.ToList();
         var ids = Context.ReportIds.ToList();
-
+        
         var models = items.Distinct(new ReportPComparer());
 
         ReportModelsToList = new(models);
@@ -94,8 +94,20 @@ public class ReportCVM : ViewModelBase
         DataStatuses = new(statuses);
         KeyfigureTypes = new(categories);
         
+        //написать запрос по которому в списке отчетов будут только те, которые фомируются согласно выбранному БП
+        var itemsForBP = Context.Reports
+            .Include(x => x.VirtualRelease)
+            .Include(x => x.VirtualReportCode)
+            .Include(x => x.VirtualReportId)
+            .Include(x => x.VirtualReportTitle)
+            .Include(x => x.VirtualFormationFrequency)
+            .Include(x => x.VirtualBusinessProcess)
+            .Include(x => x.VirtualKeyfigure).ThenInclude(y => y.VirtualDataStatus)
+            .Include(x => x.VirtualKeyfigure).ThenInclude(y => y.VirtualKeyfigureCategory)
+            .Include(x => x.VirtualAnalyticalFeature)
+            .ToList();
         
-        ReportModels = new(items);
+        ReportModels = new(itemsForBP);
         
         
     }
