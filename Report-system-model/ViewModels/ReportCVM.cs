@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reactive;
+using System.Reactive.Linq;
 using System.Threading;
 using Avalonia.Controls;
 using Avalonia.Input;
@@ -52,11 +53,17 @@ public class ReportCVM : ViewModelBase
     [Reactive] public ObservableCollection<BusinessProcess> BusinessProcess { get; set; }
     [Reactive] public ObservableCollection<DataStatus> DataStatuses { get; set; }
     [Reactive] public ObservableCollection<KeyfigureCategory> KeyfigureTypes { get; set; }
+    
+    [Reactive] public ObservableCollection<Report> ReportsFilterByBusinessProcess { get; set; }
     [Reactive] KeyfigureModel SelectedKeyfigureModel { get; set; }
     [Reactive] public string searchString { get; set; }
     public ReactiveCommand<KeyfigureModel, Unit> ButtonClickCommand_1 { get; private set; }
 
     private MyDbContext Context;
+    
+    [Reactive] public BusinessProcess? SelectedBusinessProcess { get; set; }
+    
+    [Reactive] public string? ReportTitleFilter { get; set; }
     
     public ReportCVM()
     {
@@ -86,6 +93,7 @@ public class ReportCVM : ViewModelBase
         var models = items.Distinct(new ReportPComparer());
 
         ReportModelsToList = new(models);
+        
         ReportIDs = new(ids);
         ReportIndicators = new(cbItems);
         ReportReleases = new(relItems);
@@ -108,7 +116,23 @@ public class ReportCVM : ViewModelBase
             .ToList();
         
         ReportModels = new(itemsForBP);
+
+        this.WhenAnyValue(vm => vm.SelectedBusinessProcess, vm => vm.ReportTitleFilter)
+            .Do(val => F(val.Item1, val.Item2))
+            .Subscribe();
+    }
+
+    private void F(BusinessProcess? bp, string? filter)
+    {
+        if (bp is null) return;
+        filter ??= "";
+        
+        var items = ReportModelsToList
+            .Where(r => r.BusinessProcessId == bp.value && r.ReportTitleId.ToLower().Contains(filter.ToLower()));
+        ReportsFilterByBusinessProcess = new(items);
+
         
         
     }
+    
 }
