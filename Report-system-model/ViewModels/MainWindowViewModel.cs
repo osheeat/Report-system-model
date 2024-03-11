@@ -18,13 +18,15 @@ using ReactiveUI.Fody.Helpers;
 using SkiaSharp;
 using Report_system_model.Views;
 
+
 namespace Report_system_model.ViewModels;
 
 public class MainWindowViewModel : ViewModelBase
 {
+
     public MainWindowViewModel()
     {
-        
+
 
     }
 }
