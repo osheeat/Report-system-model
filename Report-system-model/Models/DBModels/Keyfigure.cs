@@ -9,7 +9,6 @@ public class Keyfigure
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int id { get; set; }
-
     [Column("sap_code")] [MaxLength(25)] public string SAPCode { get; set; }
     [Column("full_name")] [MaxLength(250)] public string FullName { get; set; }
     [Column("short_name")] [MaxLength(25)] public string ShortName { get; set; }
@@ -59,7 +58,6 @@ public class Keyfigure
     [Column("data_status_id")]
     [MaxLength(25)]
     public string DataStatusId { get; set; }
-
     public virtual DataStatus? VirtualDataStatus { get; set; }
 
     [Column("formation_methodology")]

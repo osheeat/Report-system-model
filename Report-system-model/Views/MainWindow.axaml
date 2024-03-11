@@ -13,9 +13,7 @@
         x:Class="Report_system_model.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
-
         x:CompileBindings="False"
-
         Title="Report_system_model" MinWidth="1250" MinHeight="600">
     <Window.Styles>
         <FluentTheme />
@@ -37,18 +35,15 @@
                     <MenuItem Header="Copy" />
                     <MenuItem Header="Paste" />
                 </MenuItem>
-
                 <MenuItem Header="_Settings">
                     <MenuItem Header="Theme" />
                     <MenuItem Header="Paste" />
                 </MenuItem>
-
             </Menu>
             <actipro:ToggleThemeButton Grid.Column="1" HorizontalAlignment="Right" />
         </Grid>
         <TabControl Margin="5" TabStripPlacement="Left">
             <TabItem Header="Показатели" FontSize="16">
-
                 <views:KeyfigureC/>
             </TabItem>
             <TabItem Header="Справочники" FontSize="16">
@@ -59,5 +54,4 @@
             </TabItem>
         </TabControl>
     </DockPanel>
-
 </Window>

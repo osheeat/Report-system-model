@@ -10,8 +10,6 @@
         Icon="/Assets/avalonia-logo.ico"
 
         Title="{Binding currModel.BasicInformation.Keyfigure.SAPCode}"
-        Title="KeyfigureEditWindow"
-
 
         x:DataType="vm:KeyfigureEditViewModel">
     <Window.Styles>
@@ -20,7 +18,6 @@
         <actipro:ModernTheme Includes="Pro" />
     </Window.Styles>
     <Design.DataContext>
-
         <vm:KeyfigureEditViewModel />
     </Design.DataContext>
     <TabControl Margin="5" TabStripPlacement="Top">
@@ -142,17 +139,6 @@
         <TabItem Header="Использование в отчетах" FontSize="14">
         </TabItem>
     </TabControl>
-        <views:KeyfigureEditWindow />
-    </Design.DataContext>
-    <DockPanel>
-        <Grid DockPanel.Dock="Top">
-            <Border>
-                <Border>
-                    <TextBlock Text="{Binding currModel.BasicInformation.Keyfigure.FullName}"/>
-                </Border>
-            </Border>
-        </Grid>
-    </DockPanel>
 
 
 </Window>

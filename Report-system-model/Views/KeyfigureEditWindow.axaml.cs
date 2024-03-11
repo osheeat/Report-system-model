@@ -27,4 +27,10 @@ public partial class KeyfigureEditWindow : Window
     {
         InitializeComponent();
     }
+    
+    public KeyfigureEditWindow(KeyfigureModel obj)
+    {
+        InitializeComponent();
+        DataContext = new KeyfigureEditViewModel(obj);
+    }
 }

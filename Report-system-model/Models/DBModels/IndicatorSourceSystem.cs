@@ -13,8 +13,4 @@ public class IndicatorSourceSystem
     public virtual Company? VirtualCompany { get; set; }
     [Column("source_system_id")] public int SourceSystemId { get; set; }
     public virtual SourceSystem? VirtualSourceSystem { get; set; }
-
-    [Column("release_id")] [MaxLength(50)] public string ReleaseId { get; set; }
-    public virtual Release? VirtualRelease { get; set; }
-
 }
