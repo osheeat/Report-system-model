@@ -9,7 +9,7 @@ from sqlalchemy import create_engine
 unique_values = []
 conn = psycopg2.connect(
         host="localhost",
-        database="rsm9",
+        database="rsm",
         user="postgres",
         password="postgres"
     )
@@ -281,8 +281,8 @@ def report_filling():
 
 
 
-# fill_single_tables()
+fill_single_tables()
 # keyfigure_filiing()
-report_filling()
+# report_filling()
 # indicator_source_system_filling()
 # release_indicator_source_system_filling()

@@ -23,7 +23,7 @@ public class Report
     public virtual ReportId? VirtualReportId { get; set; }
 
     [Column("report_title_id")]
-    [MaxLength(30)] public string ReportTitleId { get; set; }
+    [MaxLength(200)] public string ReportTitleId { get; set; }
     public virtual ReportTitle? VirtualReportTitle { get; set; }
 
     [Column("business_process_id")]
