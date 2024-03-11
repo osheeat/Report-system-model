@@ -52,6 +52,7 @@ public class KeyfigureEditViewModel
     [Reactive] public UploadDeadline selectedUploadDeadline { get; set; }
     [Reactive] public ObservableCollection<ReportUsageIndicator> reportUsageIndicatorList { get; set; }
     [Reactive] public ReportUsageIndicator selectedReportUsageIndicator { get; set; }
+
     public KeyfigureEditViewModel(KeyfigureModel selectedModel)
     {
         currModel = selectedModel;
@@ -64,58 +65,54 @@ public class KeyfigureEditViewModel
         methodOfObtainingList = new ObservableCollection<MethodOfObtaining>(dbContext.MethodsOfObtaining.ToList());
         loadTimeList = new ObservableCollection<LoadTime>(dbContext.LoadTimes.ToList());
         uploadDeadlineList = new ObservableCollection<UploadDeadline>(dbContext.UploadDeadlines.ToList());
-        reportUsageIndicatorList = new ObservableCollection<ReportUsageIndicator>(dbContext.ReportUsageIndicators.ToList());
+        reportUsageIndicatorList =
+            new ObservableCollection<ReportUsageIndicator>(dbContext.ReportUsageIndicators.ToList());
         if (currModel.BasicInformation != null && currModel.BasicInformation.DataStatus != null)
         {
-            selectedDataStatus = dataStatusList.FirstOrDefault(status => 
+            selectedDataStatus = dataStatusList.FirstOrDefault(status =>
                 status.value == currModel.BasicInformation.DataStatus.value);
         }
+
         if (currModel.ServiceInformation != null && currModel.ServiceInformation.ValueType != null)
         {
-            selectedValueType = valueTypeList.FirstOrDefault(value => 
+            selectedValueType = valueTypeList.FirstOrDefault(value =>
                 value.value == currModel.ServiceInformation.ValueType.value);
         }
+
         if (currModel.ServiceInformation != null && currModel.ServiceInformation.CurrencyUnit != null)
         {
-            selectedCurrencyUnit = currencyUnitList.FirstOrDefault(value => 
+            selectedCurrencyUnit = currencyUnitList.FirstOrDefault(value =>
                 value.value == currModel.ServiceInformation.CurrencyUnit.value);
         }
+
         if (currModel.ServiceInformation != null && currModel.ServiceInformation.MethodOfObtaining != null)
         {
-            selectedMethodOfObtaining = methodOfObtainingList.FirstOrDefault(value => 
+            selectedMethodOfObtaining = methodOfObtainingList.FirstOrDefault(value =>
                 value.value == currModel.ServiceInformation.MethodOfObtaining.value);
         }
+
         if (currModel.ServiceInformation != null && currModel.ServiceInformation.KeyfigureCategory != null)
         {
-            selectedKeyfigureCategory = keyfigureCategoryList.FirstOrDefault(value => 
+            selectedKeyfigureCategory = keyfigureCategoryList.FirstOrDefault(value =>
                 value.value == currModel.ServiceInformation.KeyfigureCategory.value);
         }
+
         if (currModel.ServiceInformation != null && currModel.ServiceInformation.LoadTime != null)
         {
-            selectedLoadTime = loadTimeList.FirstOrDefault(value => 
+            selectedLoadTime = loadTimeList.FirstOrDefault(value =>
                 value.value == currModel.ServiceInformation.LoadTime.value);
         }
+
         if (currModel.ServiceInformation != null && currModel.ServiceInformation.UploadDeadline != null)
         {
-            selectedUploadDeadline = uploadDeadlineList.FirstOrDefault(value => 
+            selectedUploadDeadline = uploadDeadlineList.FirstOrDefault(value =>
                 value.value == currModel.ServiceInformation.UploadDeadline.value);
         }
+
         if (currModel.ServiceInformation != null && currModel.ServiceInformation.ReportUsageIndicator != null)
         {
-            selectedReportUsageIndicator = reportUsageIndicatorList.FirstOrDefault(value => 
+            selectedReportUsageIndicator = reportUsageIndicatorList.FirstOrDefault(value =>
                 value.value == currModel.ServiceInformation.ReportUsageIndicator.value);
-    [Reactive] public KeyfigureModel currModel { get; set; }
-    public KeyfigureEditViewModel(KeyfigureModel selectedModel)
-    {
-        currModel = selectedModel;
-        try
-        {
-            Console.WriteLine(currModel.BasicInformation.Keyfigure.FullName);
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-            throw;
         }
     }
 }
