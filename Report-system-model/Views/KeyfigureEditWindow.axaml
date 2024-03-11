@@ -11,7 +11,6 @@
 
         Title="{Binding currModel.BasicInformation.Keyfigure.SAPCode}"
 
-
         x:DataType="vm:KeyfigureEditViewModel">
     <Window.Styles>
         <FluentTheme />
@@ -19,7 +18,6 @@
         <actipro:ModernTheme Includes="Pro" />
     </Window.Styles>
     <Design.DataContext>
-
         <vm:KeyfigureEditViewModel />
     </Design.DataContext>
     <TabControl Margin="5" TabStripPlacement="Top">
@@ -141,4 +139,6 @@
         <TabItem Header="Использование в отчетах" FontSize="14">
         </TabItem>
     </TabControl>
+
+
 </Window>

@@ -96,3 +96,4 @@ public partial class KeyfigureC : UserControl
         ((KeyfigureCVM)DataContext).FullNameSearchString_OnChange(textbox.Text);
     }
 }   
+

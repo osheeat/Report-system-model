@@ -12,6 +12,7 @@ using Avalonia.Interactivity;
 using ReactiveUI.Fody.Helpers;
 using Report_system_model.ViewModels;
 
+
 namespace Report_system_model.Views;
 
 public partial class ReportC : UserControl
