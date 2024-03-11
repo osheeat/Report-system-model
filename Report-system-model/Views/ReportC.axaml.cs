@@ -3,15 +3,16 @@ using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Linq;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Controls;
 using System.Linq;
 using Avalonia.Interactivity;
+using Avalonia.VisualTree;
 using ReactiveUI.Fody.Helpers;
 using Report_system_model.ViewModels;
-
 
 namespace Report_system_model.Views;
 
@@ -21,11 +22,11 @@ public partial class ReportC : UserControl
     {
         InitializeComponent();
         DataContext = new ReportCVM();
-        MainDataGrid.Columns[0].IsVisible = false;
+        MainDataGrid.Columns[0].IsVisible = true;
         MainDataGrid.Columns[1].IsVisible = false;
-        MainDataGrid.Columns[2].IsVisible = false;
+        MainDataGrid.Columns[2].IsVisible = true;
         MainDataGrid.Columns[3].IsVisible = false;
-        MainDataGrid.Columns[4].IsVisible = false;
+        MainDataGrid.Columns[4].IsVisible = true;
         MainDataGrid.Columns[5].IsVisible = false;
         MainDataGrid.Columns[6].IsVisible = false;
         MainDataGrid.Columns[7].IsVisible = false;
@@ -34,7 +35,42 @@ public partial class ReportC : UserControl
         MainDataGrid.Columns[10].IsVisible = false;
         MainDataGrid.Columns[11].IsVisible = false;
         
+        
+        //MycomboBox.SizeChanged += CbOnSizeChanged;
+        //MycomboBox.Items.CollectionChanged += ItemsOnCollectionChanged;
     }
+    
+    //Детей не нашли (unlucky)
+    /*private void ItemsOnCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
+    {
+        F((ComboBox)sender!);
+    }
+
+    private void CbOnSizeChanged(object? sender, SizeChangedEventArgs e)
+    {
+        F((ComboBox)sender!);
+    }*/
+
+    /*private void F(ComboBox combox)
+    {
+        if (double.IsNaN(combox.Bounds.Width)) return;
+        var items = this.GetVisualDescendants()
+            .OfType<TextBlock>()
+            .Where(tb => tb.Tag != null && tb.Tag.ToString() == "hello")
+            .ToList();
+        
+        var items2 = this.GetVisualDescendants()
+            .OfType<ComboBoxItem>()
+            .ToList();
+        
+        foreach (var item in items2)
+        {
+            var tb = item as ComboBoxItem;
+            tb.MinWidth = combox.Bounds.Width;
+            tb.MaxWidth = combox.Bounds.Width;
+            tb.Width = combox.Bounds.Width;
+        }
+    }*/
     
     public ObservableCollection<string> ComboBoxItems { get; set; }
 
