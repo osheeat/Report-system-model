@@ -78,4 +78,5 @@ public partial class MainWindow : Window
     // {
     //     //((MainWindowViewModel)DataContext).SearchString_OnChange(FullNameStr.Text);
     // }
+
 }

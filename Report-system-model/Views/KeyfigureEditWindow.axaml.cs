@@ -10,6 +10,18 @@ namespace Report_system_model.Views;
 
 public partial class KeyfigureEditWindow : Window
 {
+
+    public KeyfigureEditWindow()
+    {
+        InitializeComponent();
+        DataContext = new KeyfigureEditViewModel();
+    }
+    
+    public KeyfigureEditWindow(KeyfigureModel model)
+    {
+        InitializeComponent();
+        DataContext = new KeyfigureEditViewModel(model);
+
     
     public KeyfigureEditWindow()
     {

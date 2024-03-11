@@ -30,7 +30,6 @@ public class KeyfigureEditViewModel
 #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
     {
     }
-
     [Reactive] public KeyfigureModel currModel { get; set; }
     [Reactive] public ObservableCollection<DataStatus> dataStatusList { get; set; }
     [Reactive] public DataStatus selectedDataStatus { get; set; }
