@@ -45,7 +45,7 @@ public class MyDbContext : DbContext
     public DbSet<NsiObj> NsiObjs { get; set; }
     public DbSet<ReleaseIndicatorSourceSystem> ReleaseIndicatorSourceSystems { get; set; }
     public DbSet<SourceTableInDW> SourceTableInDws { get; set; }
-    
+
 
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -54,9 +54,7 @@ public class MyDbContext : DbContext
         {
             Host = "localhost",
             Port = 5432,
-
             Database = "rsm",
-
             Username = "postgres",
             Password = "postgres",
         };
