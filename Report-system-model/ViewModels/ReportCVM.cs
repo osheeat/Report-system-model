@@ -102,7 +102,7 @@ public class ReportCVM : ViewModelBase
         DataStatuses = new(statuses);
         KeyfigureTypes = new(categories);
         
-        //написать запрос по которому в списке отчетов будут только те, которые фомируются согласно выбранному БП
+        
         var itemsForBP = Context.Reports
             .Include(x => x.VirtualRelease)
             .Include(x => x.VirtualReportCode)
@@ -118,11 +118,11 @@ public class ReportCVM : ViewModelBase
         ReportModels = new(itemsForBP);
 
         this.WhenAnyValue(vm => vm.SelectedBusinessProcess, vm => vm.ReportTitleFilter)
-            .Do(val => F(val.Item1, val.Item2))
+            .Do(val => FilterBProcesses(val.Item1, val.Item2))
             .Subscribe();
     }
 
-    private void F(BusinessProcess? bp, string? filter)
+    private void FilterBProcesses(BusinessProcess? bp, string? filter)
     {
         if (bp is null) return;
         filter ??= "";
@@ -130,9 +130,5 @@ public class ReportCVM : ViewModelBase
         var items = ReportModelsToList
             .Where(r => r.BusinessProcessId == bp.value && r.ReportTitleId.ToLower().Contains(filter.ToLower()));
         ReportsFilterByBusinessProcess = new(items);
-
-        
-        
     }
-    
 }
