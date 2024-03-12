@@ -76,7 +76,7 @@ public partial class ReportC : UserControl
 
 
     
-    private void IsIndicatorCheckBoxChecked(object? sender, RoutedEventArgs e)
+    /*private void IsIndicatorCheckBoxChecked(object? sender, RoutedEventArgs e)
     {
         if (Box0.IsChecked.Value) MainDataGrid.Columns[0].IsVisible = true;
         else MainDataGrid.Columns[0].IsVisible = false;
@@ -116,9 +116,9 @@ public partial class ReportC : UserControl
     {
         if (Box6.IsChecked.Value) MainDataGrid.Columns[6].IsVisible = true;
         else MainDataGrid.Columns[6].IsVisible = false;
-    }
+    }*/
 
-    private void IsKeyfigureCodeCheckBoxChecked(object? sender, RoutedEventArgs e)
+    /*private void IsKeyfigureCodeCheckBoxChecked(object? sender, RoutedEventArgs e)
     {
         if (Box7.IsChecked.Value) MainDataGrid.Columns[7].IsVisible = true;
         else MainDataGrid.Columns[7].IsVisible = false;
@@ -146,7 +146,7 @@ public partial class ReportC : UserControl
     {
         if (Box11.IsChecked.Value) MainDataGrid.Columns[11].IsVisible = true;
         else MainDataGrid.Columns[11].IsVisible = false;
-    }
+    }*/
     private void FullNameStrChanged(object? sender, TextChangedEventArgs e)
     {
         //((MainWindowViewModel)DataContext).SearchString_OnChange(FullNameStr.Text);
