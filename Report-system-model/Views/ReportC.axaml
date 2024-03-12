@@ -20,78 +20,7 @@
         <TabControl Margin="5">
             <TabItem Header="Список отчетов">
                 <Grid RowDefinitions="Auto, Auto">
-                    <Border DockPanel.Dock="Top" Grid.Row="0">
-                        <Expander Margin="0, 0, 0, 10">
-                            <Expander.Header>
-                                Выбор параметров
-                            </Expander.Header>
-                            <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*,*,*,*,*,*" Margin="4">
-                                <Border Grid.Row="0" Grid.Column="0" Margin="0, 0, 10, 0">
-                                    <CheckBox x:Name="Box0" Checked="IsIndicatorCheckBoxChecked"
-                                              Unchecked="IsIndicatorCheckBoxChecked"
-                                              Content="Индикатор ФВ/Отчета" />
-                                </Border>
-                                <Border Grid.Row="0" Grid.Column="1" Margin="0, 0, 10, 0">
-                                    <CheckBox x:Name="Box1" Checked="IsReleaseCheckBoxChecked"
-                                              Unchecked="IsReleaseCheckBoxChecked"
-                                              Content="Релиз" />
-                                </Border>
-                                <Border Grid.Row="0" Grid.Column="2" Margin="0, 0, 10, 0">
-                                    <CheckBox x:Name="Box2"
-                                              Checked="IsReportCodeCheckBoxChecked"
-                                              Unchecked="IsReportCodeCheckBoxChecked"
-                                              Content="Код отчета САО/ФВ" />
-                                </Border>
-                                <Border Grid.Row="0" Grid.Column="3" Margin="0, 0, 10, 0">
-                                    <CheckBox x:Name="Box3"
-                                              Checked="IsReportIdCheckBoxChecked"
-                                              Unchecked="IsReportIdCheckBoxChecked"
-                                              Content="ID отчета/ФВ" />
-                                </Border>
-                                <Border Grid.Row="0" Grid.Column="4" Margin="0, 0, 10, 0">
-                                    <CheckBox x:Name="Box4"
-                                              Checked="IsReportTitleCheckBoxChecked"
-                                              Unchecked="IsReportTitleCheckBoxChecked"
-                                              Content="Наименование отчета/ФВ" />
-                                </Border>
-                                <Border Grid.Row="0" Grid.Column="5" Margin="0, 0, 10, 0">
-                                    <CheckBox x:Name="Box5" Checked="IsPeriodicityCheckBoxChecked"
-                                              Unchecked="IsPeriodicityCheckBoxChecked"
-                                              Content="Периодичность формирования отчета" />
-                                </Border>
-                                <Border Grid.Row="1" Grid.Column="0" Margin="0, 10, 10, 0">
-                                    <CheckBox x:Name="Box6" Checked="IsBusinessProcessCheckBoxChecked"
-                                              Unchecked="IsBusinessProcessCheckBoxChecked"
-                                              Content="Бизнес-процесс в рамках которого формируется отчет/Направление ФВ" />
-                                </Border>
-                                <Border Grid.Row="1" Grid.Column="1" Margin="0, 10, 10, 0">
-                                    <CheckBox x:Name="Box7" Checked="IsKeyfigureCodeCheckBoxChecked"
-                                              Unchecked="IsKeyfigureCodeCheckBoxChecked"
-                                              Content="Код показателя to be" />
-                                </Border>
-                                <Border Grid.Row="1" Grid.Column="2" Margin="0, 10, 10, 0">
-                                    <CheckBox x:Name="Box8" Checked="IsKeyfigTitleChecked"
-                                              Unchecked="IsKeyfigTitleChecked"
-                                              Content="Наименование показателя" />
-                                </Border>
-                                <Border Grid.Row="1" Grid.Column="3" Margin="0, 10, 10, 0">
-                                    <CheckBox x:Name="Box9" Checked="IsDataStatusCheckBoxChecked"
-                                              Unchecked="IsDataStatusCheckBoxChecked"
-                                              Content="Статус данных" />
-                                </Border>
-                                <Border Grid.Row="1" Grid.Column="4" Margin="0, 10, 10, 0">
-                                    <CheckBox x:Name="Box10" Checked="IsKeyfigTypeCheckBoxChecked"
-                                              Unchecked="IsKeyfigTypeCheckBoxChecked"
-                                              Content="Тип показателя" />
-                                </Border>   
-                                <Border Grid.Row="1" Grid.Column="5" Margin="0, 10, 10, 0">
-                                    <CheckBox x:Name="Box11" Checked="IsAnalytAttributeTitleChecked"
-                                              Unchecked="IsAnalytAttributeTitleChecked"
-                                              Content="Наименование аналитического признака" />
-                                </Border>
-                            </Grid>
-                        </Expander>
-                    </Border>
+                    
                     <Border DockPanel.Dock="Top" Grid.Row="1">
                         <DataGrid Name="MainDataGrid" ItemsSource="{Binding  ReportModels}"
                                   SelectedItem="{Binding SelectedKeyfigureModel}"
@@ -438,22 +367,48 @@
                             </ListBox.ItemTemplate>
                         </ListBox>
                     </Grid>
-                   
-
-                    <!-- Правая часть -->
-                    <Grid Grid.Column="1">
-                        <TabControl Margin="5">
-                            <TabItem Header="Отчет и аналитические признаки">
-                                <TextBlock Margin="5">This is tab 1 content</TextBlock>
-                            </TabItem>
-                            <TabItem Header="Показатели">
-                                <TextBlock Margin="5">This is tab 2 content</TextBlock>
-                            </TabItem>
-                        </TabControl>
+                    <Grid Grid.Column="1" Grid.RowDefinitions="Auto, Auto">
+                          
+                        <Grid>
+                            <DataGrid x:Name="dataGrid" AutoGenerateColumns="False">
+                                <DataGrid.Columns>
+                                    <DataGridTemplateColumn Header="Индикатор ФВ/Отчета">
+                                        <DataTemplate>
+                                            <ComboBox x:Name="MycomboBox" FontSize="16" Margin="0 5 0 5" Padding="0 0 0 0" 
+                                                      ItemsSource="{Binding DataContext.ReportIndicators, RelativeSource={RelativeSource AncestorType=UserControl}}">
+                                                <ComboBox.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding value}"></TextBlock>
+                                                    </DataTemplate>
+                                                </ComboBox.ItemTemplate>
+                                            </ComboBox>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTextColumn Header="Релиз" Binding="{Binding DataContext.ReportIndicators, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+                                    <DataGridTextColumn Header="Код отчета САО/ФВ" Binding="{Binding DataContext.ReportIndicators, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+                                    <DataGridTextColumn Header="ID отчета/ФВ" Binding="{Binding DataContext.ReportIndicators, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+                                    <DataGridTextColumn Header="Наименование отчета/ФВ" Binding="{Binding DataContext.ReportIndicators, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+                                    <DataGridTextColumn Header="Периодичность формирования отчета" Binding="{Binding DataContext.ReportIndicators, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+                                    <DataGridTextColumn Header="Бизнес-процесс в рамках которого формируется отчет/Направление ФВ" Binding="{Binding DataContext.ReportIndicators, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <DataGrid x:Name="dataGrid2" AutoGenerateColumns="False">
+                                <DataGrid.Columns>
+                                    <DataGridTemplateColumn Header="Код показателя to be">
+                                        
+                                    </DataGridTemplateColumn>
+                                    <DataGridTextColumn Header="Наименование показателя" Binding="{Binding Column2}" />
+                                    <DataGridTextColumn Header="Статус данных" Binding="{Binding Column3}" />
+                                    <DataGridTextColumn Header="Тип показателя" Binding="{Binding Column4}" />
+                                    <DataGridTextColumn Header="Наименование аналитического признака" Binding="{Binding Column5}" />
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
                     </Grid>
                 </Grid>
-                
-            </TabItem>
+                </TabItem>
         </TabControl>
                 </DockPanel>
 </UserControl>
