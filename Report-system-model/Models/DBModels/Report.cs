@@ -46,9 +46,9 @@ public class Report
     [MaxLength(100)] public string KeyfigureCategoryId { get; set; }
     public virtual KeyfigureCategory? VirtualKeyfigureCategory { get; set; }
 
-    [Column("release_id")] 
-    [MaxLength(50)] public string ReleaseId { get; set; }
-    public virtual Release? VirtualRelease { get; set; }
+    // [Column("release_id")] 
+    // [MaxLength(50)] public string ReleaseId { get; set; }
+    // public virtual Release? VirtualRelease { get; set; }
 
     [Column("keyfigure_id")]
     public int KeyfigureId { get; set; }

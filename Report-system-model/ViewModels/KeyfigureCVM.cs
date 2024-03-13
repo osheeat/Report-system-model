@@ -35,7 +35,7 @@ public class KeyfigureCVM : ViewModelBase
     [Reactive] public ObservableCollection<MethodOfObtaining> methodOfObtainingFilter { get; set; }
     [Reactive] public ObservableCollection<KeyfigureCategory> keyfigureCategoryFilter { get; set; }
     [Reactive] public ObservableCollection<LoadTime> loadTimeFilter { get; set; }
-    [Reactive] public ObservableCollection<ReportUsageIndicator> reportUsageIndicatorFilter { get; set; }
+    // [Reactive] public ObservableCollection<ReportUsageIndicator> reportUsageIndicatorFilter { get; set; }
     [Reactive] public ObservableCollection<UploadDeadline> uploadDeadlineFilter { get; set; }
     [Reactive] public string dataStatusSelected { get; set; }
     [Reactive] public string ValueTypeSelected { get; set; }
@@ -66,7 +66,7 @@ public class KeyfigureCVM : ViewModelBase
         List<MethodOfObtaining> methodOfObtainingList = new List<MethodOfObtaining>();
         List<KeyfigureCategory> keyfigureCategoryList = new List<KeyfigureCategory>();
         List<LoadTime> loadTimeList = new List<LoadTime>();
-        List<ReportUsageIndicator> reportUsageIndicatorList = new List<ReportUsageIndicator>();
+        // List<ReportUsageIndicator> reportUsageIndicatorList = new List<ReportUsageIndicator>();
         List<UploadDeadline> uploadDeadlineList = new List<UploadDeadline>();
         
         dataStatusList = staticKeyfigureModels.Select(m => m.BasicInformation.DataStatus).Distinct().ToList();
@@ -87,8 +87,8 @@ public class KeyfigureCVM : ViewModelBase
         loadTimeList = staticKeyfigureModels.Select(m => m.ServiceInformation.LoadTime).Distinct().ToList();
         loadTimeFilter = new ObservableCollection<LoadTime>(loadTimeList);
         
-        reportUsageIndicatorList = staticKeyfigureModels.Select(m => m.ServiceInformation.ReportUsageIndicator).Distinct().ToList();
-        reportUsageIndicatorFilter = new ObservableCollection<ReportUsageIndicator>(reportUsageIndicatorList);
+        // reportUsageIndicatorList = staticKeyfigureModels.Select(m => m.ServiceInformation.ReportUsageIndicator).Distinct().ToList();
+        // reportUsageIndicatorFilter = new ObservableCollection<ReportUsageIndicator>(reportUsageIndicatorList);
         
         uploadDeadlineList = staticKeyfigureModels.Select(m => m.ServiceInformation.UploadDeadline).Distinct().ToList();
         uploadDeadlineFilter = new ObservableCollection<UploadDeadline>(uploadDeadlineList);
