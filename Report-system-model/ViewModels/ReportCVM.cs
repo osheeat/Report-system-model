@@ -48,7 +48,7 @@ public class ReportCVM : ViewModelBase
     [Reactive] public ObservableCollection<ReportId> ReportIDs { get; set; }
     [Reactive] public ObservableCollection<Report> ReportModels { get; set; }
     [Reactive] public ObservableCollection<ReportIndicator> ReportIndicators { get; set; }
-    [Reactive] public ObservableCollection<Release> ReportReleases { get; set; }
+    // [Reactive] public ObservableCollection<Release> ReportReleases { get; set; }
     [Reactive] public ObservableCollection<FormationFrequency> FormationPeriodicity { get; set; }
     [Reactive] public ObservableCollection<BusinessProcess> BusinessProcess { get; set; }
     [Reactive] public ObservableCollection<DataStatus> DataStatuses { get; set; }
@@ -71,8 +71,7 @@ public class ReportCVM : ViewModelBase
         Context.Database.EnsureCreated();
 
         var items = Context.Reports
-            .Include(x => x.VirtualRelease)
-            .Include(x => x.VirtualReportCode)
+            //.Include(x => x.VirtualReportCode)
             .Include(x => x.VirtualReportId)
             .Include(x => x.VirtualReportTitle)
             .Include(x => x.VirtualFormationFrequency)
@@ -83,7 +82,7 @@ public class ReportCVM : ViewModelBase
             .ToList();
 
         var cbItems = Context.ReportIndicators.ToList();
-        var relItems = Context.Releases.ToList();
+        //var relItems = Context.Releases.ToList();
         var periodItems = Context.FormationFrequencies.ToList();
         var bpItems = Context.BusinessProcesses.ToList();
         var statuses = Context.DataStatuss.ToList();
@@ -96,7 +95,7 @@ public class ReportCVM : ViewModelBase
         
         ReportIDs = new(ids);
         ReportIndicators = new(cbItems);
-        ReportReleases = new(relItems);
+        //ReportReleases = new(relItems);
         FormationPeriodicity = new(periodItems);
         BusinessProcess = new(bpItems);
         DataStatuses = new(statuses);
@@ -104,7 +103,7 @@ public class ReportCVM : ViewModelBase
         
         
         var itemsForBP = Context.Reports
-            .Include(x => x.VirtualRelease)
+            //.Include(x => x.VirtualRelease)
             .Include(x => x.VirtualReportCode)
             .Include(x => x.VirtualReportId)
             .Include(x => x.VirtualReportTitle)

@@ -16,8 +16,8 @@ public class MyDbContext : DbContext
     public DbSet<KeyfigureCategory> KeyfigureCategories { get; set; }
     public DbSet<LoadTime> LoadTimes { get; set; }
     public DbSet<MethodOfObtaining> MethodsOfObtaining { get; set; }
-    public DbSet<Release> Releases { get; set; }
-    public DbSet<ReportUsageIndicator> ReportUsageIndicators { get; set; }
+    //public DbSet<Release> Releases { get; set; }
+    //public DbSet<ReportUsageIndicator> ReportUsageIndicators { get; set; }
     public DbSet<SourceSystem> SourceSystems { get; set; }
     public DbSet<UploadDeadline> UploadDeadlines { get; set; }
     public DbSet<ValueType> ValueTypes { get; set; }
@@ -32,18 +32,18 @@ public class MyDbContext : DbContext
     public DbSet<ReportTitle> ReportTitles { get; set; }
     public DbSet<Analytical> Analyticals { get; set; }
     public DbSet<Directory> Directories { get; set; }
-    public DbSet<DirectoryAttributes> DirectoryAttributesEnumerable { get; set; }
-    public DbSet<DirectoryProperties> DirectoryPropertiesEnumerable { get; set; }
-    public DbSet<DirectoryPropertyHierarchyLevel> DirectoryPropertyHierarchyLevels { get; set; }
+    //public DbSet<DirectoryAttributes> DirectoryAttributesEnumerable { get; set; }
+    //public DbSet<DirectoryProperties> DirectoryPropertiesEnumerable { get; set; }
+    //public DbSet<DirectoryPropertyHierarchyLevel> DirectoryPropertyHierarchyLevels { get; set; }
     public DbSet<DirectoryRegister> DirectoryRegisters { get; set; }
     public DbSet<EncodingLanguage> EncodingLanguages { get; set; }
-    public DbSet<HierarchyLevel> HierarchyLevels { get; set; }
+    //public DbSet<HierarchyLevel> HierarchyLevels { get; set; }
     public DbSet<KSSS> Kssses { get; set; }
-    public DbSet<LevelIndicator> LevelIndicators { get; set; }
-    public DbSet<LoadType> LoadTypes { get; set; }
+    //public DbSet<LevelIndicator> LevelIndicators { get; set; }
+    //public DbSet<LoadType> LoadTypes { get; set; }
     public DbSet<LocalCorporate> LocalCorporates { get; set; }
     public DbSet<NsiObj> NsiObjs { get; set; }
-    public DbSet<ReleaseIndicatorSourceSystem> ReleaseIndicatorSourceSystems { get; set; }
+    //public DbSet<ReleaseIndicatorSourceSystem> ReleaseIndicatorSourceSystems { get; set; }
     public DbSet<SourceTableInDW> SourceTableInDws { get; set; }
 
 

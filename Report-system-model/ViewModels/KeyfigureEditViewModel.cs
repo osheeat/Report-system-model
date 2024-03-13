@@ -45,8 +45,8 @@ public class KeyfigureEditViewModel
     [Reactive] public LoadTime selectedLoadTime { get; set; }
     [Reactive] public ObservableCollection<UploadDeadline> uploadDeadlineList { get; set; }
     [Reactive] public UploadDeadline selectedUploadDeadline { get; set; }
-    [Reactive] public ObservableCollection<ReportUsageIndicator> reportUsageIndicatorList { get; set; }
-    [Reactive] public ReportUsageIndicator selectedReportUsageIndicator { get; set; }
+    // [Reactive] public ObservableCollection<ReportUsageIndicator> reportUsageIndicatorList { get; set; }
+    // [Reactive] public ReportUsageIndicator selectedReportUsageIndicator { get; set; }
 
     public KeyfigureEditViewModel(KeyfigureModel selectedModel)
     {
@@ -59,8 +59,8 @@ public class KeyfigureEditViewModel
         methodOfObtainingList = new ObservableCollection<MethodOfObtaining>(dbContext.MethodsOfObtaining.ToList());
         loadTimeList = new ObservableCollection<LoadTime>(dbContext.LoadTimes.ToList());
         uploadDeadlineList = new ObservableCollection<UploadDeadline>(dbContext.UploadDeadlines.ToList());
-        reportUsageIndicatorList =
-            new ObservableCollection<ReportUsageIndicator>(dbContext.ReportUsageIndicators.ToList());
+        // reportUsageIndicatorList =
+        //     new ObservableCollection<ReportUsageIndicator>(dbContext.ReportUsageIndicators.ToList());
         if (currModel.BasicInformation != null && currModel.BasicInformation.DataStatus != null)
         {
             selectedDataStatus = dataStatusList.FirstOrDefault(status =>
@@ -103,10 +103,10 @@ public class KeyfigureEditViewModel
                 value.value == currModel.ServiceInformation.UploadDeadline.value);
         }
 
-        if (currModel.ServiceInformation != null && currModel.ServiceInformation.ReportUsageIndicator != null)
-        {
-            selectedReportUsageIndicator = reportUsageIndicatorList.FirstOrDefault(value =>
-                value.value == currModel.ServiceInformation.ReportUsageIndicator.value);
-        }
+        // if (currModel.ServiceInformation != null && currModel.ServiceInformation.ReportUsageIndicator != null)
+        // {
+        //     selectedReportUsageIndicator = reportUsageIndicatorList.FirstOrDefault(value =>
+        //         value.value == currModel.ServiceInformation.ReportUsageIndicator.value);
+        // }
     }
 }

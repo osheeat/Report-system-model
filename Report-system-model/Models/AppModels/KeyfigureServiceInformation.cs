@@ -10,5 +10,5 @@ public class KeyfigureServiceInformation
     public KeyfigureCategory KeyfigureCategory { get; set; }
     public LoadTime LoadTime { get; set; }
     public UploadDeadline UploadDeadline { get; set; }
-    public ReportUsageIndicator ReportUsageIndicator { get; set; }
+    //public ReportUsageIndicator ReportUsageIndicator { get; set; }
 }

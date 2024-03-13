@@ -49,11 +49,11 @@ public class Keyfigure
 
     public virtual UploadDeadline? VirtualUploadDeadline { get; set; }
 
-    [Column("report_usage_indicator_id")]
-    [MaxLength(25)]
-    public string ReportUsageIndicatorId { get; set; }
-
-    public virtual ReportUsageIndicator? VirtualReportUsageIndicator { get; set; }
+    // [Column("report_usage_indicator_id")]
+    // [MaxLength(25)]
+    // public string ReportUsageIndicatorId { get; set; }
+    //
+    // public virtual ReportUsageIndicator? VirtualReportUsageIndicator { get; set; }
 
     [Column("data_status_id")]
     [MaxLength(25)]
