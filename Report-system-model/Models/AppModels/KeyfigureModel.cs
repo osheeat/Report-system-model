@@ -58,8 +58,8 @@ public class KeyfigureModel
                 // model.SystemSource.Release =
                 //     dbContext.Releases.FirstOrDefault(p => p.value.Equals(curIndicatorSourceSystem.ReleaseId));
 
-                model.ServiceInformation.ReportUsageIndicator =
-                    dbContext.ReportUsageIndicators.FirstOrDefault(p => p.value.Equals(item.ReportUsageIndicatorId));
+                // model.ServiceInformation.ReportUsageIndicator =
+                //     dbContext.ReportUsageIndicators.FirstOrDefault(p => p.value.Equals(item.ReportUsageIndicatorId));
 
                 // model.SystemSource.SourceSystem =
                 //     dbContext.SourceSystems.FirstOrDefault(p => p.Id.Equals(curIndicatorSourceSystem.Id));

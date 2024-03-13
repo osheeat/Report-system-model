@@ -7,6 +7,6 @@ public class KeyfigureSystemSource
     public Company Company { get; set; }
     public IndicatorGenerationMethod IndicatorGenerationMethod { get; set; }
     public IndicatorSourceSystem IndicatorSourceSystem { get; set; }
-    public Release Release { get; set; }
+    //public Release Release { get; set; }
     public SourceSystem SourceSystem { get; set; }
 }
