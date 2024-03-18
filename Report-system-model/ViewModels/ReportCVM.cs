@@ -2,23 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reactive;
+using System.Reactive.Disposables;
 using System.Reactive.Linq;
-using System.Threading;
-using Avalonia.Controls;
-using Avalonia.Input;
-using Avalonia.Interactivity;
-using Avalonia.Media;
 using Microsoft.EntityFrameworkCore;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using Report_system_model.DBModels;
-using SkiaSharp;
-using Report_system_model.Views;
 
 namespace Report_system_model.ViewModels;
 
@@ -53,14 +44,18 @@ public class ReportCVM : ViewModelBase
     [Reactive] public ObservableCollection<BusinessProcess> BusinessProcess { get; set; }
     [Reactive] public ObservableCollection<DataStatus> DataStatuses { get; set; }
     [Reactive] public ObservableCollection<KeyfigureCategory> KeyfigureTypes { get; set; }
-    
     [Reactive] public ObservableCollection<Report> ReportsFilterByBusinessProcess { get; set; }
+    
+    [Reactive] public ObservableCollection<Report> KeyfiguresFilterByReport{ get; set; }
+    
+    
     [Reactive] KeyfigureModel SelectedKeyfigureModel { get; set; }
     [Reactive] public string searchString { get; set; }
     public ReactiveCommand<KeyfigureModel, Unit> ButtonClickCommand_1 { get; private set; }
 
     private MyDbContext Context;
     
+    [Reactive] public Report? SelectedReport { get; set; }
     [Reactive] public BusinessProcess? SelectedBusinessProcess { get; set; }
     
     [Reactive] public string? ReportTitleFilter { get; set; }
@@ -90,6 +85,7 @@ public class ReportCVM : ViewModelBase
         var ids = Context.ReportIds.ToList();
         
         var models = items.Distinct(new ReportPComparer());
+        
 
         ReportModelsToList = new(models);
         
@@ -119,8 +115,22 @@ public class ReportCVM : ViewModelBase
         this.WhenAnyValue(vm => vm.SelectedBusinessProcess, vm => vm.ReportTitleFilter)
             .Do(val => FilterBProcesses(val.Item1, val.Item2))
             .Subscribe();
+
+        this.WhenAnyValue(vm => vm.SelectedReport)
+            .Do(val => FilterByReport(val))
+            .Subscribe();
     }
 
+    
+    private void FilterByReport(Report? report)
+    {
+        if (report is null) return;
+
+        var items = ReportModels;
+        var t1 = items.Where(r => r.ReportIdId == report.ReportIdId).ToList();
+        KeyfiguresFilterByReport = new(t1);
+    }
+    
     private void FilterBProcesses(BusinessProcess? bp, string? filter)
     {
         if (bp is null) return;
