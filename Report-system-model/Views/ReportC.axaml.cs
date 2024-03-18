@@ -22,7 +22,7 @@ public partial class ReportC : UserControl
     {
         InitializeComponent();
         DataContext = new ReportCVM();
-        MainDataGrid.Columns[0].IsVisible = true;
+        /*MainDataGrid.Columns[0].IsVisible = true;
         MainDataGrid.Columns[1].IsVisible = false;
         MainDataGrid.Columns[2].IsVisible = true;
         MainDataGrid.Columns[3].IsVisible = false;
@@ -33,7 +33,7 @@ public partial class ReportC : UserControl
         MainDataGrid.Columns[8].IsVisible = false;
         MainDataGrid.Columns[9].IsVisible = false;
         MainDataGrid.Columns[10].IsVisible = false;
-        MainDataGrid.Columns[11].IsVisible = false;
+        MainDataGrid.Columns[11].IsVisible = false;*/
         
         
         //MycomboBox.SizeChanged += CbOnSizeChanged;
