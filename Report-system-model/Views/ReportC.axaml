@@ -19,10 +19,61 @@
     <DockPanel>
         <TabControl Margin="5">
             <TabItem Header="Список отчетов">
-                <Grid RowDefinitions="Auto, Auto">
-                    
-                    <Border DockPanel.Dock="Top" Grid.Row="1">
-                        <DataGrid Name="MainDataGrid" ItemsSource="{Binding  ReportModels}"
+                <Grid>
+                    <!-- Левая часть -->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="5*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid RowDefinitions="Auto, Auto, *">
+                        <ComboBox SelectedItem="{Binding SelectedBusinessProcess}" PlaceholderText="Выберите бизнес-процесс" x:Name="MycomboBox" FontSize="16" Margin="5" 
+                                  ItemsSource="{Binding DataContext.BusinessProcess, RelativeSource={RelativeSource AncestorType=UserControl}}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock  Tag="hello" Text="{Binding value}" />
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <TextBox Text="{Binding ReportTitleFilter}"  Margin="5"  Grid.Row="1"></TextBox>
+                        <ListBox Grid.Row="2" Grid.Column="0" Margin="5" 
+                                 ItemsSource="{Binding DataContext.ReportsFilterByBusinessProcess, RelativeSource={RelativeSource AncestorType=UserControl}}" SelectedItem="{Binding SelectedReport}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    
+                                    <TextBlock>
+                                        <Run Text="{Binding ReportIdId, Mode=OneWay}"/>
+                                        <Run Text="{Binding ReportTitleId, Mode=OneWay}"/>
+                                    </TextBlock>    
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
+                    <!-- Правая  часть -->
+                    <Grid Grid.Column="1" Grid.RowDefinitions="Auto, Auto">
+                          
+                        <Grid>
+                            <DataGrid x:Name="dataGrid" AutoGenerateColumns="False">
+                                <DataGrid.Columns>
+                                    <DataGridTemplateColumn Header="Индикатор ФВ/Отчета">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Margin="5 0 0 0" HorizontalAlignment="Center"
+                                                           TextAlignment="Center"
+                                                           Text="{Binding  ReportIndicatorId}" />
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTextColumn Header="Релиз" Binding="{Binding DataContext.ReportIndicators, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+                                    <DataGridTextColumn Header="Код отчета САО/ФВ" Binding="{Binding DataContext.ReportIndicators, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+                                    <DataGridTextColumn Header="ID отчета/ФВ" Binding="{Binding DataContext.ReportIndicators, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+                                    <DataGridTextColumn Header="Наименование отчета/ФВ" Binding="{Binding DataContext.ReportIndicators, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+                                    <DataGridTextColumn Header="Периодичность формирования отчета" Binding="{Binding DataContext.ReportIndicators, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+                                    <DataGridTextColumn Header="Бизнес-процесс в рамках которого формируется отчет/Направление ФВ" Binding="{Binding DataContext.ReportIndicators, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <DataGrid Name="MainDataGrid2" ItemsSource="{Binding  KeyfiguresFilterByReport}"
                                   SelectedItem="{Binding SelectedKeyfigureModel}"
                                   IsReadOnly="True"
                                   IsScrollInertiaEnabled="True"
@@ -32,184 +83,10 @@
                                   GridLinesVisibility="All"
                                   HorizontalScrollBarVisibility="Hidden"
                                   BorderThickness="0.1 0.1 0.1 0.1 " BorderBrush="Gray">
-                            <DataGrid.ContextMenu>
-                                <ContextMenu>
-                                    <MenuItem Header="Просмотр"
-                                              Command="{Binding ButtonClickCommand_1}"
-                                              CommandParameter="{Binding SelectedKeyfigureModel}" />
-                                    <MenuItem Header="Скопировать" />
-                                </ContextMenu>
-                            </DataGrid.ContextMenu>
+
                             <DataGrid.Columns>
-                                <DataGridTemplateColumn SortMemberPath="BasicInformation.Keyfigure.SAPCode"
-                                                        CanUserSort="True" MaxWidth="200" MinWidth="100" Width="*">
-                                    <DataGridTemplateColumn.HeaderTemplate>
-                                        <DataTemplate>
-                                            <StackPanel Orientation="Vertical">
-                                                <TextBlock Text="Индикатор ФВ/Отчета"
-                                                           TextAlignment="Center"
-                                                           HorizontalAlignment="Stretch" />
-                                                
-                                                <ComboBox x:Name="MycomboBox" FontSize="16" Margin="0 5 0 5" Padding="0 0 0 0" 
-                                                          ItemsSource="{Binding DataContext.ReportIndicators, RelativeSource={RelativeSource AncestorType=UserControl}}">
-                                                    <ComboBox.ItemTemplate>
-                                                        <DataTemplate>
-                                                            <TextBlock Text="{Binding value}"></TextBlock>
-                                                        </DataTemplate>
-                                                    </ComboBox.ItemTemplate>
-                                                </ComboBox>
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.HeaderTemplate>
-                                    <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Margin="5 0 0 0" HorizontalAlignment="Center"
-                                                       TextAlignment="Center"
-                                                       Text="{Binding  ReportIndicatorId}" />
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                </DataGridTemplateColumn>
-                                <DataGridTemplateColumn SortMemberPath="BasicInformation.Keyfigure.FullName"
-                                                        CanUserSort="True" MinWidth="100" Width="*">
-                                    <DataGridTemplateColumn.HeaderTemplate>
-                                        <DataTemplate>
-                                            <StackPanel Orientation="Vertical">
-                                                <TextBlock Text="Релиз"
-                                                           TextAlignment="Center"
-                                                           HorizontalAlignment="Stretch" />
-                                                <ComboBox x:Name="MycomboBox" FontSize="16" Margin="0 5 0 5" Padding="0 0 0 0" 
-                                                          ItemsSource="{Binding DataContext.ReportReleases, RelativeSource={RelativeSource AncestorType=UserControl}}"  ZIndex="1000">
-                                                    <ComboBox.ItemTemplate>
-                                                        <DataTemplate>
-                                                            <TextBlock Text="{Binding value}"></TextBlock>
-                                                        </DataTemplate>
-                                                    </ComboBox.ItemTemplate>
-                                                </ComboBox>
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.HeaderTemplate>
-                                    <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Margin="5 0 0 0" HorizontalAlignment="Left" TextAlignment="Left"
-                                                       Text="{Binding VirtualRelease.value}" />
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                </DataGridTemplateColumn>
-                                <DataGridTemplateColumn SortMemberPath="BasicInformation.Keyfigure.ShortName"
-                                                        CanUserSort="True" MinWidth="100" Width="*">
-                                    <DataGridTemplateColumn.HeaderTemplate>
-                                        <DataTemplate>
-                                            <StackPanel Orientation="Vertical">
-                                                <TextBlock Text="Код отчета САО/ФВ"
-                                                           TextAlignment="Center"
-                                                           HorizontalAlignment="Stretch" />
-                                                <TextBox Height="25" FontSize="16" Margin="0 5 0 5"
-                                                         Padding="0 0 0 0"
-                                                         HorizontalAlignment="Stretch" />
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.HeaderTemplate>
-                                    <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Margin="5 0 0 0" HorizontalAlignment="Left" TextAlignment="Left"
-                                                       Text="{Binding VirtualReportCode.value}" />
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                </DataGridTemplateColumn>
-                                <DataGridTemplateColumn SortMemberPath="BasicInformation.DataStatus.value"
-                                                        CanUserSort="True" MinWidth="100" Width="*">
-                                    <DataGridTemplateColumn.HeaderTemplate>
-                                        <DataTemplate>
-                                            <StackPanel Orientation="Vertical">
-                                                <TextBlock Text="ID отчета/ФВ"
-                                                           TextAlignment="Center"
-                                                           HorizontalAlignment="Stretch" />
-                                                <TextBox Height="25" FontSize="16" Margin="0 5 0 5"
-                                                                                                         Padding="0 0 0 0"
-                                                                                                         HorizontalAlignment="Stretch" />
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.HeaderTemplate>
-                                    <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Margin="5 0 0 0" HorizontalAlignment="Left" TextAlignment="Left"
-                                                       Text="{Binding VirtualReportId.value}" />
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                </DataGridTemplateColumn>
-                                <DataGridTemplateColumn SortMemberPath="ServiceInformation.CurrencyUnit.value"
-                                                        CanUserSort="True" MinWidth="100" Width="*">
-                                    <DataGridTemplateColumn.HeaderTemplate>
-                                        <DataTemplate>
-                                            <StackPanel Orientation="Vertical">
-                                                <TextBlock Text="Наименование отчета/ФВ"
-                                                           TextAlignment="Center"
-                                                           HorizontalAlignment="Stretch" />
-                                                <TextBox Name="FullNameStr" Height="25" FontSize="16" Margin="0 5 0 5"
-                                                         Padding="0 0 0 0"
-                                                         HorizontalAlignment="Stretch" />
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.HeaderTemplate>
-                                    <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Margin="5 0 0 0" HorizontalAlignment="Left" TextAlignment="Left"
-                                                       Text="{Binding VirtualReportTitle.value}" />
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                </DataGridTemplateColumn>
-                                <DataGridTemplateColumn SortMemberPath="ServiceInformation.ValueType.value"
-                                                        CanUserSort="True" MinWidth="100" Width="*">
-                                    <DataGridTemplateColumn.HeaderTemplate>
-                                        <DataTemplate>
-                                            <StackPanel Orientation="Vertical">
-                                                <TextBlock Text="Периодичность формирования отчета"
-                                                           TextAlignment="Center"
-                                                           HorizontalAlignment="Stretch" />
-                                                <ComboBox x:Name="MycomboBox" FontSize="16" Margin="0 5 0 5" Padding="0 0 0 0" 
-                                                          ItemsSource="{Binding DataContext.FormationPeriodicity, RelativeSource={RelativeSource AncestorType=UserControl}}">
-                                                    <ComboBox.ItemTemplate>
-                                                        <DataTemplate>
-                                                            <TextBlock Text="{Binding value}"></TextBlock>
-                                                        </DataTemplate>
-                                                    </ComboBox.ItemTemplate>
-                                                </ComboBox>
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.HeaderTemplate>
-                                    <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Margin="5 0 0 0" HorizontalAlignment="Left" TextAlignment="Left"
-                                                       Text="{Binding VirtualFormationFrequency.value}" />
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                </DataGridTemplateColumn>
-                                <DataGridTemplateColumn SortMemberPath="ServiceInformation.MethodOfObtaining.value"
-                                                        CanUserSort="True" MinWidth="100" Width="*">
-                                    <DataGridTemplateColumn.HeaderTemplate>
-                                        <DataTemplate>
-                                            <StackPanel Orientation="Vertical">
-                                                <TextBlock Text="Бизнес-процесс в рамках которого формируется отчет/Направление ФВ"
-                                                           TextAlignment="Center"
-                                                           HorizontalAlignment="Stretch" />
-                                                <ComboBox x:Name="MycomboBox" FontSize="16" Margin="0 5 0 5" Padding="0 0 0 0" 
-                                                          ItemsSource="{Binding DataContext.BusinessProcess, RelativeSource={RelativeSource AncestorType=UserControl}}">
-                                                    <ComboBox.ItemTemplate>
-                                                        <DataTemplate>
-                                                            <TextBlock Text="{Binding value}"></TextBlock>
-                                                        </DataTemplate>
-                                                    </ComboBox.ItemTemplate>
-                                                </ComboBox>
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.HeaderTemplate>
-                                    <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Margin="5 0 0 0" HorizontalAlignment="Left" TextAlignment="Left"
-                                                       Text="{Binding VirtualBusinessProcess.value}" />
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                </DataGridTemplateColumn>
+                                
+                               
                                 <DataGridTemplateColumn SortMemberPath="ServiceInformation.KeyfigureCategory.value"
                                                         CanUserSort="True" MinWidth="100" Width="*">
                                     <DataGridTemplateColumn.HeaderTemplate>
@@ -329,84 +206,17 @@
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
-                                
-                                
                             </DataGrid.Columns>
                         </DataGrid>
-                    </Border>
+                        </Grid>
+                    </Grid>
                 </Grid>
+                
                 
             </TabItem>
             <TabItem Header="Редактирование отчета">
-                <Grid>
-                    <!-- Левая часть -->
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition Width="5*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid RowDefinitions="Auto, Auto, *">
-                        <ComboBox SelectedItem="{Binding SelectedBusinessProcess}" PlaceholderText="Выберите бизнес-процесс" x:Name="MycomboBox" FontSize="16" Margin="5" 
-                                  ItemsSource="{Binding DataContext.BusinessProcess, RelativeSource={RelativeSource AncestorType=UserControl}}">
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock  Tag="hello" Text="{Binding value}" />
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
-                        </ComboBox>
-                        <TextBox Text="{Binding ReportTitleFilter}"  Margin="5"  Grid.Row="1"></TextBox>
-                        <ListBox Grid.Row="2" Grid.Column="0" Margin="5" 
-                                 ItemsSource="{Binding DataContext.ReportsFilterByBusinessProcess, RelativeSource={RelativeSource AncestorType=UserControl}}">
-                        
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock>
-                                        <Run Text="{Binding ReportIdId, Mode=OneWay}"/>
-                                        <Run Text="{Binding ReportTitleId, Mode=OneWay}"/>
-                                    </TextBlock>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
-                    </Grid>
-                    <!-- Правая  часть -->
-                    <Grid Grid.Column="1" Grid.RowDefinitions="Auto, Auto">
-                          
-                        <Grid>
-                            <DataGrid x:Name="dataGrid" AutoGenerateColumns="False">
-                                <DataGrid.Columns>
-                                    <DataGridTemplateColumn Header="Индикатор ФВ/Отчета">
-                                        <DataGridTemplateColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <TextBlock Margin="5 0 0 0" HorizontalAlignment="Center"
-                                                           TextAlignment="Center"
-                                                           Text="{Binding  ReportIndicatorId}" />
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellTemplate>
-                                    </DataGridTemplateColumn>
-                                    <DataGridTextColumn Header="Релиз" Binding="{Binding DataContext.ReportIndicators, RelativeSource={RelativeSource AncestorType=UserControl}}" />
-                                    <DataGridTextColumn Header="Код отчета САО/ФВ" Binding="{Binding DataContext.ReportIndicators, RelativeSource={RelativeSource AncestorType=UserControl}}" />
-                                    <DataGridTextColumn Header="ID отчета/ФВ" Binding="{Binding DataContext.ReportIndicators, RelativeSource={RelativeSource AncestorType=UserControl}}" />
-                                    <DataGridTextColumn Header="Наименование отчета/ФВ" Binding="{Binding DataContext.ReportIndicators, RelativeSource={RelativeSource AncestorType=UserControl}}" />
-                                    <DataGridTextColumn Header="Периодичность формирования отчета" Binding="{Binding DataContext.ReportIndicators, RelativeSource={RelativeSource AncestorType=UserControl}}" />
-                                    <DataGridTextColumn Header="Бизнес-процесс в рамках которого формируется отчет/Направление ФВ" Binding="{Binding DataContext.ReportIndicators, RelativeSource={RelativeSource AncestorType=UserControl}}" />
-                                </DataGrid.Columns>
-                            </DataGrid>
-                        </Grid>
-                        <Grid Grid.Row="1">
-                            <DataGrid x:Name="dataGrid2" AutoGenerateColumns="False">
-                                <DataGrid.Columns>
-                                    <DataGridTemplateColumn Header="Код показателя to be">
-                                        
-                                    </DataGridTemplateColumn>
-                                    <DataGridTextColumn Header="Наименование показателя" Binding="{Binding Column2}" />
-                                    <DataGridTextColumn Header="Статус данных" Binding="{Binding Column3}" />
-                                    <DataGridTextColumn Header="Тип показателя" Binding="{Binding Column4}" />
-                                    <DataGridTextColumn Header="Наименование аналитического признака" Binding="{Binding Column5}" />
-                                </DataGrid.Columns>
-                            </DataGrid>
-                        </Grid>
-                    </Grid>
-                </Grid>
-                </TabItem>
+               
+            </TabItem>
         </TabControl>
-                </DockPanel>
+    </DockPanel>
 </UserControl>
