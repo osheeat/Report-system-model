@@ -31,6 +31,8 @@ public class KeyfigureEditViewModel
     {
     }
     [Reactive] public KeyfigureModel currModel { get; set; }
+    [Reactive] public KeyfigureModel currModelFact { get; set; }
+    [Reactive] public KeyfigureModel currModelPlan { get; set; }
     [Reactive] public ObservableCollection<DataStatus> dataStatusList { get; set; }
     [Reactive] public DataStatus selectedDataStatus { get; set; }
     [Reactive] public ObservableCollection<DBModels.ValueType> valueTypeList { get; set; }
@@ -42,15 +44,17 @@ public class KeyfigureEditViewModel
     [Reactive] public ObservableCollection<KeyfigureCategory> keyfigureCategoryList { get; set; }
     [Reactive] public KeyfigureCategory selectedKeyfigureCategory { get; set; }
     [Reactive] public ObservableCollection<LoadTime> loadTimeList { get; set; }
-    [Reactive] public LoadTime selectedLoadTime { get; set; }
+    [Reactive] public LoadTime selectedLoadTimeFact { get; set; } //this
+    [Reactive] public LoadTime selectedLoadTimePlan { get; set; }
     [Reactive] public ObservableCollection<UploadDeadline> uploadDeadlineList { get; set; }
-    [Reactive] public UploadDeadline selectedUploadDeadline { get; set; }
-    // [Reactive] public ObservableCollection<ReportUsageIndicator> reportUsageIndicatorList { get; set; }
-    // [Reactive] public ReportUsageIndicator selectedReportUsageIndicator { get; set; }
+    [Reactive] public UploadDeadline selectedUploadDeadlineFact { get; set; } //this
+    [Reactive] public UploadDeadline selectedUploadDeadlinePlan { get; set; }
+    [Reactive] public ObservableCollection<SourceSystem> sourceSystemList{ get; set; }
+    [Reactive] public SourceSystem selectedSourceSystemFact { get; set; }     //this
+    [Reactive] public SourceSystem selectedSourceSystemPlan { get; set; }
 
-    public KeyfigureEditViewModel(KeyfigureModel selectedModel)
+    private void Initializing_additional_parameters()
     {
-        currModel = selectedModel;
         var dbContext = new MyDbContext();
         dataStatusList = new ObservableCollection<DataStatus>(dbContext.DataStatuss.ToList());
         valueTypeList = new ObservableCollection<ValueType>(dbContext.ValueTypes.ToList());
@@ -59,8 +63,7 @@ public class KeyfigureEditViewModel
         methodOfObtainingList = new ObservableCollection<MethodOfObtaining>(dbContext.MethodsOfObtaining.ToList());
         loadTimeList = new ObservableCollection<LoadTime>(dbContext.LoadTimes.ToList());
         uploadDeadlineList = new ObservableCollection<UploadDeadline>(dbContext.UploadDeadlines.ToList());
-        // reportUsageIndicatorList =
-        //     new ObservableCollection<ReportUsageIndicator>(dbContext.ReportUsageIndicators.ToList());
+        sourceSystemList=new ObservableCollection<SourceSystem>(dbContext.SourceSystems.ToList());
         if (currModel.BasicInformation != null && currModel.BasicInformation.DataStatus != null)
         {
             selectedDataStatus = dataStatusList.FirstOrDefault(status =>
@@ -90,23 +93,63 @@ public class KeyfigureEditViewModel
             selectedKeyfigureCategory = keyfigureCategoryList.FirstOrDefault(value =>
                 value.value == currModel.ServiceInformation.KeyfigureCategory.value);
         }
-
-        if (currModel.ServiceInformation != null && currModel.ServiceInformation.LoadTime != null)
+        if (currModelPlan != null)
         {
-            selectedLoadTime = loadTimeList.FirstOrDefault(value =>
-                value.value == currModel.ServiceInformation.LoadTime.value);
+            if (currModelPlan.SystemSource != null && currModelPlan.SystemSource.SourceSystem != null)
+            {
+                selectedSourceSystemPlan = sourceSystemList.FirstOrDefault(value =>
+                    value.title == currModelPlan.SystemSource.SourceSystem.title);
+            }
+            if (currModelPlan.ServiceInformation != null && currModelPlan.ServiceInformation.UploadDeadline != null)
+            {
+                selectedUploadDeadlinePlan = uploadDeadlineList.FirstOrDefault(value =>
+                    value.value == currModelPlan.ServiceInformation.UploadDeadline.value);
+            }
+            if (currModelPlan.ServiceInformation != null && currModelPlan.ServiceInformation.LoadTime != null)
+            {
+                selectedLoadTimePlan = loadTimeList.FirstOrDefault(value =>
+                    value.value == currModelPlan.ServiceInformation.LoadTime.value);
+            }
         }
-
-        if (currModel.ServiceInformation != null && currModel.ServiceInformation.UploadDeadline != null)
+        if (currModelFact != null)
         {
-            selectedUploadDeadline = uploadDeadlineList.FirstOrDefault(value =>
-                value.value == currModel.ServiceInformation.UploadDeadline.value);
+            if (currModelFact.ServiceInformation != null && currModelFact.ServiceInformation.LoadTime != null)
+            {
+                selectedLoadTimeFact = loadTimeList.FirstOrDefault(value =>
+                    value.value == currModelFact.ServiceInformation.LoadTime.value);
+            }
+            if (currModelFact.ServiceInformation != null && currModelFact.ServiceInformation.UploadDeadline != null)
+            {
+                selectedUploadDeadlineFact = uploadDeadlineList.FirstOrDefault(value =>
+                    value.value == currModelFact.ServiceInformation.UploadDeadline.value);
+            }
+            if (currModelFact.SystemSource != null && currModelFact.SystemSource.SourceSystem != null)
+            {
+                selectedSourceSystemFact = sourceSystemList.FirstOrDefault(value =>
+                    value.title == currModelFact.SystemSource.SourceSystem.title);
+            }
         }
-
-        // if (currModel.ServiceInformation != null && currModel.ServiceInformation.ReportUsageIndicator != null)
-        // {
-        //     selectedReportUsageIndicator = reportUsageIndicatorList.FirstOrDefault(value =>
-        //         value.value == currModel.ServiceInformation.ReportUsageIndicator.value);
-        // }
+    }
+    public KeyfigureEditViewModel(KeyfigureModel selectedModel, KeyfigureModel secondSelectedModel)
+    {
+        if (selectedModel == null)
+        {
+            currModel = secondSelectedModel;
+        }
+        else
+        {
+            currModel = selectedModel;
+        }
+        if (selectedModel.BasicInformation.DataStatus.value == "Факт")
+        {
+            currModelFact = selectedModel;
+            currModelPlan = secondSelectedModel;
+        }
+        if (selectedModel.BasicInformation.DataStatus.value == "План")
+        {
+            currModelFact = secondSelectedModel;
+            currModelPlan = selectedModel;
+        }
+        Initializing_additional_parameters();
     }
 }
