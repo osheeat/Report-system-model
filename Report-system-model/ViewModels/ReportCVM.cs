@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using Report_system_model.DBModels;
+using Report_system_model.Views;
 
 namespace Report_system_model.ViewModels;
 
@@ -47,9 +48,8 @@ public class ReportCVM : ViewModelBase
     [Reactive] public ObservableCollection<Report> ReportsFilterByBusinessProcess { get; set; }
     
     [Reactive] public ObservableCollection<Report> KeyfiguresFilterByReport{ get; set; }
+    [Reactive] Report SelectedKeyfigureModel { get; set; }
     
-    
-    [Reactive] KeyfigureModel SelectedKeyfigureModel { get; set; }
     [Reactive] public string searchString { get; set; }
     public ReactiveCommand<KeyfigureModel, Unit> ButtonClickCommand_1 { get; private set; }
 
@@ -60,10 +60,17 @@ public class ReportCVM : ViewModelBase
     
     [Reactive] public string? ReportTitleFilter { get; set; }
     
+    public ReactiveCommand<Report, Unit> OpenEditForm { get; private set; }
+    
     public ReportCVM()
     {
         Context = new MyDbContext();
         Context.Database.EnsureCreated();
+        OpenEditForm = ReactiveCommand.Create<Report, Unit>(Execute);
+
+        this.WhenAnyValue(vm => vm.SelectedKeyfigureModel)
+            .Do(_ => { })
+            .Subscribe();
 
         var items = Context.Reports
             //.Include(x => x.VirtualReportCode)
@@ -121,6 +128,22 @@ public class ReportCVM : ViewModelBase
             .Subscribe();
     }
 
+    private Unit Execute(Report obj)
+    {
+        ReportEditWindow newWindow;
+        if (obj != null)
+        {
+            newWindow = new ReportEditWindow(obj);
+        }
+        else
+        {
+            newWindow = new ReportEditWindow();
+        }
+
+        newWindow.Show();
+        return Unit.Default;
+    }
+    
     
     private void FilterByReport(Report? report)
     {
