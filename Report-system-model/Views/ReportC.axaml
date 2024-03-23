@@ -74,7 +74,7 @@
                         </Grid>
                         <Grid Grid.Row="1">
                             <DataGrid Name="MainDataGrid2" ItemsSource="{Binding  KeyfiguresFilterByReport}"
-                                  SelectedItem="{Binding SelectedKeyfigureModel}"
+                                  SelectedItem="{Binding SelectedKeyfigureModel, Mode=TwoWay}"
                                   IsReadOnly="True"
                                   IsScrollInertiaEnabled="True"
                                   CanUserReorderColumns="False"
@@ -83,7 +83,14 @@
                                   GridLinesVisibility="All"
                                   HorizontalScrollBarVisibility="Hidden"
                                   BorderThickness="0.1 0.1 0.1 0.1 " BorderBrush="Gray">
-
+                                <DataGrid.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="Редактировать"
+                                                  Command="{Binding OpenEditForm}"
+                                                  CommandParameter="{Binding SelectedKeyfigureModel}" />
+                                        <MenuItem Header="Скопировать" />
+                                    </ContextMenu>
+                                </DataGrid.ContextMenu>
                             <DataGrid.Columns>
                                 
                                
