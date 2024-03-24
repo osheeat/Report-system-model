@@ -28,7 +28,7 @@ public partial class KeyfigureC : UserControl
         MainDataGrid.Columns[7].IsVisible = false;
         MainDataGrid.Columns[8].IsVisible = false;
         MainDataGrid.Columns[9].IsVisible = false;
-        MainDataGrid.Columns[10].IsVisible = false;
+        //MainDataGrid.Columns[10].IsVisible = false;
         ((KeyfigureCVM)DataContext).SwitchCollectionWithDataStatus(false);
     }
     private void IsShortNameCheckBoxChecked(object? sender, RoutedEventArgs e)
@@ -80,15 +80,15 @@ public partial class KeyfigureC : UserControl
         if (Box8.IsChecked.Value) MainDataGrid.Columns[8].IsVisible = true;
         else MainDataGrid.Columns[8].IsVisible = false;
     }
-    private void IsUsageIndicatorChecked(object? sender, RoutedEventArgs e)
+    // private void IsUsageIndicatorChecked(object? sender, RoutedEventArgs e)
+    // {
+    //     if (Box9.IsChecked.Value) MainDataGrid.Columns[9].IsVisible = true;
+    //     else MainDataGrid.Columns[9].IsVisible = false;
+    // }
+    private void IsUploadDeadlineChecked(object? sender, RoutedEventArgs e)
     {
         if (Box9.IsChecked.Value) MainDataGrid.Columns[9].IsVisible = true;
         else MainDataGrid.Columns[9].IsVisible = false;
-    }
-    private void IsUploadDeadlineChecked(object? sender, RoutedEventArgs e)
-    {
-        if (Box10.IsChecked.Value) MainDataGrid.Columns[10].IsVisible = true;
-        else MainDataGrid.Columns[10].IsVisible = false;
     }
     private void FullNameStrChanged(object? sender, TextChangedEventArgs e)
     {

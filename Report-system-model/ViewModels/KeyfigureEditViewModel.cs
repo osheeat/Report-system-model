@@ -1,4 +1,4 @@
-﻿using Report_system_model.AppModels;
+using Report_system_model.AppModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -30,6 +30,7 @@ public class KeyfigureEditViewModel
 #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
     {
     }
+
     [Reactive] public KeyfigureModel currModel { get; set; }
     [Reactive] public KeyfigureModel currModelFact { get; set; }
     [Reactive] public KeyfigureModel currModelPlan { get; set; }
@@ -49,8 +50,8 @@ public class KeyfigureEditViewModel
     [Reactive] public ObservableCollection<UploadDeadline> uploadDeadlineList { get; set; }
     [Reactive] public UploadDeadline selectedUploadDeadlineFact { get; set; } //this
     [Reactive] public UploadDeadline selectedUploadDeadlinePlan { get; set; }
-    [Reactive] public ObservableCollection<SourceSystem> sourceSystemList{ get; set; }
-    [Reactive] public SourceSystem selectedSourceSystemFact { get; set; }     //this
+    [Reactive] public ObservableCollection<SourceSystem> sourceSystemList { get; set; }
+    [Reactive] public SourceSystem selectedSourceSystemFact { get; set; } //this
     [Reactive] public SourceSystem selectedSourceSystemPlan { get; set; }
 
     private void Initializing_additional_parameters()
@@ -63,7 +64,7 @@ public class KeyfigureEditViewModel
         methodOfObtainingList = new ObservableCollection<MethodOfObtaining>(dbContext.MethodsOfObtaining.ToList());
         loadTimeList = new ObservableCollection<LoadTime>(dbContext.LoadTimes.ToList());
         uploadDeadlineList = new ObservableCollection<UploadDeadline>(dbContext.UploadDeadlines.ToList());
-        sourceSystemList=new ObservableCollection<SourceSystem>(dbContext.SourceSystems.ToList());
+        sourceSystemList = new ObservableCollection<SourceSystem>(dbContext.SourceSystems.ToList());
         if (currModel.BasicInformation != null && currModel.BasicInformation.DataStatus != null)
         {
             selectedDataStatus = dataStatusList.FirstOrDefault(status =>
@@ -93,6 +94,7 @@ public class KeyfigureEditViewModel
             selectedKeyfigureCategory = keyfigureCategoryList.FirstOrDefault(value =>
                 value.value == currModel.ServiceInformation.KeyfigureCategory.value);
         }
+
         if (currModelPlan != null)
         {
             if (currModelPlan.SystemSource != null && currModelPlan.SystemSource.SourceSystem != null)
@@ -100,17 +102,20 @@ public class KeyfigureEditViewModel
                 selectedSourceSystemPlan = sourceSystemList.FirstOrDefault(value =>
                     value.title == currModelPlan.SystemSource.SourceSystem.title);
             }
+
             if (currModelPlan.ServiceInformation != null && currModelPlan.ServiceInformation.UploadDeadline != null)
             {
                 selectedUploadDeadlinePlan = uploadDeadlineList.FirstOrDefault(value =>
                     value.value == currModelPlan.ServiceInformation.UploadDeadline.value);
             }
+
             if (currModelPlan.ServiceInformation != null && currModelPlan.ServiceInformation.LoadTime != null)
             {
                 selectedLoadTimePlan = loadTimeList.FirstOrDefault(value =>
                     value.value == currModelPlan.ServiceInformation.LoadTime.value);
             }
         }
+
         if (currModelFact != null)
         {
             if (currModelFact.ServiceInformation != null && currModelFact.ServiceInformation.LoadTime != null)
@@ -118,11 +123,13 @@ public class KeyfigureEditViewModel
                 selectedLoadTimeFact = loadTimeList.FirstOrDefault(value =>
                     value.value == currModelFact.ServiceInformation.LoadTime.value);
             }
+
             if (currModelFact.ServiceInformation != null && currModelFact.ServiceInformation.UploadDeadline != null)
             {
                 selectedUploadDeadlineFact = uploadDeadlineList.FirstOrDefault(value =>
                     value.value == currModelFact.ServiceInformation.UploadDeadline.value);
             }
+
             if (currModelFact.SystemSource != null && currModelFact.SystemSource.SourceSystem != null)
             {
                 selectedSourceSystemFact = sourceSystemList.FirstOrDefault(value =>
@@ -130,6 +137,7 @@ public class KeyfigureEditViewModel
             }
         }
     }
+
     public KeyfigureEditViewModel(KeyfigureModel selectedModel, KeyfigureModel secondSelectedModel)
     {
         if (selectedModel == null)
@@ -140,16 +148,19 @@ public class KeyfigureEditViewModel
         {
             currModel = selectedModel;
         }
+
         if (selectedModel.BasicInformation.DataStatus.value == "Факт")
         {
             currModelFact = selectedModel;
             currModelPlan = secondSelectedModel;
         }
+
         if (selectedModel.BasicInformation.DataStatus.value == "План")
         {
             currModelFact = secondSelectedModel;
             currModelPlan = selectedModel;
         }
+
         Initializing_additional_parameters();
     }
 }
