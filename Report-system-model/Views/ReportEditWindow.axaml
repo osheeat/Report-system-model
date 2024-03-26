@@ -20,36 +20,37 @@
     </Design.DataContext>
     
     
-    <Grid ColumnDefinitions="2*, *, *, *" RowDefinitions="Auto, Auto, Auto" Margin="5">
-        <Border Grid.ColumnSpan="4" BorderThickness="1" CornerRadius="5" BorderBrush="#494F5C" Margin="5" >
+    <Grid ColumnDefinitions="2*, *, *, *" RowDefinitions="Auto, Auto, Auto, *, *, *, *, *, *, *, *, *,*,*,*,*,*,*,*" Margin="5">
+        <Border Height="40" Grid.ColumnSpan="4" BorderThickness="1" CornerRadius="5" BorderBrush="#494F5C" Margin="5" >
             <TextBlock Grid.Row="0" Grid.Column="0">
                 <Run Text="{Binding Report.ReportTitleId, Mode=OneWay}"/>
             </TextBlock>
         </Border>
-        <Border Grid.Row="1" Grid.Column="0" BorderThickness="1" CornerRadius="5" BorderBrush="#494F5C" Margin="5">
+        <Border Height="40" Grid.Row="1" Grid.Column="0" BorderThickness="1" CornerRadius="5" BorderBrush="#494F5C" Margin="5">
             <TextBlock >
                 <Run Text="{Binding Report.VirtualKeyfigure.SAPCode, Mode=OneWay}"/>
                 <Run Text="{Binding Report.VirtualKeyfigure.FullName, Mode=OneWay}"/>
             </TextBlock>
         </Border>
-        <Border Grid.Row="1" Grid.Column="1" BorderThickness="1" CornerRadius="5" BorderBrush="#494F5C" Margin="5">
-            <TextBlock >
-                <Run Text="{Binding Report.VirtualKeyfigure.DataStatusId, Mode=OneWay}"/>
-            </TextBlock>
-        </Border>
-        <Border Grid.Row="1" Grid.Column="2" BorderThickness="1" CornerRadius="5" BorderBrush="#494F5C" Margin="5">
-            <TextBlock >
-                <Run Text="{Binding Report.VirtualKeyfigure.KeyfigureCategoryId, Mode=OneWay}" />
-            </TextBlock>
-        </Border>
+
         <Border Grid.Row="1" Grid.Column="3" BorderThickness="1" CornerRadius="5" BorderBrush="#494F5C" Margin="5">
             <TextBlock >
                 <Run Text="{Binding Report.AnalyticalFeatureId, Mode=OneWay}"/>
             </TextBlock>
         </Border>
         
-        <ComboBox Grid.Row="2" Grid.Column="2" FontSize="16" Margin="5 5 5 5" Padding="0 0 0 0" 
-                  ItemsSource="{Binding DataStatuses}" >
+        <ComboBox Grid.Row="1" Grid.Column="1" FontSize="16" Margin="5 5 5 5" Padding="0 0 0 0" 
+                  ItemsSource="{Binding DataStatuses}"  SelectedItem="{Binding SelectedDataStatus}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding value}">
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        
+        <ComboBox Grid.Row="1" Grid.Column="2" FontSize="16" Margin="5 5 5 5" Padding="0 0 0 0" 
+                  ItemsSource="{Binding KeyfigureTypes}" SelectedItem="{Binding SelectedKeyfigType}" >
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding value}"></TextBlock>
@@ -57,6 +58,28 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
         
+        <!-- Ошибка где то здесь надо вызывать метод после ввода текста -->
+        <Border Grid.Row="2" Grid.Column="3" BorderThickness="1" CornerRadius="5" BorderBrush="#494F5C" Margin="5">
+            <TextBox Text="{Binding currFeature}" />
+        </Border>
         
+        <ListBox Grid.Row="3" Grid.Column="3" FontSize="16" Grid.RowSpan="16" Margin="5 5 5 5" Padding="0 0 0 0" 
+                  ItemsSource="{Binding FeaturesFilterByName} ">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock >
+                        <Run Text="{Binding value, Mode=OneWay}"></Run>
+                    </TextBlock>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        
+        <Button Margin="5" Grid.Row="17" Grid.Column="0" Grid.RowSpan="2"  Content="Отменить изменения" FontSize="18">
+            
+        </Button>
+        <Button Margin="5" Grid.Row="17" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2"  Content="Сохранить изменения" FontSize="18">
+            
+            
+        </Button>
     </Grid>
 </Window>
