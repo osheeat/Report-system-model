@@ -22,7 +22,7 @@
                 <Expander.Header>
                     Выбор параметров
                 </Expander.Header>
-                <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*,*,*,*,*,*" Margin="4">
+                <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*,*,*,*" Margin="4">
                     <Border Grid.Row="0" Grid.Column="0" Margin="0, 0, 10, 0">
                         <CheckBox x:Name="Box2"
                                   Checked="IsShortNameCheckBoxChecked"
@@ -61,21 +61,11 @@
                                   Unchecked="IsLoadTimeChecked"
                                   Content="Регламент. срок загр." />
                     </Border>
-                    <Border Grid.Row="0" Grid.Column="4" Margin="0, 10, 10, 0">
-                        <CheckBox x:Name="Box9" Checked="IsUsageIndicatorChecked"
-                                  Unchecked="IsUsageIndicatorChecked"
-                                  Content="Инд. использ. в отчете" />
-                    </Border>
                     <Border Grid.Row="1" Grid.Column="3" Margin="0, 10, 10, 0">
-                        <CheckBox x:Name="Box10" Checked="IsUploadDeadlineChecked"
+                        <CheckBox x:Name="Box9" Checked="IsUploadDeadlineChecked"
                                   Unchecked="IsUploadDeadlineChecked"
                                   Content="Срок загр. гибк. отч." />
                     </Border>
-                    <!-- <Border Grid.Row="1" Grid.Column="4" Margin="0, 10, 10, 0"> -->
-                    <!--     <CheckBox x:Name="Box11" Checked="IsMethodOfObtainingChecked" -->
-                    <!--               Unchecked="IsMethodOfObtainingChecked" -->
-                    <!--               Content="Ответственный за БП" /> -->
-                    <!-- </Border> -->
                 </Grid>
             </Expander>
         </Border>
@@ -233,10 +223,11 @@
                                     <ComboBox Height="25" FontSize="16" Margin="0 5 0 5"
                                               Padding="0 0 0 0"
                                               ItemsSource="{Binding DataContext.сurrencyUnitFilter, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                                              SelectedItem="{Binding currencyUnitSelected}">
+                                              SelectedItem="{Binding currencyUnitSelected}"
+                                              Name="comboBox">
                                         <ComboBox.ItemTemplate>
                                             <DataTemplate>
-                                                <TextBlock Text="{Binding value}" Width="350"/>
+                                                <TextBlock Text="{Binding value}"/>
                                             </DataTemplate>
                                         </ComboBox.ItemTemplate>
                                     </ComboBox>
@@ -331,34 +322,6 @@
                             <DataTemplate>
                                 <TextBlock Margin="5 0 0 0" HorizontalAlignment="Left" TextAlignment="Left"
                                            Text="{Binding ServiceInformation.LoadTime.value}" />
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                    <DataGridTemplateColumn SortMemberPath="ServiceInformation.ReportUsageIndicator.value"
-                                            CanUserSort="True" MinWidth="100" Width="*">
-                        <DataGridTemplateColumn.HeaderTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock Text="Инд. использ. в отчете"
-                                               TextAlignment="Center"
-                                               HorizontalAlignment="Stretch" />
-                                    <ComboBox Height="25" FontSize="16" Margin="0 5 0 5"
-                                              Padding="0 0 0 0"
-                                              ItemsSource="{Binding DataContext.reportUsageIndicatorFilter, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                                              SelectedItem="{Binding reportUsageIndicatorSelected}">
-                                        <ComboBox.ItemTemplate>
-                                            <DataTemplate>
-                                                <TextBlock Text="{Binding value}"/>
-                                            </DataTemplate>
-                                        </ComboBox.ItemTemplate>
-                                    </ComboBox>
-                                </StackPanel>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.HeaderTemplate>
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Margin="5 0 0 0" HorizontalAlignment="Left" TextAlignment="Left"
-                                           Text="{Binding ServiceInformation.ReportUsageIndicator.value}" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>

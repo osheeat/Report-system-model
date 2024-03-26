@@ -8,9 +8,7 @@
         xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
         xmlns:views="clr-namespace:Report_system_model.Views"
         Icon="/Assets/avalonia-logo.ico"
-
-        Title="{Binding currModel.BasicInformation.Keyfigure.SAPCode}"
-
+        Title="{Binding currModelFact.BasicInformation.Keyfigure.SAPCode}"
         x:DataType="vm:KeyfigureEditViewModel">
     <Window.Styles>
         <FluentTheme />
@@ -31,7 +29,8 @@
                     </StackPanel>
                 </Border>
                 <Border>
-                    <Grid Name="KeyfigureTopPanel" RowDefinitions="*, *, *, *, *, *, *, *, *, *" ColumnDefinitions="*, *, *">
+                    <Grid Name="KeyfigureTopPanel" RowDefinitions="*, *, *, *, *, *, *, *, *,*"
+                          ColumnDefinitions="*, *, *">
                         <Label Grid.Column="0" Grid.Row="0" Margin="10 10 10 0 ">Краткое наименование</Label>
                         <TextBox Grid.Column="0" Grid.Row="1" Margin="10 5 0 0 " FontSize="14"
                                  Text="{Binding currModel.BasicInformation.Keyfigure.ShortName}" />
@@ -80,59 +79,117 @@
                             </ComboBox.ItemTemplate>
                         </ComboBox>
                         <Label Grid.Column="2" Grid.Row="2" Margin="10 10 10 0 ">Ответственный за БП</Label>
-                        <TextBox Grid.Column="2" Grid.Row="3" Margin="10 5 0 0 " FontSize="14"/>
-                        
+                        <TextBox Grid.Column="2" Grid.Row="3" Margin="10 5 0 0 " FontSize="14" />
+
                         <Label Grid.Column="0" Grid.Row="4" Margin="10 30 10 10" FontStyle="Oblique" FontSize="18">ФАКТ</Label>
-                        
+
                         <Label Grid.Column="0" Grid.Row="5" Margin="10 10 10 0 ">Срок загрузки для гибкого отчета</Label>
                         <ComboBox Grid.Column="0" Grid.Row="6" Margin="10 5 0 0 "
                                   HorizontalAlignment="Stretch"
                                   ItemsSource="{Binding uploadDeadlineList}"
-                                  SelectedItem="{Binding selectedUploadDeadline}">
+                                  SelectedItem="{Binding selectedUploadDeadlineFact}">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding value}" />
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
                         </ComboBox>
-                        
-                        
-                        
-                        
                         <Label Grid.Column="1" Grid.Row="5" Margin="10 10 10 0 ">Регламентный срок загрузки</Label>
                         <ComboBox Grid.Column="1" Grid.Row="6" Margin="10 5 0 0 "
                                   HorizontalAlignment="Stretch"
-                                  ItemsSource="{Binding keyfigureCategoryList}"
-                                  SelectedItem="{Binding selectedKeyfigureCategory}">
+                                  ItemsSource="{Binding  loadTimeList}"
+                                  SelectedItem="{Binding selectedLoadTimeFact}">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding value}" />
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
                         </ComboBox>
-                        
-                        
-                        
-                        
                         <Label Grid.Column="2" Grid.Row="5" Margin="10 10 10 0 ">Система - источник</Label>
                         <ComboBox Grid.Column="2" Grid.Row="6" Margin="10 5 0 0 "
                                   HorizontalAlignment="Stretch"
-                                  ItemsSource="{Binding keyfigureCategoryList}"
-                                  SelectedItem="{Binding selectedKeyfigureCategory}">
+                                  ItemsSource="{Binding sourceSystemList}"
+                                  SelectedItem="{Binding selectedSourceSystemFact}">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding value}" />
+                                    <TextBlock Text="{Binding title}" />
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
                         </ComboBox>
                         <Label Grid.Column="0" Grid.Row="7" Margin="10 30 10 10" FontStyle="Oblique" FontSize="18">ПЛАН</Label>
+                        <Label Grid.Column="0" Grid.Row="8" Margin="10 10 10 0 ">Срок загрузки для гибкого отчета</Label>
+                        <ComboBox Grid.Column="0" Grid.Row="9" Margin="10 5 0 0 "
+                                  HorizontalAlignment="Stretch"
+                                  ItemsSource="{Binding uploadDeadlineList}"
+                                  SelectedItem="{Binding selectedUploadDeadlinePlan}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding value}" />
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <Label Grid.Column="1" Grid.Row="8" Margin="10 10 10 0 ">Регламентный срок загрузки</Label>
+                        <ComboBox Grid.Column="1" Grid.Row="9" Margin="10 5 0 0 "
+                                  HorizontalAlignment="Stretch"
+                                  ItemsSource="{Binding  loadTimeList}"
+                                  SelectedItem="{Binding selectedLoadTimePlan}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding value}" />
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <Label Grid.Column="2" Grid.Row="8" Margin="10 10 10 0 ">Система - источник</Label>
+                        <ComboBox Grid.Column="2" Grid.Row="9" Margin="10 5 0 0 "
+                                  HorizontalAlignment="Stretch"
+                                  ItemsSource="{Binding sourceSystemList}"
+                                  SelectedItem="{Binding selectedSourceSystemPlan}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding title}" />
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
                     </Grid>
                 </Border>
             </StackPanel>
         </TabItem>
         <TabItem Header="Справочники и отчеты" FontSize="14">
+            <StackPanel>
+                <Border>
+                    <StackPanel>
+                        <Label Margin="10 10 0 0 ">Полное наименование</Label>
+                        <TextBox Margin="10 5 0 0 " FontSize="14"
+                                 Text="{Binding currModel.BasicInformation.Keyfigure.FullName}" />
+                    </StackPanel>
+                </Border>
+                <Border>
+                    <Grid RowDefinitions="*, *" ColumnDefinitions="*, *">
+                        <Label Grid.Column="0" Grid.Row="0" Margin="10 30 10 10" FontStyle="Oblique" FontSize="18">Используемые справочники</Label>
+                        <ListBox Margin="5" Grid.Column="0" Grid.Row="1">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock>
+                                        <!-- <Run Text="{Binding ReportIdId, Mode=OneWay}"/> -->
+                                        <!-- <Run Text="{Binding ReportTitleId, Mode=OneWay}"/> -->
+                                    </TextBlock>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                        <Label Grid.Column="1" Grid.Row="0" Margin="10 30 10 10" FontStyle="Oblique" FontSize="18">Использование в отчетах</Label>
+                        <ListBox Margin="5" Grid.Column="1" Grid.Row="1">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock>
+                                        <!-- <Run Text="{Binding ReportIdId, Mode=OneWay}"/> -->
+                                        <!-- <Run Text="{Binding ReportTitleId, Mode=OneWay}"/> -->
+                                    </TextBlock>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
+                </Border>
+            </StackPanel>
         </TabItem>
     </TabControl>
-
-
 </Window>

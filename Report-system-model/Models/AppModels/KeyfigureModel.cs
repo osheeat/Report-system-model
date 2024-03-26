@@ -26,12 +26,10 @@ public class KeyfigureModel
                 model.ServiceInformation = new KeyfigureServiceInformation();
                 model.BasicInformation = new KeyfigureBasicInformation();
                 model.BasicInformation.Keyfigure = item;
-                // IndicatorSourceSystem curIndicatorSourceSystem =
-                //     dbContext.IndicatorSourceSystems.FirstOrDefault(p => p.KeyfigureId.Equals(item.Id));
-
-                // model.SystemSource.Company =
-                //     dbContext.Companies.FirstOrDefault(p => p.Id.Equals(curIndicatorSourceSystem.CompanyId));
-
+                
+                IndicatorSourceSystem ISS =
+                    dbContext.IndicatorSourceSystems.FirstOrDefault(p => p.KeyfigureId.Equals(item.id));
+                
                 model.ServiceInformation.CurrencyUnit =
                     dbContext.CurrencyUnits.FirstOrDefault(p => p.value.Equals(item.CurrencyUnitId));
 
@@ -42,10 +40,6 @@ public class KeyfigureModel
                     dbContext.IndicatorGenerationMethods.FirstOrDefault(p =>
                         p.value.Equals(item.IndicatorGenerationMethodId));
 
-                // model.SystemSource.IndicatorSourceSystem =
-                //     dbContext.IndicatorSourceSystems.FirstOrDefault(p =>
-                //         p.Id.Equals(curIndicatorSourceSystem.SourceSystemId));
-
                 model.ServiceInformation.KeyfigureCategory =
                     dbContext.KeyfigureCategories.FirstOrDefault(p => p.value.Equals(item.KeyfigureCategoryId));
 
@@ -55,21 +49,22 @@ public class KeyfigureModel
                 model.ServiceInformation.MethodOfObtaining =
                     dbContext.MethodsOfObtaining.FirstOrDefault(p => p.value.Equals(item.MethodOfObtainingId));
 
-                // model.SystemSource.Release =
-                //     dbContext.Releases.FirstOrDefault(p => p.value.Equals(curIndicatorSourceSystem.ReleaseId));
-
-                // model.ServiceInformation.ReportUsageIndicator =
-                //     dbContext.ReportUsageIndicators.FirstOrDefault(p => p.value.Equals(item.ReportUsageIndicatorId));
-
-                // model.SystemSource.SourceSystem =
-                //     dbContext.SourceSystems.FirstOrDefault(p => p.Id.Equals(curIndicatorSourceSystem.Id));
-
                 model.ServiceInformation.UploadDeadline =
                     dbContext.UploadDeadlines.FirstOrDefault(p => p.value.Equals(item.UploadDeadlineId));
 
                 model.ServiceInformation.ValueType =
                     dbContext.ValueTypes.FirstOrDefault(p => p.value.Equals(item.ValueTypeId));
+                
+                model.SystemSource.SourceSystem =
+                    dbContext.SourceSystems.FirstOrDefault(p => p.id.Equals(dbContext.IndicatorSourceSystems.FirstOrDefault(p => p.KeyfigureId.Equals(item.id)).SourceSystemId));
 
+                if (model.SystemSource.SourceSystem == null)
+                {
+                    // Console.WriteLine("NULL:\t"+dbContext.IndicatorSourceSystems.FirstOrDefault(p => p.KeyfigureId.Equals(item.id)));
+                    // Console.WriteLine(item.id);
+                    // Console.WriteLine(item.FullName);
+                    model.SystemSource.SourceSystem = dbContext.SourceSystems.FirstOrDefault(p => p.id.Equals(1));
+                }
                 curList.Add(model);
             }
         }

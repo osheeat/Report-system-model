@@ -14,7 +14,7 @@ public class DirectoryRegister
     [MaxLength(500)] public string SAPCode { get; set; }
     
     [Column("directory_id")]
-    [MaxLength(25)] public string DirectoryId { get; set; }
+    [MaxLength(25)] public int DirectoryId { get; set; }
     public virtual Directory? VirtualDirectory { get; set; }
     
     [Column("encoding_language_id")]

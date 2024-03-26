@@ -16,10 +16,10 @@ public partial class KeyfigureEditWindow : Window
         InitializeComponent();
         DataContext = new KeyfigureEditViewModel();
     }
-
-    public KeyfigureEditWindow(KeyfigureModel model)
+    
+    public KeyfigureEditWindow(KeyfigureModel model, KeyfigureModel secondModel)
     {
         InitializeComponent();
-        DataContext = new KeyfigureEditViewModel(model);
+        DataContext = new KeyfigureEditViewModel(model, secondModel);
     }
 }

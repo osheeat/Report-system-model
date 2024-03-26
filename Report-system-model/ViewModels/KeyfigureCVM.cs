@@ -28,13 +28,15 @@ public class KeyfigureCVM : ViewModelBase
     [Reactive] public ObservableCollection<KeyfigureModel> keyfigureModels { get; set; }
     [Reactive] public ObservableCollection<KeyfigureModel> staticKeyfigureModels { get; set; }
     [Reactive] public KeyfigureModel SelectedKeyfigureModel { get; set; }
-    
+
     [Reactive] public ObservableCollection<DataStatus> dataStatusFilter { get; set; }
     [Reactive] public ObservableCollection<DBModels.ValueType> valueTypeFilter { get; set; }
     [Reactive] public ObservableCollection<CurrencyUnit> сurrencyUnitFilter { get; set; }
     [Reactive] public ObservableCollection<MethodOfObtaining> methodOfObtainingFilter { get; set; }
     [Reactive] public ObservableCollection<KeyfigureCategory> keyfigureCategoryFilter { get; set; }
+
     [Reactive] public ObservableCollection<LoadTime> loadTimeFilter { get; set; }
+
     // [Reactive] public ObservableCollection<ReportUsageIndicator> reportUsageIndicatorFilter { get; set; }
     [Reactive] public ObservableCollection<UploadDeadline> uploadDeadlineFilter { get; set; }
     [Reactive] public string dataStatusSelected { get; set; }
@@ -45,7 +47,7 @@ public class KeyfigureCVM : ViewModelBase
     [Reactive] public string loadTimeSelected { get; set; }
     [Reactive] public string reportUsageIndicatorSelected { get; set; }
     [Reactive] public string uploadDeadlineSelected { get; set; }
-    
+
     public ReactiveCommand<Unit, Unit> ButtonClickCommand { get; private set; }
     public ReactiveCommand<KeyfigureModel, Unit> ButtonClickCommand_1 { get; private set; }
 
@@ -59,7 +61,7 @@ public class KeyfigureCVM : ViewModelBase
         staticKeyfigureModels = new ObservableCollection<KeyfigureModel>(keyList);
         keyfigureModels = new ObservableCollection<KeyfigureModel>(keyList);
         ButtonClickCommand_1 = ReactiveCommand.Create<KeyfigureModel, Unit>(Execute);
-        
+
         List<DataStatus> dataStatusList = new List<DataStatus>();
         List<DBModels.ValueType> valueTypeList = new List<DBModels.ValueType>();
         List<CurrencyUnit> сurrencyUnitList = new List<CurrencyUnit>();
@@ -68,38 +70,84 @@ public class KeyfigureCVM : ViewModelBase
         List<LoadTime> loadTimeList = new List<LoadTime>();
         // List<ReportUsageIndicator> reportUsageIndicatorList = new List<ReportUsageIndicator>();
         List<UploadDeadline> uploadDeadlineList = new List<UploadDeadline>();
-        
+
         dataStatusList = staticKeyfigureModels.Select(m => m.BasicInformation.DataStatus).Distinct().ToList();
         dataStatusFilter = new ObservableCollection<DataStatus>(dataStatusList);
-        
+
         valueTypeList = staticKeyfigureModels.Select(m => m.ServiceInformation.ValueType).Distinct().ToList();
         valueTypeFilter = new ObservableCollection<DBModels.ValueType>(valueTypeList);
-        
+
         сurrencyUnitList = staticKeyfigureModels.Select(m => m.ServiceInformation.CurrencyUnit).Distinct().ToList();
         сurrencyUnitFilter = new ObservableCollection<CurrencyUnit>(сurrencyUnitList);
-        
-        methodOfObtainingList = staticKeyfigureModels.Select(m => m.ServiceInformation.MethodOfObtaining).Distinct().ToList();
+
+        methodOfObtainingList = staticKeyfigureModels.Select(m => m.ServiceInformation.MethodOfObtaining).Distinct()
+            .ToList();
         methodOfObtainingFilter = new ObservableCollection<MethodOfObtaining>(methodOfObtainingList);
-        
-        keyfigureCategoryList = staticKeyfigureModels.Select(m => m.ServiceInformation.KeyfigureCategory).Distinct().ToList();
+
+        keyfigureCategoryList = staticKeyfigureModels.Select(m => m.ServiceInformation.KeyfigureCategory).Distinct()
+            .ToList();
         keyfigureCategoryFilter = new ObservableCollection<KeyfigureCategory>(keyfigureCategoryList);
-        
+
         loadTimeList = staticKeyfigureModels.Select(m => m.ServiceInformation.LoadTime).Distinct().ToList();
         loadTimeFilter = new ObservableCollection<LoadTime>(loadTimeList);
-        
-        // reportUsageIndicatorList = staticKeyfigureModels.Select(m => m.ServiceInformation.ReportUsageIndicator).Distinct().ToList();
-        // reportUsageIndicatorFilter = new ObservableCollection<ReportUsageIndicator>(reportUsageIndicatorList);
-        
+
+
         uploadDeadlineList = staticKeyfigureModels.Select(m => m.ServiceInformation.UploadDeadline).Distinct().ToList();
         uploadDeadlineFilter = new ObservableCollection<UploadDeadline>(uploadDeadlineList);
+
+        int k = 0;
+        foreach (var item in keyfigureModels)
+        {
+            if (item.SystemSource.SourceSystem == null)
+            {
+                k++;
+                Console.WriteLine(item.BasicInformation.Keyfigure.FullName);
+            }
+        }
+
+        Console.WriteLine(k);
+        Console.WriteLine(keyfigureModels.Count);
     }
 
     private Unit Execute(KeyfigureModel obj)
     {
-        KeyfigureEditWindow newWindow;
+        KeyfigureEditWindow newWindow = new KeyfigureEditWindow();
+        KeyfigureModel objPlus = new KeyfigureModel();
         if (obj != null)
         {
-            newWindow = new KeyfigureEditWindow(obj);
+            if (obj.BasicInformation.DataStatus.value == "Факт")
+            {
+                if (staticKeyfigureModels.Where(x =>
+                        x.BasicInformation.Keyfigure.FullName == obj.BasicInformation.Keyfigure.FullName &&
+                        x.BasicInformation.DataStatus.value == "План").ToList().Count != 0)
+                {
+                    objPlus = staticKeyfigureModels.FirstOrDefault(x =>
+                        x.BasicInformation.Keyfigure.FullName == obj.BasicInformation.Keyfigure.FullName &&
+                        x.BasicInformation.DataStatus.value == "План");
+                    newWindow = new KeyfigureEditWindow(obj, objPlus);
+                }
+                else
+                {
+                    newWindow = new KeyfigureEditWindow(obj, objPlus);
+                }
+            }
+
+            if (obj.BasicInformation.DataStatus.value == "План")
+            {
+                if (staticKeyfigureModels.Where(x =>
+                        x.BasicInformation.Keyfigure.FullName == obj.BasicInformation.Keyfigure.FullName &&
+                        x.BasicInformation.DataStatus.value == "Факт").ToList().Count != 0)
+                {
+                    objPlus = staticKeyfigureModels.FirstOrDefault(x =>
+                        x.BasicInformation.Keyfigure.FullName == obj.BasicInformation.Keyfigure.FullName &&
+                        x.BasicInformation.DataStatus.value == "Факт");
+                    newWindow = new KeyfigureEditWindow(obj, objPlus);
+                }
+                else
+                {
+                    newWindow = new KeyfigureEditWindow(obj, objPlus);
+                }
+            }
         }
         else
         {
@@ -124,6 +172,7 @@ public class KeyfigureCVM : ViewModelBase
             keyfigureModels = staticKeyfigureModels;
         }
     }
+
     public void SwitchCollectionWithDataStatus(bool switchStatus)
     {
         if (switchStatus)
